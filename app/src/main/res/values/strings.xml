@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Furnitures</string>
+
+    <!-- SECTION: Furniture -->
+    <string name="furniture_title">Add Furniture</string>
+    <string name="furniture_bed">Bed</string>
+    <string name="furniture_sofa">Sofa</string>
+    <string name="furniture_armchair">Armchair</string>
+    <string name="furniture_rename">Rename furniture</string>
+</resources>

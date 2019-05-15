@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorPrimary">@color/bauhaus_red</color>
+    <color name="colorPrimaryDark">@color/bauhaus_red</color>
+    <color name="colorAccent">@color/bauhaus_red</color>
+
+    <color name="bauhaus_red">#F20028</color>
+    <color name="bauhaus_red_light">#F14B51</color>
+    <color name="bauhaus_red_dark">#EE1F26</color>
+
+    <color name="green">#51DD16</color>
+
+    <color name="grey00">#f9f9f9</color>
+    <color name="grey01">#E5E5E5</color>
+    <color name="grey02">#CCCCCC</color>
+    <color name="grey03">#B2B2B2</color>
+    <color name="grey04">#999999</color>
+    <color name="grey05">#7F7F7F</color>
+    <color name="grey06">#666666</color>
+    <color name="grey07">#4C4C4C</color>
+    <color name="grey08">#333333</color>
+    <color name="grey09">#191919</color>
+    <color name="grey10">#0D0D0D</color>
+
+    <color name="colorThumbActive">@color/colorAccent</color>
+    <color name="colorThumbInactive">@color/grey04</color>
+    <color name="colorTrack">@color/grey01</color>
+
+    <!-- DEFAULT -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="white50">#80FFFFFF</color>
+
+</resources>
