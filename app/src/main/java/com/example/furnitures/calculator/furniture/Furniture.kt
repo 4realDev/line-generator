@@ -11,10 +11,4 @@ data class Furniture(
     val isSelected: Boolean,
     val isDefault: Boolean,
     private val isTombstone: Boolean = false
-
-) /*: DataObject {
-
-    override fun getId(): String = id
-
-    override fun isTombstone(): Boolean = isTombstone
-}*/
+)
