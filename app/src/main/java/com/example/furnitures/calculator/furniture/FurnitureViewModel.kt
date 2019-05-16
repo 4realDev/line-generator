@@ -5,6 +5,7 @@ import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import android.arch.lifecycle.MutableLiveData
 import android.arch.lifecycle.Transformations
+import java.util.*
 
 /**
  * Copyright (c) 2017 fluidmobile GmbH. All rights reserved.
@@ -111,8 +112,14 @@ class FurnitureViewModel(application: Application) : AndroidViewModel(applicatio
     }
 
     private fun setData(): List<Furniture> = listOf(
-            Furniture("0", FurnitureType.BED, 0, 22.0, false, true, false),
-            Furniture("1", FurnitureType.ARMCHAIR, 0, 22.0, false, true,false),
-            Furniture("2", FurnitureType.SOFA, 0, 22.0, false, true, false)
+            Furniture(randomUUID(), FurnitureType.BED, 0, 22.0, false, true, false),
+            Furniture(randomUUID(), FurnitureType.ARMCHAIR, 0, 22.0, false, true,false),
+            Furniture(randomUUID(), FurnitureType.SOFA, 0, 22.0, false, true, false)
     )
+
+    // universally unique identifier class (UUID) generates a random 128-bit value
+    // 44e128a5-ac7a-4c9a-be4c-224b6bf81b20
+    private fun randomUUID(): String {
+        return UUID.randomUUID().toString()
+    }
 }
