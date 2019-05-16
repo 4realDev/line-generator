@@ -5,8 +5,7 @@ package com.example.furnitures.calculator.furniture
  */
 data class Furniture(
     val id: String,
-    @FurnitureType
-    val furnitureType: Int,
+    val furnitureType: FurnitureType,
     val count: Int,
     val volume: Double,
     val isSelected: Boolean,

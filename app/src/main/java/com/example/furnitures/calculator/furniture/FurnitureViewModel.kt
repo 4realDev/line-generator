@@ -113,6 +113,6 @@ class FurnitureViewModel(application: Application) : AndroidViewModel(applicatio
     private fun setData(): List<Furniture> = listOf(
             Furniture("0", FurnitureType.BED, 0, 22.0, false, true, false),
             Furniture("1", FurnitureType.ARMCHAIR, 0, 22.0, false, true,false),
-            Furniture("2", FurnitureType.BED, 0, 22.0, false, true, false)
+            Furniture("2", FurnitureType.SOFA, 0, 22.0, false, true, false)
     )
 }

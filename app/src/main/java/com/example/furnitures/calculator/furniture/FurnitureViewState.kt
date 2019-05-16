@@ -5,7 +5,7 @@ package com.example.furnitures.calculator.furniture
  */
 data class FurnitureViewState(
     val id: String,
-    val furnitureType: Int,
+    val furnitureType: FurnitureType,
     val name: Int,
     val drawableResId: Int,
     val isSelected: Boolean
