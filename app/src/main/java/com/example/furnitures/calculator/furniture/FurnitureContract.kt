@@ -11,6 +11,7 @@ interface FurnitureContract {
 
         //region Data
         fun getFurnitureList(): LiveData<List<FurnitureViewState>>
+        fun getSelectedFurnitureList(): LiveData<List<FurnitureViewState>>
         //endregion
     }
 }

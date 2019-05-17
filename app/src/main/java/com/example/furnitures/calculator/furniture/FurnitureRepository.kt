@@ -1,6 +1,7 @@
 package com.example.furnitures.calculator.furniture
 
 import android.arch.lifecycle.LiveData
+import android.arch.lifecycle.MutableLiveData
 
 interface FurnitureRepository {
 
@@ -8,9 +9,11 @@ interface FurnitureRepository {
     fun getFurnitures(): LiveData<List<Furniture>>
     fun getSelectedFurnitures(): LiveData<List<Furniture>>
     // By ID
-    fun getFurnitureSync(id: String): Furniture?
+    fun getFurnitureById(id: String): Furniture?
 
-    fun createInitialFurniture(): List<Furniture>
+    fun updateFurnitureOnClick(clickedFurniture: FurnitureViewState)
+
+    fun createInitialFurnitures(): List<Furniture>
     /* endregion */
 
     // warum getter im Repository/ Contract Interface, anstatt LiveData zu übergeben und diese mit Property zu überschreiben?
