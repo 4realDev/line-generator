@@ -38,6 +38,7 @@ class FurnitureViewModel(application: Application) : AndroidViewModel(applicatio
         return FurnitureViewState(
             id = furniture.id,
             furnitureType = furniture.furnitureType,
+            furnitureCategory = furniture.furnitureCategory,
             name = FurnitureTypeHelper.getString(furniture.furnitureType),
             drawableResId = FurnitureTypeHelper.getDrawable(furniture.furnitureType),
             isSelected = furniture.isSelected
