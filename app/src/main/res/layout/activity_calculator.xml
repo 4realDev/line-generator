@@ -20,10 +20,18 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <FrameLayout
-        android:id="@+id/activity_calculator__container"
+    <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/fragment_furniture__recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:paddingTop="16dp"
+        android:scrollbarStyle="outsideOverlay"
+        android:scrollbars="vertical"
+        tools:listitem="@layout/list_item_furniture" />
 
     <Button
         android:layout_width="wrap_content"
@@ -32,5 +40,11 @@
         android:layout_margin="8dp"
         android:text="Filter Activity"
         android:id="@+id/buttonActivity" />
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        layout="@layout/activity_bottom_bar" />
 
 </android.support.design.widget.CoordinatorLayout>
