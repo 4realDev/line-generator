@@ -17,8 +17,6 @@ import com.example.furnitures.R
  */
 class FurnitureAdapter(private val furnitureClickListener: FurnitureClickListener) :  ListAdapter<FurnitureViewState, FurnitureAdapter.FurnitureHolder>(DiffCallback())  {
 
-    private var furnitureList = emptyList<FurnitureViewState>()
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FurnitureHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_item_furniture, parent, false)
         val viewHolder = FurnitureHolder(itemView)
@@ -34,6 +32,7 @@ class FurnitureAdapter(private val furnitureClickListener: FurnitureClickListene
         holder.image?.setImageResource(item.drawableResId)
         holder.title?.setText(item.name)
         val context = holder.itemView.context
+        // image darf nur einmal vorkommen, sonst werden andere items getriggert
         holder.image?.background = ContextCompat.getDrawable(context, if (item.isSelected) R.drawable.background_circle_red else R.drawable.background_furniture)
         holder.image?.drawable?.let {
             DrawableCompat.setTint(it, ContextCompat.getColor(context, if (item.isSelected) R.color.white else R.color.grey05))
