@@ -15,7 +15,7 @@ import com.example.furnitures.R
 /**
  * Copyright (c) 2017 fluidmobile GmbH. All rights reserved.
  */
-class FurnitureAdapter(private val furnitureClickListener: FurnitureClickListener) : RecyclerView.Adapter<FurnitureAdapter.FurnitureHolder>() {
+class FurnitureAdapter(private val furnitureClickListener: FurnitureClickListener) :  ListAdapter<FurnitureViewState, FurnitureAdapter.FurnitureHolder>(DiffCallback())  {
 
     private var furnitureList = emptyList<FurnitureViewState>()
 
@@ -40,17 +40,8 @@ class FurnitureAdapter(private val furnitureClickListener: FurnitureClickListene
         }
     }
 
-    override fun getItemCount(): Int {
-        return furnitureList.size
-    }
-
-    private fun getItem(position: Int): FurnitureViewState {
-        return furnitureList[position]
-    }
-
     fun setData(furnitureList: List<FurnitureViewState>) {
         this.furnitureList = furnitureList
-        notifyDataSetChanged()
     }
 
     interface FurnitureClickListener {
@@ -58,7 +49,6 @@ class FurnitureAdapter(private val furnitureClickListener: FurnitureClickListene
     }
 
     inner class FurnitureHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
         val image: ImageView? = itemView.findViewById(R.id.list_item_furniture__image)
         val title: TextView? = itemView.findViewById(R.id.list_item_furniture__title)
     }
