@@ -21,7 +21,6 @@ public class FurnitureFragment
     implements FurnitureAdapter.FurnitureClickListener {
 
     private RecyclerView recyclerView;
-
     //private FurnitureContract.Navigator navigator;
     private FurnitureContract.ViewModel viewModel;
 
@@ -36,7 +35,12 @@ public class FurnitureFragment
         //AppAnalyzer.logEvent(AppAnalyzer.EVENT_SHOW_TRUCK_CALCULATOR_ITEMS);
         //setHasOptionsMenu(true);
         //navigator = new CalculatorNavigator(this);
-        viewModel = ViewModelProviders.of(this).get(FurnitureViewModel.class);
+
+        // wenn man this übergibt, übergibt man den Lifecycler des Fragments
+        // ruft die Activity auch ViewModelProviders auf, so erstellt man zwei unterschiedliche Instanzen vom ViewModel
+        // Damit beide die selbe Referenzieren, muss man bei beiden den selben Lifecylcer übergeben
+        // -> Lifecycler von Acticity (da Activity länger lebt)
+        viewModel = ViewModelProviders.of(getActivity()).get(FurnitureViewModel.class);
     }
 
     @Nullable
