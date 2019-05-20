@@ -16,6 +16,10 @@ interface FurnitureContract {
     }
 }
 
-enum class FurnitureType {
+enum class FurnitureType{
     UNDEFINED, BED, SOFA, ARMCHAIR
+}
+
+enum class FurtnitureCategory{
+    UNDEFINED, GARDEN, HOUSE, ROOF
 }

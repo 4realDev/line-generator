@@ -59,9 +59,9 @@ class FurnitureRepositoryImp : FurnitureRepository {
     }
 
     override fun createInitialFurnitures() = listOf(
-        Furniture(randomUUID(), FurnitureType.BED, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.ARMCHAIR, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.SOFA, 0, 22.0, false, true, false)
+        Furniture(randomUUID(), FurnitureType .BED, FurtnitureCategory.GARDEN, 0,22.0, false, true, false),
+        Furniture(randomUUID(), FurnitureType.ARMCHAIR, FurtnitureCategory.HOUSE, 0,22.0, false, true, false),
+        Furniture(randomUUID(), FurnitureType.SOFA, FurtnitureCategory.ROOF, 0,22.0, false, true, false)
     )
 
     // universally unique identifier class (UUID) generates a random 128-bit value
