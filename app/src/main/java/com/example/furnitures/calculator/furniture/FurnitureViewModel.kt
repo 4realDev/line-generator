@@ -34,6 +34,13 @@ class FurnitureViewModel(application: Application) : AndroidViewModel(applicatio
         return selectedFurnituresViewState
     }
 
+    override fun onFilterFurnitures(filter: FurtnitureCategory) {
+        furnituresFilter.value = filter
+    }
+
+    private fun filter(furniture: List<Furniture>, filter: FurtnitureCategory): List<Furniture> =
+        furniture.filter { it.furnitureCategory == filter }
+
     private fun map(furniture: Furniture): FurnitureViewState {
         return FurnitureViewState(
             id = furniture.id,
