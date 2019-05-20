@@ -63,8 +63,8 @@ public class FurnitureFragment
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new GridLayoutManager(getActivity(), 3));
         recyclerView.setAdapter(adapter);
-        viewModel.getFurnitureList().observe(getViewLifecycleOwner(), data -> {
-            if (data != null) adapter.setData(data);
+        viewModel.getFurnitureList().observe(getViewLifecycleOwner(), newData -> {
+            if (newData != null) adapter.submitList(newData);
         });
 
         //viewModel.getUpNavigationEvent().observe(this, nothing -> navigator.onNavigateUpFromFurniture());
