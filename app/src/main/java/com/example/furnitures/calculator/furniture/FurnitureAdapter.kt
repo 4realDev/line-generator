@@ -2,6 +2,8 @@ package com.example.furnitures.calculator.furniture
 
 import android.support.v4.content.ContextCompat
 import android.support.v4.graphics.drawable.DrawableCompat
+import android.support.v7.recyclerview.extensions.ListAdapter
+import android.support.v7.util.DiffUtil
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -59,5 +61,16 @@ class FurnitureAdapter(private val furnitureClickListener: FurnitureClickListene
 
         val image: ImageView? = itemView.findViewById(R.id.list_item_furniture__image)
         val title: TextView? = itemView.findViewById(R.id.list_item_furniture__title)
+    }
+
+    class DiffCallback: DiffUtil.ItemCallback<FurnitureViewState>(){
+        override fun areItemsTheSame(oldItem: FurnitureViewState, newItem: FurnitureViewState): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: FurnitureViewState, newItem: FurnitureViewState): Boolean {
+            return oldItem == newItem
+        }
+
     }
 }
