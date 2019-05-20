@@ -24,17 +24,33 @@ class FurnitureViewModel(application: Application) : AndroidViewModel(applicatio
     private val selectedFurnituresViewState = Transformations.map(selectedFurnitures, ::mapList)
 
     init {
-        furnitureMediator.addSource(furnitures) { furniture ->
-            val filter = furnituresFilter.value
-            if (filter == null) furnitureMediator.value = furniture
-            else furnitureMediator.value = filter(furniture!!, filter)
+        // Informiere Mediator (somit auch ViewState) wenn sich Data ändert
+        // Speicher aktuellen Filter in tmp val
+        // furnituresList == null -> mach nichts
+        // furnituresList != null ->
+        // currentFilter == null -> setze geänderte Data in Mediator
+        // currentFilter != null -> filtriere geänderte Data mit aktuellen Filter
 
+        furnitureMediator.addSource(furnitures) { furnituresList ->
+            val currentFilter = furnituresFilter.value
+            if (furnituresList != null) {
+                if (currentFilter == null) furnitureMediator.value = furnituresList
+                else furnitureMediator.value = filter(furnituresList!!, currentFilter)
+            }
         }
+
+        // Informiere Mediator (somit auch ViewState) wenn sich Filter ändert
+        // Speichere aktuelle furnituresList in tmp val
+        // furnituresList == null -> mach nichts
+        // furnituresList != null ->
+        // filter == null -> setze geänderte Data in Mediator (ohne filter)
+        // filter != null -> filtriere geänderte Data mit aktuellen Filter
+
         furnitureMediator.addSource(furnituresFilter) { filter ->
-            val furniture = furnitures.value
-            if (furniture != null) {
-                if (filter == null) furnitureMediator.value = furniture
-                else furnitureMediator.value = filter(furniture, filter)
+            val furnituresList = furnitures.value
+            if (furnituresList != null) {
+                if (filter == null) furnitureMediator.value = furnituresList
+                else furnitureMediator.value = filter(furnituresList, filter)
             }
         }
     }
@@ -55,8 +71,8 @@ class FurnitureViewModel(application: Application) : AndroidViewModel(applicatio
         furnituresFilter.value = filter
     }
 
-    private fun filter(furniture: List<Furniture>, filter: FurtnitureCategory): List<Furniture> =
-        furniture.filter { it.furnitureCategory == filter }
+    private fun filter(furnituresList: List<Furniture>, filter: FurtnitureCategory): List<Furniture> =
+        furnituresList.filter { it.furnitureCategory == filter }
 
     private fun map(furniture: Furniture): FurnitureViewState {
         return FurnitureViewState(
