@@ -52,7 +52,7 @@ public class FurnitureFragment
 
     //@Override
     //protected boolean showHomeAsUp() {
-        //return true;
+    //return true;
     //}
 
     @Override

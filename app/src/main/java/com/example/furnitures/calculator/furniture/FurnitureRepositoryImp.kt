@@ -20,14 +20,14 @@ class FurnitureRepositoryImp : FurnitureRepository {
     override fun getFurnitureById(id: String): Furniture? {
         lateinit var outputFurniture: Furniture
         furnitures.value?.forEach { furniture ->
-            if(id == furniture.id) {
+            if (id == furniture.id) {
                 outputFurniture = furniture
             }
         }
         return outputFurniture
     }
 
-    override fun updateFurnitureOnClick(furniture: FurnitureViewState){
+    override fun updateFurnitureOnClick(clickedFurniture: FurnitureViewState) {
         //if (furnitureListViewState.value == null) throw IllegalStateException("WTF Liste sollte nicht null sein wenn schon eins heklickt wurde")
         //val clickedFurnite = furnitureListViewState.value!!.find { it.id == furniture.id }
         //if (clickedFurnite == null) throw IllegalStateException("Wie kann etwas geklickt worden sein dass ich als ViewModel nicht kenne?")
@@ -48,9 +48,9 @@ class FurnitureRepositoryImp : FurnitureRepository {
 
         furnitures.value.orEmpty().toMutableList().let { furnituresList ->
 
-            val clickedFurniture: Furniture = furnituresList.find { it.id == furniture.id }
+            val clickedFurniture: Furniture = furnituresList.find { it.id == clickedFurniture.id }
                 ?: throw IllegalStateException("Unknown Furniture clicked")
-            val indexOfClicked: Int  = furnituresList.indexOf(clickedFurniture)
+            val indexOfClicked: Int = furnituresList.indexOf(clickedFurniture)
             val furnitureNowSelected: Furniture = clickedFurniture.copy(isSelected = !clickedFurniture.isSelected)
             furnituresList.removeAt(indexOfClicked)
             furnituresList.add(indexOfClicked, furnitureNowSelected)
@@ -59,9 +59,9 @@ class FurnitureRepositoryImp : FurnitureRepository {
     }
 
     override fun createInitialFurnitures() = listOf(
-        Furniture(randomUUID(), FurnitureType .BED, FurtnitureCategory.GARDEN, 0,22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.ARMCHAIR, FurtnitureCategory.HOUSE, 0,22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.SOFA, FurtnitureCategory.ROOF, 0,22.0, false, true, false)
+        Furniture(randomUUID(), FurnitureType.BED, FurtnitureCategory.GARDEN, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), FurnitureType.ARMCHAIR, FurtnitureCategory.HOUSE, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), FurnitureType.SOFA, FurtnitureCategory.ROOF, 0, 22.0, false, true, false)
     )
 
     // universally unique identifier class (UUID) generates a random 128-bit value

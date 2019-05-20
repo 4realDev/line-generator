@@ -11,16 +11,17 @@ interface FurnitureContract {
 
         //region Data
         fun getFurnitureList(): LiveData<List<FurnitureViewState>>
+
         fun getSelectedFurnitureList(): LiveData<List<FurnitureViewState>>
         fun onFilterFurnitures(filter: FurtnitureCategory)
         //endregion
     }
 }
 
-enum class FurnitureType{
+enum class FurnitureType {
     UNDEFINED, BED, SOFA, ARMCHAIR
 }
 
-enum class FurtnitureCategory{
+enum class FurtnitureCategory {
     UNDEFINED, GARDEN, HOUSE, ROOF
 }

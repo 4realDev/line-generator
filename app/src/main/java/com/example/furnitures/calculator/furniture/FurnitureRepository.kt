@@ -1,12 +1,12 @@
 package com.example.furnitures.calculator.furniture
 
 import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
 
 interface FurnitureRepository {
 
     /* region data */
     fun getFurnitures(): LiveData<List<Furniture>>
+
     fun getSelectedFurnitures(): LiveData<List<Furniture>>
     // By ID
     fun getFurnitureById(id: String): Furniture?
