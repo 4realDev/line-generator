@@ -1,15 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <color name="colorPrimary">@color/bauhaus_red</color>
-    <color name="colorPrimaryDark">@color/bauhaus_red</color>
-    <color name="colorAccent">@color/bauhaus_red</color>
+    <!-- ToolBar -->
+    <color name="colorPrimary">@color/trick_light_black</color>
+    <!-- Top Bar -->
+    <color name="colorPrimaryDark">@color/trick_dark_black</color>
+    <!-- FAB -->
+    <color name="colorAccent">@color/trick_light_black</color>
 
-    <color name="bauhaus_red">#F20028</color>
-    <color name="bauhaus_red_light">#F14B51</color>
-    <color name="bauhaus_red_dark">#EE1F26</color>
+    <!-- https://wpamelia.com/website-color-schemes/ -->
+    <!--
+    <color name="ruby_dark_red">#ba411f</color>
+    <color name="ruby_black">#071425</color>
+    <color name="ruby_dark_blue">#444f5e</color>
+    -->
 
-    <color name="green">#51DD16</color>
+    <!-- Source: https://dribbble.com/shots/5472674-Wool-Knitted-Caps -->
+
+    <color name="trick_dark_golden">#986200</color>
+    <color name="trick_golden">#cd8f31</color>
+    <color name="trick_light_golden">#ffbf60</color>
+
+    <color name="trick_dark_black">#040202</color>
+    <color name="trick_light_black">#2e2d2d</color>
+
+
+
+    <color name="ruby_white">#fbfcfc</color>
+    <color name="ruby_yellow_accent_dark">#f1cb1c</color>
+    <color name="ruby_yellow_accent_light">#fcef95</color>
+    <color name="ruby_light_blue">#9197a1</color>
+    <color name="ruby_light_red">#EC282E</color>
+
+
 
     <color name="grey00">#f9f9f9</color>
     <color name="grey01">#E5E5E5</color>

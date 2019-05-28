@@ -8,4 +8,33 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!-- setSupportedToolBar(bottom_app_bar) & ToolBar funktionieren nicht gleichzeitig -->
+    <!-- temporäre Lösung: ToolBar entfernen -->
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <!--<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
+        <!--...-->
+
+        <!--<item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>-->
+
+    <!--</style>-->
+
+    <!--<style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">-->
+        <!--<item name="tint">@color/nav_button_tint</item>-->
+    <!--</style>-->
+
+    <!--<style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">-->
+    <!--<item name="app:iconTint">@android:color/black</item>-->
+    <!--</style>-->
+
+    <!--<style name="BaseBottomSheetDialog" parent="@style/Theme.Design.Light.BottomSheetDialog">-->
+    <!--<item name="android:windowIsFloating">false</item>-->
+    <!--<item name="bottomSheetStyle">@style/BottomSheet</item>-->
+    <!--</style>-->
+
+    <!--<style name="BottomSheetDialogTheme" parent="BaseBottomSheetDialog" />-->
+
 </resources>
