@@ -9,11 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.furnitures.R
-import com.example.furnitures.calculator.bottombar.list.ListTrickFragment
-import com.example.furnitures.calculator.bottombar.selection.BottomBarContract
-import com.example.furnitures.calculator.bottombar.selection.BottomBarViewModel
 import com.example.furnitures.calculator.bottombar.selection.SelectionFragment
-import com.example.furnitures.calculator.bottombar.selection.ViewState
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
@@ -32,7 +28,7 @@ class BottomBarActivity : AppCompatActivity() {
         fab = findViewById(R.id.fab)
         bottomAppBar = findViewById(R.id.bottom_app_bar)
 
-        navigator = BottomBarNavigator()
+        navigator = BottomBarNavigator(this)
         bottomBarViewModel = ViewModelProviders.of(this).get(BottomBarViewModel::class.java)
 
         // lässt sich scheinbar nicht mit replaceMenu kombinieren
@@ -57,40 +53,20 @@ class BottomBarActivity : AppCompatActivity() {
             isClicked = true
             fab.hide(addVisibilityChanged)
             invalidateOptionsMenu()
-
-            // NAVIGATOR : open TrickList
-//            if (savedInstanceState == null) {
-//                val tag = ListTrickFragment::class.java.name
-//                supportFragmentManager
-//                    .beginTransaction()
-//                    .replace(R.id.activity_trick_container__frame_layout, ListTrickFragment.newInstance(), tag)
-//                    .addToBackStack(tag)
-//                    .commit()
-//
-//            }
         }
 
         bottomBarViewModel.getViewState().observe(this, Observer { newViewState ->
 
-            val tag = ListTrickFragment::class.java.name
-
             if (newViewState == ViewState.CHANGED_STATE && isClicked) {
-                supportFragmentManager
-                    .beginTransaction()
-                    .replace(R.id.activity_trick_container__frame_layout, ListTrickFragment.newInstance(), tag)
-                    .addToBackStack(tag)
-                    .commit()
-
+                //bottomBarViewModel.onBottomBarItemClicked(BottomBarItem.ListTrick)
+                navigator.openBottomBarItem(BottomBarItem.ListTrick)
                 isClicked = false
             }
 
             if (newViewState == ViewState.INITIAL_STATE && isClicked) {
                 supportFragmentManager.popBackStack()
-
                 isClicked = false
             }
-
-
 
             switchFabAlignment(newViewState!!)
             removeBottomNavigationIcon(newViewState)
@@ -98,6 +74,10 @@ class BottomBarActivity : AppCompatActivity() {
             setImageDrawable(newViewState)
             fab.show()
         })
+
+//        bottomBarViewModel.getBottomBarNavigationEvent().observe(this, Observer { newItem ->
+//            navigator.openBottomBarItem(newItem)
+//        })
     }
 
     // Inflaten des ersten Menu's (mit Search Icon)
@@ -144,5 +124,11 @@ class BottomBarActivity : AppCompatActivity() {
 
     companion object {
         fun newIntent(context: Context): Intent = Intent(context, BottomBarActivity::class.java)
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        bottomBarViewModel.changeViewState()
+        isClicked = false
     }
 }

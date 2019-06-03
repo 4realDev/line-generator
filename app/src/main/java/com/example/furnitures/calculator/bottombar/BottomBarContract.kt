@@ -1,6 +1,9 @@
-package com.example.furnitures.calculator.bottombar.selection
+package com.example.furnitures.calculator.bottombar
 
 import androidx.lifecycle.LiveData
+
+// Interface benötigt .kt/.java Annotation
+// Sonst kann Compiler Interface nicht lesen
 
 interface BottomBarContract {
 
@@ -12,6 +15,7 @@ interface BottomBarContract {
 
         //region NavigationEvents
         fun getViewState(): LiveData<ViewState>
+
         fun getBottomBarNavigationEvent(): LiveData<BottomBarItem>
         //endregion NavigationEvents
 
@@ -28,6 +32,6 @@ enum class ViewState {
 }
 
 sealed class BottomBarItem {
-    object TrickList : BottomBarItem()
+    object ListTrick : BottomBarItem()
     object TrickSelection : BottomBarItem()
 }

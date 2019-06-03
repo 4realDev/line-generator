@@ -26,9 +26,7 @@ class ListTrickAdapter(
         AsyncListDiffer<FurnitureViewState>(
             // Überschreiben des ListUpdateCallbacks
             // Wofür ist Offset gut?
-            //ListUpdateCallback(this),
-            //AsyncDifferConfig.Builder<FurnitureViewState>(furnitureCallback).build()#
-        this,
+            this,
             furnitureCallback
         )
     }
@@ -101,7 +99,7 @@ class ListTrickAdapter(
         val removed = list.removeAt(fromPosition)
         list.add(toPosition, removed)
 
-        //furnitureItemDiffer.submitList(list)
+        furnitureItemDiffer.submitList(list)
         this.notifyItemMoved(fromPosition, toPosition)
 
         Log.d("DEBUGG", "toAdapterPosition: $toPosition fromAdapterPosition: $fromPosition")
@@ -112,7 +110,7 @@ class ListTrickAdapter(
     }
 
     override fun dragFinished(fromIndex: Int, toIndex: Int) {
-
+        furnitureModificationListener.onItemMove(fromIndex, toIndex)
         draggingItem = null
         targetItem = null
     }

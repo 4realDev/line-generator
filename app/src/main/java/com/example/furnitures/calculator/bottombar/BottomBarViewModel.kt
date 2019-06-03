@@ -1,10 +1,9 @@
-package com.example.furnitures.calculator.bottombar.selection
+package com.example.furnitures.calculator.bottombar
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import java.util.*
 
 class BottomBarViewModel(application: Application) : AndroidViewModel(application), BottomBarContract.ViewModel {
 
@@ -13,8 +12,6 @@ class BottomBarViewModel(application: Application) : AndroidViewModel(applicatio
 
     override fun getBottomBarNavigationEvent(): LiveData<BottomBarItem> = bottomBarNavigationEvent
     override fun getViewState(): LiveData<ViewState> = viewStateData
-
-    private val random = Random()
 
     init {
         if (viewStateData.value == null)

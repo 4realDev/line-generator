@@ -22,7 +22,7 @@ class ListTrickItemMoveCallback(private val adapter: ItemTouchHelperAdapter): It
     override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
         val fromPosition = viewHolder.adapterPosition
         val toPosition = target.adapterPosition
-        if(dragFrom == -1){
+        if (dragFrom == -1) {
             dragFrom = fromPosition
         }
         dragTo = toPosition
@@ -34,8 +34,7 @@ class ListTrickItemMoveCallback(private val adapter: ItemTouchHelperAdapter): It
 
     override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
         super.clearView(recyclerView, viewHolder)
-        if(dragFrom != 1 && dragTo != 1 && dragFrom != dragTo){
-            // function to update the LiveData/ Repository
+        if (dragFrom != -1 && dragTo != -1 && dragFrom != dragTo) {
             adapter.dragFinished(dragFrom, dragTo)
             Log.d("DEBUGG", "DRAG FROM: ${dragFrom}, DRAG TO: ${dragTo}")
         }

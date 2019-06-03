@@ -58,14 +58,13 @@ class ListTrickFragment : Fragment() {
         recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
+        itemTouchHelper.attachToRecyclerView(recyclerView)
 
         // Observed alle veränderungen der Liste und gibt sie an den Adapter weiter
         // submitList löst automatisch notifyDataSetChanged aus
         viewModel.getSelectedItemsViewState().observe(viewLifecycleOwner, Observer{ newData
             -> if (newData != null) adapter.onFurnitureItemsUpdate(newData)
         })
-
-        itemTouchHelper.attachToRecyclerView(recyclerView)
     }
 
     companion object {
