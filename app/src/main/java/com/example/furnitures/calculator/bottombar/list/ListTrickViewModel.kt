@@ -1,17 +1,16 @@
-package com.example.furnitures.calculator.container.list
+package com.example.furnitures.calculator.bottombar.list
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.example.furnitures.calculator.trick.Furniture
 import com.example.furnitures.calculator.trick.FurnitureTypeHelper
 import com.example.furnitures.calculator.trick.FurnitureViewState
 import com.example.furnitures.calculator.trick.RepositoryFactory
-import java.util.*
 
-class ListTrickViewModel(application: Application): AndroidViewModel(application), ListTrickContract.ViewModel {
+class ListTrickViewModel(application: Application) : AndroidViewModel(application), ListTrickContract.ViewModel {
 
     private val repository = RepositoryFactory.getFurnitureRepository()
 
@@ -33,27 +32,15 @@ class ListTrickViewModel(application: Application): AndroidViewModel(application
 
     override fun getFurnitureAt(position: Int): FurnitureViewState = selectedFurnitureListViewState.value.orEmpty()[position]
 
-    override fun onItemMove(fromPosition: Int, toPosition: Int) {
-        Log.d("DEBUGG", "toPosition: $toPosition fromPosition: $fromPosition")
-
+    override fun changeFurnitureItemPosition(fromPosition: Int, toPosition: Int) {
         var newSwapUnitList = selectedFurnitureListViewState.value.orEmpty().toMutableList()
-//        newSwapUnitList.addAll(selectedFurnitureListViewState.value.orEmpty())
-//        Collections.swap(newSwapUnitList, fromPosition, toPosition)
-
-        if (fromPosition < toPosition) {
-            for (i in fromPosition until toPosition) {
-                Collections.swap(newSwapUnitList, i, i + 1)
-            }
-        } else {
-            for (i in fromPosition downTo toPosition + 1) {
-                Collections.swap(newSwapUnitList, i, i - 1)
-            }
-        }
+        val removed = newSwapUnitList.removeAt(fromPosition)
+        newSwapUnitList.add(toPosition, removed)
         selectedFurnitureListViewState.value = newSwapUnitList
-
+        Log.d("DEBUGG", "fromViewModelPosition: $fromPosition toViewModelPosition: $toPosition")
     }
 
-    override fun onItemDelete(furnitureViewState: FurnitureViewState) {
+    override fun removeFurnitureItem(furnitureViewState: FurnitureViewState) {
         selectedFurnitureListViewState.value = selectedFurnitureListViewState.value?.minus(furnitureViewState)
     }
 

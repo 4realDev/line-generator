@@ -1,6 +1,6 @@
-package com.example.furnitures.calculator.container.selection
+package com.example.furnitures.calculator.bottombar.selection
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import com.example.furnitures.calculator.trick.FurnitureViewState
 
 interface FurnitureContract {
@@ -18,7 +18,7 @@ interface FurnitureContract {
 }
 
 enum class FurnitureType {
-    UNDEFINED, BED, SOFA, ARMCHAIR
+    UNDEFINED, BED, SOFA, TEST1, TEST2, TEST3, ARMCHAIR
 }
 
 enum class FurtnitureCategory {

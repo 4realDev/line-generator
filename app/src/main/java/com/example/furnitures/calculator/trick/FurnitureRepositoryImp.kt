@@ -1,9 +1,9 @@
 package com.example.furnitures.calculator.trick
 
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.MutableLiveData
-import com.example.furnitures.calculator.container.selection.FurnitureType
-import com.example.furnitures.calculator.container.selection.FurtnitureCategory
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import com.example.furnitures.calculator.bottombar.selection.FurnitureType
+import com.example.furnitures.calculator.bottombar.selection.FurtnitureCategory
 import java.util.*
 
 class FurnitureRepositoryImp : FurnitureRepository {
@@ -77,39 +77,9 @@ class FurnitureRepositoryImp : FurnitureRepository {
         Furniture(randomUUID(), FurnitureType.BED, FurtnitureCategory.GARDEN, 0, 22.0, false, true, false),
         Furniture(randomUUID(), FurnitureType.ARMCHAIR, FurtnitureCategory.HOUSE, 0, 22.0, false, true, false),
         Furniture(randomUUID(), FurnitureType.SOFA, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.BED, FurtnitureCategory.GARDEN, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.ARMCHAIR, FurtnitureCategory.HOUSE, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.SOFA, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.BED, FurtnitureCategory.GARDEN, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.ARMCHAIR, FurtnitureCategory.HOUSE, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.SOFA, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.BED, FurtnitureCategory.GARDEN, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.ARMCHAIR, FurtnitureCategory.HOUSE, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.SOFA, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.BED, FurtnitureCategory.GARDEN, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.ARMCHAIR, FurtnitureCategory.HOUSE, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.SOFA, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.BED, FurtnitureCategory.GARDEN, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.ARMCHAIR, FurtnitureCategory.HOUSE, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.SOFA, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.BED, FurtnitureCategory.GARDEN, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.ARMCHAIR, FurtnitureCategory.HOUSE, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.SOFA, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.BED, FurtnitureCategory.GARDEN, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.ARMCHAIR, FurtnitureCategory.HOUSE, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.SOFA, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.BED, FurtnitureCategory.GARDEN, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.ARMCHAIR, FurtnitureCategory.HOUSE, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.SOFA, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.BED, FurtnitureCategory.GARDEN, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.ARMCHAIR, FurtnitureCategory.HOUSE, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.SOFA, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.BED, FurtnitureCategory.GARDEN, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.ARMCHAIR, FurtnitureCategory.HOUSE, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.SOFA, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.BED, FurtnitureCategory.GARDEN, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.ARMCHAIR, FurtnitureCategory.HOUSE, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.SOFA, FurtnitureCategory.ROOF, 0, 22.0, false, true, false)
+        Furniture(randomUUID(), FurnitureType.TEST1, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), FurnitureType.TEST2, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), FurnitureType.TEST3, FurtnitureCategory.ROOF, 0, 22.0, false, true, false)
     )
 
     // universally unique identifier class (UUID) generates a random 128-bit value

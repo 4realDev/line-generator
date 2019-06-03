@@ -1,13 +1,13 @@
-package com.example.furnitures.calculator.container.list
+package com.example.furnitures.calculator.bottombar.list
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import com.example.furnitures.calculator.trick.FurnitureViewState
 
 class ListTrickContract {
     interface ViewModel {
         fun getSelectedItemsViewState(): LiveData<List<FurnitureViewState>>
-        fun onItemDelete(furnitureViewState: FurnitureViewState)
-        fun onItemMove(fromPosition: Int, toPosition: Int)
+        fun removeFurnitureItem(furnitureViewState: FurnitureViewState)
+        fun changeFurnitureItemPosition(fromPosition: Int, toPosition: Int)
         fun getFurnitureAt(position: Int): FurnitureViewState
     }
 }

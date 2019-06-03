@@ -1,7 +1,7 @@
 package com.example.furnitures.calculator.trick
 
-import com.example.furnitures.calculator.container.selection.FurnitureType
-import com.example.furnitures.calculator.container.selection.FurtnitureCategory
+import com.example.furnitures.calculator.bottombar.selection.FurnitureType
+import com.example.furnitures.calculator.bottombar.selection.FurtnitureCategory
 
 /**
  * Copyright (c) 2017 fluidmobile GmbH. All rights reserved.

@@ -1,8 +1,11 @@
-package com.example.furnitures.calculator.container.selection
+package com.example.furnitures.calculator.bottombar.selection
 
 import android.app.Application
-import android.arch.lifecycle.*
-import com.example.furnitures.calculator.trick.*
+import androidx.lifecycle.*
+import com.example.furnitures.calculator.trick.Furniture
+import com.example.furnitures.calculator.trick.FurnitureTypeHelper
+import com.example.furnitures.calculator.trick.FurnitureViewState
+import com.example.furnitures.calculator.trick.RepositoryFactory
 
 /**
  * Copyright (c) 2017 fluidmobile GmbH. All rights reserved.

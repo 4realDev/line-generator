@@ -1,6 +1,6 @@
 package com.example.furnitures.calculator.trick
 
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 
 interface FurnitureRepository {
 

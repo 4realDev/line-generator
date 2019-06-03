@@ -1,26 +1,29 @@
-package com.example.furnitures.calculator.container
+package com.example.furnitures.calculator.bottombar
 
-import android.arch.lifecycle.Observer
-import android.arch.lifecycle.ViewModelProviders
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.support.design.bottomappbar.BottomAppBar
-import android.support.design.widget.FloatingActionButton
-import android.support.v7.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import com.example.furnitures.R
-import com.example.furnitures.calculator.container.list.ListTrickFragment
-import com.example.furnitures.calculator.container.selection.SelectionFragment
-import com.example.furnitures.calculator.container.selection.TrickViewModel
-import com.example.furnitures.calculator.container.selection.ViewState
+import com.example.furnitures.calculator.bottombar.list.ListTrickFragment
+import com.example.furnitures.calculator.bottombar.selection.BottomBarContract
+import com.example.furnitures.calculator.bottombar.selection.BottomBarViewModel
+import com.example.furnitures.calculator.bottombar.selection.SelectionFragment
+import com.example.furnitures.calculator.bottombar.selection.ViewState
+import com.google.android.material.bottomappbar.BottomAppBar
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class TrickActivity : AppCompatActivity() {
+class BottomBarActivity : AppCompatActivity() {
 
     private lateinit var fab: FloatingActionButton
     private lateinit var bottomAppBar: BottomAppBar
-    private lateinit var trickViewModel: TrickViewModel
+    private lateinit var bottomBarViewModel: BottomBarViewModel
+    private lateinit var navigator: BottomBarContract.Navigator
+    private var isClicked: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,11 +31,14 @@ class TrickActivity : AppCompatActivity() {
 
         fab = findViewById(R.id.fab)
         bottomAppBar = findViewById(R.id.bottom_app_bar)
-        trickViewModel = ViewModelProviders.of(this).get(TrickViewModel::class.java)
+
+        navigator = BottomBarNavigator()
+        bottomBarViewModel = ViewModelProviders.of(this).get(BottomBarViewModel::class.java)
 
         // lässt sich scheinbar nicht mit replaceMenu kombinieren
         setSupportActionBar(bottomAppBar)
 
+        // NAVIGATOR : open TrickSelection
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
@@ -43,25 +49,49 @@ class TrickActivity : AppCompatActivity() {
         val addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener = object : FloatingActionButton.OnVisibilityChangedListener() {
             override fun onHidden(fab: FloatingActionButton?) {
                 super.onHidden(fab)
-                trickViewModel.changeViewState()
+                bottomBarViewModel.changeViewState()
             }
         }
 
         fab.setOnClickListener {
+            isClicked = true
             fab.hide(addVisibilityChanged)
             invalidateOptionsMenu()
 
-            if (savedInstanceState == null) {
-                val tag = ListTrickFragment::class.java.name
+            // NAVIGATOR : open TrickList
+//            if (savedInstanceState == null) {
+//                val tag = ListTrickFragment::class.java.name
+//                supportFragmentManager
+//                    .beginTransaction()
+//                    .replace(R.id.activity_trick_container__frame_layout, ListTrickFragment.newInstance(), tag)
+//                    .addToBackStack(tag)
+//                    .commit()
+//
+//            }
+        }
+
+        bottomBarViewModel.getViewState().observe(this, Observer { newViewState ->
+
+            val tag = ListTrickFragment::class.java.name
+
+            if (newViewState == ViewState.CHANGED_STATE && isClicked) {
                 supportFragmentManager
                     .beginTransaction()
                     .replace(R.id.activity_trick_container__frame_layout, ListTrickFragment.newInstance(), tag)
                     .addToBackStack(tag)
                     .commit()
-            }
-        }
 
-        trickViewModel.getViewState().observe(this, Observer { newViewState ->
+                isClicked = false
+            }
+
+            if (newViewState == ViewState.INITIAL_STATE && isClicked) {
+                supportFragmentManager.popBackStack()
+
+                isClicked = false
+            }
+
+
+
             switchFabAlignment(newViewState!!)
             removeBottomNavigationIcon(newViewState)
             replaceFabMenu(newViewState)
@@ -81,7 +111,7 @@ class TrickActivity : AppCompatActivity() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             android.R.id.home -> {
-                val bottomNavDrawerFragment = TrickBottomSheet()
+                val bottomNavDrawerFragment = BottomBarDialogSheet()
                 bottomNavDrawerFragment.show(supportFragmentManager, bottomNavDrawerFragment.tag)
             }
         }
@@ -113,6 +143,6 @@ class TrickActivity : AppCompatActivity() {
     }
 
     companion object {
-        fun newIntent(context: Context): Intent = Intent(context, TrickActivity::class.java)
+        fun newIntent(context: Context): Intent = Intent(context, BottomBarActivity::class.java)
     }
 }

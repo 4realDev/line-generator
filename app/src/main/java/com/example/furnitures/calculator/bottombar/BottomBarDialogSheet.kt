@@ -1,18 +1,18 @@
-package com.example.furnitures.calculator.container
+package com.example.furnitures.calculator.bottombar
 
-import android.arch.lifecycle.ViewModelProviders
 import android.os.Bundle
-import android.support.design.widget.BottomSheetDialogFragment
-import android.support.design.widget.NavigationView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.lifecycle.ViewModelProviders
 import com.example.furnitures.R
-import com.example.furnitures.calculator.container.selection.FurnitureContract
-import com.example.furnitures.calculator.container.selection.SelectionViewModel
-import com.example.furnitures.calculator.container.selection.FurtnitureCategory
+import com.example.furnitures.calculator.bottombar.selection.FurnitureContract
+import com.example.furnitures.calculator.bottombar.selection.FurtnitureCategory
+import com.example.furnitures.calculator.bottombar.selection.SelectionViewModel
+import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.google.android.material.navigation.NavigationView
 
-class TrickBottomSheet : BottomSheetDialogFragment() {
+class BottomBarDialogSheet : BottomSheetDialogFragment() {
 
     private lateinit var navigationView: NavigationView
     private lateinit var viewmodel: FurnitureContract.ViewModel
