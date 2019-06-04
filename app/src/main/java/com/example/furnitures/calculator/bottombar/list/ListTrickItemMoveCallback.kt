@@ -9,8 +9,7 @@ class ListTrickItemMoveCallback(private val adapter: ItemTouchHelperAdapter): It
     var dragFrom = -1
     var dragTo = -1
 
-    override fun isLongPressDragEnabled(): Boolean = true
-
+    override fun isLongPressDragEnabled(): Boolean = false
     override fun isItemViewSwipeEnabled(): Boolean = true
 
     override fun getMovementFlags(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder): Int {

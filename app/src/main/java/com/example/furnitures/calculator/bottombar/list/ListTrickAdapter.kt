@@ -9,14 +9,11 @@ import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.furnitures.R
-import com.example.furnitures.calculator.bottombar.list.ItemTouchHelperAdapter
 import com.example.furnitures.calculator.trick.FurnitureViewState
 
-/**
- * Copyright (c) 2017 fluidmobile GmbH. All rights reserved.
- */
 class ListTrickAdapter(
-    private var furnitureModificationListener: ListTrickAdapter.FurnitureModificationListener
+    private var furnitureModificationListener: FurnitureModificationListener? = null,
+    private var mDragStartListener: OnStartDragListener? = null
 ) : RecyclerView.Adapter<ListTrickAdapter.FurnitureHolder>(), ItemTouchHelperAdapter {
 
     private var draggingItem: FurnitureViewState? = null
@@ -47,19 +44,26 @@ class ListTrickAdapter(
         return viewHolder
     }
 
+    // suppress warning - warning cause no optimation for blind people
+    @SuppressLint("ClickableViewAccessibility")
     override fun onBindViewHolder(holder: FurnitureHolder, position: Int) {
         val item = getFurnitureItem(position)
         holder.title?.setText(item!!.name)
         holder.count?.text = String.format("%02d", position + 1)
+        holder.handle?.setOnTouchListener { handle, event ->
+            if (event.action == MotionEvent.ACTION_DOWN) mDragStartListener?.onStartDrag(holder)
+            false
+        }
     }
 
-    inner class FurnitureHolder(itemView: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(itemView) {
-        val title: TextView? = itemView.findViewById(R.id.list_item_furniture__title)
-        val count: TextView? = itemView.findViewById(R.id.list_item_furniture_count)
+    inner class FurnitureHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val title: TextView? = itemView.findViewById(com.example.furnitures.R.id.list_item_furniture__title)
+        val count: TextView? = itemView.findViewById(com.example.furnitures.R.id.list_item_furniture_count)
+        val handle: ImageView? = itemView.findViewById(com.example.furnitures.R.id.list_item_furniture_handle)
     }
 
-    //  Anstatt als Class als Object anlegen
-    // sodass man furnitureCallback furnitureItemDiffer übergeben kann als AsyncDifferConfig
+    // Anstatt als Class als Object anlegen
+    // Direkte Implementierung des Interfaces bei Erstellung des Adapters
 
 
     private fun getFurnitureItem(position: Int): FurnitureViewState? {
@@ -105,11 +109,11 @@ class ListTrickAdapter(
     }
 
     override fun onItemDismiss(position: Int) {
-        getFurnitureItem(position)?.let { furnitureModificationListener.onItemRemove(it)}
+        getFurnitureItem(position)?.let { furnitureModificationListener?.onItemRemove(it) }
     }
 
     override fun dragFinished(fromIndex: Int, toIndex: Int) {
-        furnitureModificationListener.onItemMove(fromIndex, toIndex)
+        furnitureModificationListener?.onItemMove(fromIndex, toIndex)
         draggingItem = null
         targetItem = null
     }
@@ -117,5 +121,9 @@ class ListTrickAdapter(
     interface FurnitureModificationListener {
         fun onItemRemove(furnitureItem: FurnitureViewState)
         fun onItemMove(fromIndex: Int, toIndex: Int)
+    }
+
+    interface OnStartDragListener {
+        fun onStartDrag(viewHolder: RecyclerView.ViewHolder)
     }
 }

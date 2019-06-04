@@ -11,7 +11,6 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.furnitures.R
-import com.example.furnitures.calculator.bottombar.selection.ListTrickAdapter
 import com.example.furnitures.calculator.trick.FurnitureViewState
 
 class ListTrickFragment : Fragment() {
@@ -28,8 +27,14 @@ class ListTrickFragment : Fragment() {
                 viewModel.removeFurnitureItem(furnitureItem)
             }
 
+            // wird durch onStartDrag aufgerufen
             override fun onItemMove(fromPosition: Int, toPosition: Int) {
                 viewModel.changeFurnitureItemPosition(fromPosition, toPosition)
+            }
+        },
+        object: ListTrickAdapter.OnStartDragListener {
+            override fun onStartDrag(viewHolder: RecyclerView.ViewHolder) {
+                itemTouchHelper.startDrag(viewHolder)
             }
         }
     )
