@@ -1,9 +1,12 @@
-package com.example.furnitures.calculator.bottombar.selection
+package com.example.furnitures.calculator.bottombar.list
 
+import android.annotation.SuppressLint
 import android.util.Log
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
@@ -28,7 +31,7 @@ class ListTrickAdapter(
         )
     }
 
-    private val furnitureCallback = object : DiffUtil.ItemCallback<FurnitureViewState>(){
+    private val furnitureCallback = object : DiffUtil.ItemCallback<FurnitureViewState>() {
         override fun areItemsTheSame(oldItem: FurnitureViewState, newItem: FurnitureViewState): Boolean {
             return oldItem.id == newItem.id
         }
@@ -70,7 +73,7 @@ class ListTrickAdapter(
         return furnitureItemDiffer.currentList.getOrNull(position)
     }
 
-    fun onFurnitureItemsUpdate(newData: List<FurnitureViewState>){
+    fun onFurnitureItemsUpdate(newData: List<FurnitureViewState>) {
         furnitureItemDiffer.submitList(newData)
     }
 
@@ -78,34 +81,16 @@ class ListTrickAdapter(
         return furnitureItemDiffer.currentList.size
     }
 
-
-//    class DiffCallback : DiffUtil.ItemCallback<FurnitureViewState>() {
-//        override fun areItemsTheSame(oldItem: FurnitureViewState, newItem: FurnitureViewState): Boolean {
-//            return oldItem.id == newItem.id
-//        }
-//
-//        override fun areContentsTheSame(oldItem: FurnitureViewState, newItem: FurnitureViewState): Boolean {
-//            return oldItem == newItem
-//        }
-//    }
-
-
-    // Implementierung des Interfaces
-    // Aufruf der Funktionen über ListTrickItemMoveCallback bei den Listeners
-
     override fun onItemMove(fromPosition: Int, toPosition: Int) {
-
-        if(draggingItem == null) draggingItem = getFurnitureItem(fromPosition)
+        if (draggingItem == null) draggingItem = getFurnitureItem(fromPosition)
         targetItem = getFurnitureItem(toPosition)
 
         // Update Adapter list
         val list = furnitureItemDiffer.currentList.toMutableList()
         val removed = list.removeAt(fromPosition)
         list.add(toPosition, removed)
-
         furnitureItemDiffer.submitList(list)
-
-        Log.d("DEBUGG", "toAdapterPosition: $toPosition fromAdapterPosition: $fromPosition")
+        Log.d(ListTrickAdapter::class.java.name.toString(), "toAdapterPosition: $toPosition fromAdapterPosition: $fromPosition")
     }
 
     override fun onItemDismiss(position: Int) {
