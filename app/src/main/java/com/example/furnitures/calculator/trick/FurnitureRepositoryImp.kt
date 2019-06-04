@@ -24,7 +24,6 @@ class FurnitureRepositoryImp : FurnitureRepository {
 
     override fun getSelectedFurnituresList(): List<Furniture>{
         // Collections sollten nie null sein
-        //return selectedFurnitures.value.orEmpty()
         return furnitures.value.orEmpty().filter{it.isSelected}
     }
 
@@ -79,6 +78,9 @@ class FurnitureRepositoryImp : FurnitureRepository {
         Furniture(randomUUID(), FurnitureType.SOFA, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
         Furniture(randomUUID(), FurnitureType.TEST1, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
         Furniture(randomUUID(), FurnitureType.TEST2, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), FurnitureType.TEST3, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), FurnitureType.TEST3, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), FurnitureType.TEST3, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
         Furniture(randomUUID(), FurnitureType.TEST3, FurtnitureCategory.ROOF, 0, 22.0, false, true, false)
     )
 
