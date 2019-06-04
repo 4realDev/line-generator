@@ -19,6 +19,7 @@ class BottomBarActivity : AppCompatActivity() {
     private lateinit var bottomAppBar: BottomAppBar
     private lateinit var bottomBarViewModel: BottomBarViewModel
     private lateinit var navigator: BottomBarContract.Navigator
+    private lateinit var addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener
     private var isClicked: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -40,7 +41,7 @@ class BottomBarActivity : AppCompatActivity() {
                 .commit()
         }
 
-        val addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener = object : FloatingActionButton.OnVisibilityChangedListener() {
+        addVisibilityChanged = object : FloatingActionButton.OnVisibilityChangedListener() {
             override fun onHidden(fab: FloatingActionButton?) {
                 super.onHidden(fab)
                 bottomBarViewModel.changeViewState()
@@ -48,9 +49,8 @@ class BottomBarActivity : AppCompatActivity() {
         }
 
         fab.setOnClickListener {
-            isClicked = true
-            fab.hide(addVisibilityChanged)
-            invalidateOptionsMenu()
+
+            switchFragment(addVisibilityChanged)
         }
 
         bottomBarViewModel.getViewState().observe(this, Observer { newViewState ->
@@ -120,13 +120,15 @@ class BottomBarActivity : AppCompatActivity() {
         else fab.setImageDrawable(getDrawable(R.drawable.ic_dice_24dp))
     }
 
-    companion object {
-        fun newIntent(context: Context): Intent = Intent(context, BottomBarActivity::class.java)
+    private fun switchFragment(addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener){
+        isClicked = true
+        fab.hide(addVisibilityChanged)
+        invalidateOptionsMenu()
     }
 
     override fun onBackPressed() {
         super.onBackPressed()
-        bottomBarViewModel.changeViewState()
+        switchFragment(addVisibilityChanged)
         isClicked = false
     }
 
