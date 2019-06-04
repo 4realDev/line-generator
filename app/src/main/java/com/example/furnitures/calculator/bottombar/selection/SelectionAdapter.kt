@@ -34,7 +34,9 @@ class SelectionAdapter(private val furnitureClickListener: FurnitureClickListene
         val context = holder.itemView.context
         // image darf nur einmal vorkommen, sonst werden andere items getriggert
         holder.image?.background = ContextCompat.getDrawable(context, if (item.isSelected) R.drawable.background_circle_red else R.drawable.background_furniture)
-        holder.image?.drawable?.let {
+        // instantiate multiple Drawable objects from same image resource, they change properties for all
+        // mutate() -> mutable drawable not shares its state with any other drawable
+        holder.image?.drawable?.mutate()?.let {
             DrawableCompat.setTint(it, ContextCompat.getColor(context, if (item.isSelected) R.color.white else R.color.trick_golden))
         }
     }
