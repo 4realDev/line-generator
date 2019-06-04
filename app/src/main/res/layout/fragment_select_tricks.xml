@@ -4,11 +4,7 @@
     android:id="@+id/fragment_select_tricks__recycler"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:clipChildren="false"
-    android:clipToPadding="false"
     android:layoutAnimation="@anim/layout_animation_slide_from_right"
     android:paddingTop="26dp"
     android:paddingBottom="108dp"
-    android:scrollbarStyle="outsideOverlay"
-    android:scrollbars="vertical"
     tools:listitem="@layout/list_item_select_trick" />

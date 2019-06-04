@@ -17,9 +17,6 @@ import com.example.furnitures.calculator.helper.ItemDecorationSpaceGrid;
 import com.example.furnitures.calculator.trick.FurnitureViewState;
 import org.jetbrains.annotations.NotNull;
 
-/**
- * Copyright (c) 2017 fluidmobile GmbH. All rights reserved.
- */
 public class SelectionFragment
     extends Fragment
     implements SelectionAdapter.FurnitureClickListener {

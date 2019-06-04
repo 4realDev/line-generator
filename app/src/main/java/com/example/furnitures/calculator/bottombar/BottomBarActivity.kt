@@ -31,10 +31,8 @@ class BottomBarActivity : AppCompatActivity() {
         navigator = BottomBarNavigator(this)
         bottomBarViewModel = ViewModelProviders.of(this).get(BottomBarViewModel::class.java)
 
-        // lässt sich scheinbar nicht mit replaceMenu kombinieren
         setSupportActionBar(bottomAppBar)
 
-        // NAVIGATOR : open TrickSelection
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
@@ -130,5 +128,9 @@ class BottomBarActivity : AppCompatActivity() {
         super.onBackPressed()
         bottomBarViewModel.changeViewState()
         isClicked = false
+    }
+
+    companion object {
+        fun newIntent(context: Context): Intent = Intent(context, BottomBarActivity::class.java)
     }
 }
