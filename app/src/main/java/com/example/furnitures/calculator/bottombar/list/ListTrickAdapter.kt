@@ -100,7 +100,6 @@ class ListTrickAdapter(
         list.add(toPosition, removed)
 
         furnitureItemDiffer.submitList(list)
-        this.notifyItemMoved(fromPosition, toPosition)
 
         Log.d("DEBUGG", "toAdapterPosition: $toPosition fromAdapterPosition: $fromPosition")
     }
