@@ -36,7 +36,7 @@ class ListTrickFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(activity!!).get(ListTrickViewModel::class.java)
+        viewModel = ViewModelProviders.of(this).get(ListTrickViewModel::class.java)
         listTrickItemMoveCallback = ListTrickItemMoveCallback(adapter)
         itemTouchHelper = ItemTouchHelper(listTrickItemMoveCallback)
 

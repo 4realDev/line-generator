@@ -17,11 +17,19 @@ class ListTrickViewModel(application: Application) : AndroidViewModel(applicatio
     // dynamisch Änderungen müssen am ListTrickView nichtmehr übernommen werden
     // Verwendung von statische Liste
     // LiveData nur sinnvoll, wenn beide Screen parallel laufen könnten
-    private var selectedFurnituresList = repository.getSelectedFurnituresList()
-    private var selectedFurnitureListViewState = MutableLiveData<List<FurnitureViewState>>()
+    private val selectedFurnituresList = repository.getSelectedFurnituresList()
+
+    // List wird übergeben anstatt LiveData
+    // Transformations.map auf selectedFurnituresLIVEDATA wird nicht aufgerufen
+    // -> arbeiten mit der Liste, abspeichern (wenn gewollt) dann verwerfen
+    // -> wenn Fragment verworfen wird, wird Liste verworfen
+    // -> Scoping liegt nämlich auf Fragment (nicht auf Activity (this statt activity))
+    // -> viewModel = ViewModelProviders.of(this).get(ListTrickViewModel::class.java)
+    private val selectedFurnitureListViewState = MutableLiveData<List<FurnitureViewState>>()
 
 
     init {
+        // einmalig, da kein Transformations.map
         // Anonyme Funktion -> ruft map(it) auf und springt da rein
         // selectedFurnitureListViewState.value = selectedFurnituresList.map{map(it)}
         // Methoden Referenz
