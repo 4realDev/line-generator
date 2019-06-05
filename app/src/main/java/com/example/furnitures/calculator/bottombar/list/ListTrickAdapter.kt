@@ -63,6 +63,8 @@ class ListTrickAdapter(
         val title: TextView? = itemView.findViewById(com.example.furnitures.R.id.list_item_furniture__title)
         val count: TextView? = itemView.findViewById(com.example.furnitures.R.id.list_item_furniture_count)
         val handle: ImageView? = itemView.findViewById(com.example.furnitures.R.id.list_item_furniture_handle)
+        val viewBackground: View? = itemView.findViewById(R.id.viewBackground)
+        val viewForeground: View? = itemView.findViewById(R.id.viewForeground)
     }
 
     // Anstatt als Class als Object anlegen
