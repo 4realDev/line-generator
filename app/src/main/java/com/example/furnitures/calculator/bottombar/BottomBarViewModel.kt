@@ -17,7 +17,7 @@ class BottomBarViewModel(application: Application) : AndroidViewModel(applicatio
         if (viewStateData.value == null)
             viewStateData.value = ViewState.INITIAL_STATE
 
-        bottomBarNavigationEvent.value = BottomBarItem.TrickSelection
+        bottomBarNavigationEvent.value = BottomBarItem.SelectionTrick
     }
 
     override fun changeViewState() {

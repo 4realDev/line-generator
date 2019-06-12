@@ -1,0 +1,100 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:gravity="center_vertical"
+    android:orientation="vertical"
+    android:padding="25dp">
+
+    <ImageView
+        android:layout_width="125dp"
+        android:layout_height="125dp"
+        android:layout_gravity="center"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_dice_24dp"
+        android:tint="@color/colorSecondary" />
+
+
+    <com.google.android.material.textfield.TextInputLayout
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        app:boxCornerRadiusBottomEnd="5dp"
+        app:boxCornerRadiusBottomStart="5dp"
+        app:boxCornerRadiusTopEnd="5dp"
+        app:boxCornerRadiusTopStart="5dp"
+        app:boxStrokeWidth="5dp"
+        app:errorEnabled="true"
+        app:hintAnimationEnabled="true"
+        app:hintEnabled="true">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/fragment_create__trick_name_input"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Trick"
+            android:paddingStart="20dp"
+            android:textColor="@color/white" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/activity_create_trick__category_group"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:foreground="?attr/selectableItemBackground"
+        android:orientation="horizontal"
+        segmentedgroup:sc_border_width="1dp"
+        segmentedgroup:sc_checked_text_color="@color/white"
+        segmentedgroup:sc_corner_radius="5dp"
+        segmentedgroup:sc_tint_color="@color/colorSecondary">
+
+        <RadioButton
+            android:id="@+id/activity_create_trick__category_slides"
+            style="@style/RadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:checked="true"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="Slides"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/activity_create_trick__category_grindes"
+            style="@style/RadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="Grindes"
+            android:textSize="14sp" />
+
+        <RadioButton
+            android:id="@+id/activity_create_trick__category_others"
+            style="@style/RadioButton"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:foreground="?attr/selectableItemBackground"
+            android:text="Others"
+            android:textSize="14sp" />
+
+    </info.hoang8f.android.segmented.SegmentedGroup>
+
+    <Button
+        android:id="@+id/activity_create_trick__create_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/background_black_round_border"
+        android:foreground="?android:attr/selectableItemBackground"
+        android:text="Create Trick"
+        android:textColor="@color/white" />
+
+
+</LinearLayout>

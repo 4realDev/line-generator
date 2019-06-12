@@ -6,6 +6,8 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.getColor
+import androidx.core.content.ContextCompat.getDrawable
 import androidx.core.graphics.drawable.DrawableCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
@@ -15,7 +17,7 @@ import com.example.furnitures.calculator.trick.FurnitureViewState
 /**
  * Copyright (c) 2017 fluidmobile GmbH. All rights reserved.
  */
-class SelectionAdapter(private val furnitureClickListener: FurnitureClickListener) :  ListAdapter<FurnitureViewState, SelectionAdapter.FurnitureHolder>(DiffCallback())  {
+class SelectionAdapter(private val furnitureClickListener: FurnitureClickListener) : ListAdapter<FurnitureViewState, SelectionAdapter.FurnitureHolder>(DiffCallback()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FurnitureHolder {
         val itemView = LayoutInflater.from(parent.context).inflate(R.layout.list_item_select_trick, parent, false)
@@ -30,15 +32,25 @@ class SelectionAdapter(private val furnitureClickListener: FurnitureClickListene
     override fun onBindViewHolder(holder: FurnitureHolder, position: Int) {
         val item = getItem(position)
         holder.image?.setImageResource(item.drawableResId)
-        holder.title?.setText(item.name)
+        val name = item?.name
+        val userCreatedName = item?.userCreatedName
+
+        if (userCreatedName != null)
+            holder.title?.text = userCreatedName
+        if (name != null)
+            holder.title?.setText(name)
+
         val context = holder.itemView.context
+        var drawable = holder.image?.background
         // image darf nur einmal vorkommen, sonst werden andere items getriggert
-        holder.image?.background = ContextCompat.getDrawable(context, if (item.isSelected) R.drawable.background_circle_red else R.drawable.background_furniture)
+        holder.image?.background = drawable //if (item.isSelected) R.drawable.background_circle_red else R.drawable.background_furniture)
+//        holder.image?.background = if(item.isSelected) getDrawable(context, R.drawable.background_circle_red) else getDrawable(context,R.drawable.background_furniture)
+        holder.image?.background = getDrawable(context, R.drawable.background_furniture)
+        holder.image?.background?.setTint(if (item.isSelected) getColor(context, R.color.colorAccent) else getColor(context, R.color.colorSecondary))
         // instantiate multiple Drawable objects from same image resource, they change properties for all
         // mutate() -> mutable drawable not shares its state with any other drawable
-        holder.image?.drawable?.mutate()?.let {
-            DrawableCompat.setTint(it, ContextCompat.getColor(context, if (item.isSelected) R.color.white else R.color.trick_golden))
-        }
+        holder.image?.drawable?.mutate()?.let { DrawableCompat.setTint(it, ContextCompat.getColor(context, if (item.isSelected) R.color.colorAccent else R.color.colorSecondary)) }
+        holder.title?.setTextColor(if (item.isSelected) getColor(context, R.color.white) else getColor(context, R.color.colorSecondary))
     }
 
     interface FurnitureClickListener {
@@ -50,7 +62,7 @@ class SelectionAdapter(private val furnitureClickListener: FurnitureClickListene
         val title: TextView? = itemView.findViewById(R.id.list_item_furniture__title)
     }
 
-    class DiffCallback: DiffUtil.ItemCallback<FurnitureViewState>(){
+    class DiffCallback : DiffUtil.ItemCallback<FurnitureViewState>() {
         override fun areItemsTheSame(oldItem: FurnitureViewState, newItem: FurnitureViewState): Boolean {
             return oldItem.id == newItem.id
         }

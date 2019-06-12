@@ -2,11 +2,13 @@
 <resources>
 
     <!-- ToolBar -->
-    <color name="colorPrimary">@color/trick_light_black</color>
+    <color name="colorPrimary">@color/spotify_light_black</color>
     <!-- Top Bar -->
-    <color name="colorPrimaryDark">@color/trick_dark_black</color>
+    <color name="colorPrimaryDark">@color/spotify_black</color>
+    <color name="colorSecondary">@color/spotify_grey</color>
+    <color name="colorSecondaryDark">@color/trick_light_black</color>
     <!-- FAB -->
-    <color name="colorAccent">@color/trick_light_black</color>
+    <color name="colorAccent">@color/spotify_green</color>
 
     <!-- https://wpamelia.com/website-color-schemes/ -->
     <!--
@@ -24,6 +26,13 @@
     <color name="trick_dark_black">#040202</color>
     <color name="trick_light_black">#2e2d2d</color>
 
+    <color name="spotify_green">#1db954</color>
+    <color name="spotify_dark_green">#008827</color>
+    <color name="spotify_light_green">#62ec83</color>
+    <color name="spotify_black">#121212</color>
+    <color name="spotify_light_black">#212121</color>
+    <color name="spotify_grey">#535353</color>
+    <color name="spotify_light_grey">#b3b3b3</color>
 
 
     <color name="ruby_white">#fbfcfc</color>
@@ -31,7 +40,6 @@
     <color name="ruby_yellow_accent_light">#fcef95</color>
     <color name="ruby_light_blue">#9197a1</color>
     <color name="ruby_light_red">#EC282E</color>
-
 
 
     <color name="grey00">#f9f9f9</color>

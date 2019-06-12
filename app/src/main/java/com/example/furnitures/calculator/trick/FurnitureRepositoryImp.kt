@@ -2,8 +2,6 @@ package com.example.furnitures.calculator.trick
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.furnitures.calculator.bottombar.selection.FurnitureType
-import com.example.furnitures.calculator.bottombar.selection.FurtnitureCategory
 import java.util.*
 
 class FurnitureRepositoryImp : FurnitureRepository {
@@ -22,9 +20,9 @@ class FurnitureRepositoryImp : FurnitureRepository {
 
     //override fun getSelectedFurnitures(): LiveData<List<Furniture>> = selectedFurnitures
 
-    override fun getSelectedFurnituresList(): List<Furniture>{
+    override fun getSelectedFurnituresList(): List<Furniture> {
         // Collections sollten nie null sein
-        return furnitures.value.orEmpty().filter{it.isSelected}
+        return furnitures.value.orEmpty().filter { it.isSelected }
     }
 
     override fun getFurnitureById(id: String): Furniture? {
@@ -35,6 +33,11 @@ class FurnitureRepositoryImp : FurnitureRepository {
             }
         }
         return outputFurniture
+    }
+
+    override fun createFurniture(furnitureViewState: FurnitureViewState) {
+        val furniture = map(furnitureViewState)
+        furnitures.value = furnitures.value?.plus(furniture)
     }
 
     override fun deleteFurnitureById(id: String) {
@@ -73,16 +76,25 @@ class FurnitureRepositoryImp : FurnitureRepository {
     }
 
     override fun createInitialFurnitures() = listOf(
-        Furniture(randomUUID(), FurnitureType.BED, FurtnitureCategory.GARDEN, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.ARMCHAIR, FurtnitureCategory.HOUSE, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.SOFA, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.TEST1, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.TEST2, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.TEST3, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.TEST3, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.TEST3, FurtnitureCategory.ROOF, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), FurnitureType.TEST3, FurtnitureCategory.ROOF, 0, 22.0, false, true, false)
+        Furniture(randomUUID(), null, 0, FurnitureType.BED, FurnitureCategory.SLIDE, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 1, FurnitureType.ARMCHAIR, FurnitureCategory.OTHER, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 2, FurnitureType.SOFA, FurnitureCategory.GRIND, 0, 22.0, false, true, false)
     )
+
+    private fun map(furnitureViewState: FurnitureViewState): Furniture {
+        return Furniture(
+            id = furnitureViewState.id,
+            userCreateName = furnitureViewState.userCreatedName,
+            position = furnitureViewState.position,
+            furnitureType = furnitureViewState.furnitureType,
+            furnitureCategory = furnitureViewState.furnitureCategory,
+            count = 0,
+            volume = 0.0,
+            isSelected = furnitureViewState.isSelected,
+            isDefault = false,
+            isTombstone = false
+        )
+    }
 
     // universally unique identifier class (UUID) generates a random 128-bit value
     // 44e128a5-ac7a-4c9a-be4c-224b6bf81b20

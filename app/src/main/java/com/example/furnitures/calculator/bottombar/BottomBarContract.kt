@@ -33,5 +33,6 @@ enum class ViewState {
 
 sealed class BottomBarItem {
     object ListTrick : BottomBarItem()
-    object TrickSelection : BottomBarItem()
+    object SelectionTrick : BottomBarItem()
+    object CreateTrick : BottomBarItem()
 }

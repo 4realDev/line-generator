@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -33,7 +34,7 @@ class ListTrickFragment : Fragment() {
                 viewModel.changeFurnitureItemPosition(fromIndex, toIndex)
             }
         },
-        object: ListTrickAdapter.OnStartDragListener {
+        object : ListTrickAdapter.OnStartDragListener {
             override fun onStartDrag(viewHolder: RecyclerView.ViewHolder) {
                 itemTouchHelper.startDrag(viewHolder)
             }
@@ -63,13 +64,15 @@ class ListTrickFragment : Fragment() {
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
-        recyclerView.setPadding(0, pxFromDp(this.context!!, 6f).toInt(),0, pxFromDp(this.context!!, 108f).toInt())
+        recyclerView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL))
+        recyclerView.setPadding(0, pxFromDp(this.context!!, 6f).toInt(), 0, pxFromDp(this.context!!, 108f).toInt())
         itemTouchHelper.attachToRecyclerView(recyclerView)
 
         // Observed alle veränderungen der Liste und gibt sie an den Adapter weiter
         // submitList löst automatisch notifyDataSetChanged aus
-        viewModel.getSelectedItemsViewState().observe(viewLifecycleOwner, Observer{ newData
-            -> if (newData != null) adapter.onFurnitureItemsUpdate(newData)
+        viewModel.getSelectedItemsViewState().observe(viewLifecycleOwner, Observer { newData
+            ->
+            if (newData != null) adapter.onFurnitureItemsUpdate(newData)
         })
     }
 

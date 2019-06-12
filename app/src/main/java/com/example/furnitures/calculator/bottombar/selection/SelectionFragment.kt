@@ -14,6 +14,7 @@ import com.example.furnitures.calculator.extensions.pxFromDp
 import com.example.furnitures.calculator.helper.ItemDecorationSpaceGrid
 import com.example.furnitures.calculator.trick.FurnitureViewState
 
+
 class SelectionFragment : Fragment(), SelectionAdapter.FurnitureClickListener {
 
     private lateinit var recyclerView: RecyclerView
@@ -34,20 +35,23 @@ class SelectionFragment : Fragment(), SelectionAdapter.FurnitureClickListener {
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.fragment_select_tricks, container, false)
-        recyclerView = view.findViewById(R.id.fragment_select_tricks__recycler)
+        val view = inflater.inflate(com.example.furnitures.R.layout.fragment_select_tricks, container, false)
+        recyclerView = view.findViewById(com.example.furnitures.R.id.fragment_select_tricks__recycler)
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         //setTitle(R.string.furniture_title);
+        val spanCount = resources.getInteger(R.integer.fragment_selection__recycler_span_count)
+        val spacing = resources.getDimensionPixelSize(R.dimen.fragment_selection__recycler_spacing_grid)
         val adapter = SelectionAdapter(this)
-        recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = GridLayoutManager(activity, 3)
-        val spaceGrid = ItemDecorationSpaceGrid(3, 50, 125, true, 0)
+        // Problem wenn recycler wrap content hat -> dann setHasFixedSize
+        // recyclerView.setHasFixedSize(true)
+        recyclerView.layoutManager = GridLayoutManager(activity, spanCount)
+        val spaceGrid = ItemDecorationSpaceGrid(spanCount, spacing, spacing, true, 0)
         recyclerView.addItemDecoration(spaceGrid)
-        recyclerView.setPadding(0, pxFromDp(this.context!!, 26f).toInt(),0, pxFromDp(this.context!!, 108f).toInt())
+        recyclerView.setPadding(0, pxFromDp(this.context!!, 26f).toInt(), 0, pxFromDp(this.context!!, 108f).toInt())
         recyclerView.adapter = adapter
 
         viewModel.getFurnitureList().observe(viewLifecycleOwner, Observer { newData ->

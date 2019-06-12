@@ -7,8 +7,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.ViewModelProviders
 import com.example.furnitures.R
 import com.example.furnitures.calculator.bottombar.selection.FurnitureContract
-import com.example.furnitures.calculator.bottombar.selection.FurtnitureCategory
 import com.example.furnitures.calculator.bottombar.selection.SelectionViewModel
+import com.example.furnitures.calculator.trick.FurnitureCategory
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.navigation.NavigationView
 
@@ -30,10 +30,10 @@ class BottomBarDialogSheet : BottomSheetDialogFragment() {
         navigationView.setNavigationItemSelectedListener { menuItem ->
             // Bottom Navigation Drawer menu item clicks
             when (menuItem.itemId) {
-                R.id.nav1 -> viewmodel.onFilterFurnitures(FurtnitureCategory.ROOF)
-                R.id.nav2 -> viewmodel.onFilterFurnitures(FurtnitureCategory.GARDEN)
-                R.id.nav3 -> viewmodel.onFilterFurnitures(FurtnitureCategory.HOUSE)
-                R.id.nav4 -> viewmodel.onFilterFurnitures(FurtnitureCategory.UNDEFINED)
+                R.id.nav1 -> viewmodel.onFilterFurnitures(FurnitureCategory.SLIDE)
+                R.id.nav2 -> viewmodel.onFilterFurnitures(FurnitureCategory.GRIND)
+                R.id.nav3 -> viewmodel.onFilterFurnitures(FurnitureCategory.OTHER)
+                R.id.nav4 -> viewmodel.onFilterFurnitures(FurnitureCategory.UNDEFINED)
             }
             // Add code here to update the UI based on the item selected
             // For example, swap UI fragments here

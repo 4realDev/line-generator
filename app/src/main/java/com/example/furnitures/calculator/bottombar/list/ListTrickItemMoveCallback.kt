@@ -6,7 +6,7 @@ import android.view.View
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
-class ListTrickItemMoveCallback(private val adapter: ItemTouchHelperAdapter): ItemTouchHelper.Callback() {
+class ListTrickItemMoveCallback(private val adapter: ItemTouchHelperAdapter) : ItemTouchHelper.Callback() {
 
     var dragFrom = -1
     var dragTo = -1
@@ -42,10 +42,9 @@ class ListTrickItemMoveCallback(private val adapter: ItemTouchHelperAdapter): It
     override fun clearView(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder) {
         super.clearView(recyclerView, viewHolder)
 
-        /*
-        val foregroundView: View = viewHolder.itemView.findViewById(R.id.viewForeground)
+        // reset vom View, nachdem er z.B. weg geswiped wurde
+        val foregroundView: View = viewHolder.itemView.findViewById(com.example.furnitures.R.id.viewForeground)
         getDefaultUIUtil().clearView(foregroundView)
-        */
 
         if (dragFrom != -1 && dragTo != -1 && dragFrom != dragTo) {
             adapter.dragFinished(dragFrom, dragTo)
@@ -55,38 +54,19 @@ class ListTrickItemMoveCallback(private val adapter: ItemTouchHelperAdapter): It
         dragTo = -1
     }
 
-    /*
-    override fun onSelectedChanged(viewHolder: RecyclerView.ViewHolder?, actionState: Int) {
-        if(viewHolder != null ) {
-            val foregroundView: View = viewHolder.itemView.findViewById(R.id.viewForeground)
-            getDefaultUIUtil().onSelected(foregroundView)
-
-        }
-    }
-    */
-
+    // Für swipeDelete
+    // Damit beim Swipen  nur der foregroundView geswiped wird
+    // backgroundView bleibt statisch
+    // Beim Draggen werden beide Views gedragged (super Methode)
     override fun onChildDraw(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
         if (actionState == ItemTouchHelper.ACTION_STATE_DRAG) {
             super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive)
         }
-        if(actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
+        if (actionState == ItemTouchHelper.ACTION_STATE_SWIPE) {
             val foregroundView: View = viewHolder.itemView.findViewById(com.example.furnitures.R.id.viewForeground)
             getDefaultUIUtil().onDraw(c, recyclerView, foregroundView, dX, dY, actionState, isCurrentlyActive)
         }
     }
-
-    /*
-    override fun onChildDrawOver(c: Canvas, recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder?, dX: Float, dY: Float, actionState: Int, isCurrentlyActive: Boolean) {
-        val foregroundView: View = viewHolder!!.itemView.findViewById(R.id.viewForeground)
-        getDefaultUIUtil().onDrawOver(c, recyclerView, foregroundView, dX, dY, actionState, isCurrentlyActive)
-    }
-    */
-
-    /*
-    override fun convertToAbsoluteDirection(flags: Int, layoutDirection: Int): Int {
-        return super.convertToAbsoluteDirection(flags, layoutDirection)
-    }
-    */
 }
 
 // MoveCallback bekommt den ItemTouchHelperAdapter durch den Konstruktor

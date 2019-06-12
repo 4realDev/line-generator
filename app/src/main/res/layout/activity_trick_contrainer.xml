@@ -13,34 +13,34 @@
         <!-- Toolbar is the actual app bar with text and the action items -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
-            app:title="CHOOSE YOUR TRICKS"
-            app:titleTextColor="@color/white"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@color/trick_dark_black"
-            app:layout_scrollFlags="scroll" />
+            android:background="@color/spotify_light_black"
+            app:layout_scrollFlags="scroll"
+            app:title="CHOOSE YOUR TRICKS"
+            app:titleTextColor="@color/white" />
     </com.google.android.material.appbar.AppBarLayout>
 
     <FrameLayout
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"
-        android:clipToPadding="false"
-        android:clipChildren="false"
         android:id="@+id/activity_trick_container__frame_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
 
     <com.google.android.material.bottomappbar.BottomAppBar
-        app:layout_behavior=".calculator.helper.BottomNavigationBehavior"
         android:id="@+id/bottom_app_bar"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_gravity="bottom"
         android:padding="8dp"
-        app:backgroundTint="@color/trick_dark_black"
+        app:backgroundTint="@color/spotify_light_black"
         app:fabAlignmentMode="center"
         app:fabCradleMargin="5dp"
         app:fabCradleRoundedCornerRadius="8dp"
+        app:layout_behavior=".calculator.helper.BottomNavigationBehavior"
         app:navigationIcon="@drawable/baseline_menu_white_24" />
 
 
@@ -48,6 +48,7 @@
         android:id="@+id/fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:backgroundTint="@color/spotify_green"
         android:src="@drawable/ic_dice_24dp"
         android:tint="@color/white"
         app:fabCustomSize="70dp"

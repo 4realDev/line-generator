@@ -1,6 +1,7 @@
 package com.example.furnitures.calculator.bottombar.selection
 
 import androidx.lifecycle.LiveData
+import com.example.furnitures.calculator.trick.FurnitureCategory
 import com.example.furnitures.calculator.trick.FurnitureViewState
 
 interface FurnitureContract {
@@ -9,18 +10,10 @@ interface FurnitureContract {
         //region Actions
         fun onFurnitureClicked(furniture: FurnitureViewState)
 
-        fun onFilterFurnitures(filter: FurtnitureCategory)
+        fun onFilterFurnitures(filter: FurnitureCategory)
         //endregion
 
         //region Data
         fun getFurnitureList(): LiveData<List<FurnitureViewState>>
     }
-}
-
-enum class FurnitureType {
-    UNDEFINED, BED, SOFA, TEST1, TEST2, TEST3, ARMCHAIR
-}
-
-enum class FurtnitureCategory {
-    UNDEFINED, GARDEN, HOUSE, ROOF
 }

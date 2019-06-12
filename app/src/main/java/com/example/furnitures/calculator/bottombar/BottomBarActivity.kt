@@ -13,6 +13,7 @@ import com.example.furnitures.calculator.bottombar.selection.SelectionFragment
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
+
 class BottomBarActivity : AppCompatActivity() {
 
     private lateinit var fab: FloatingActionButton
@@ -24,10 +25,10 @@ class BottomBarActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_trick_contrainer)
+        setContentView(com.example.furnitures.R.layout.activity_trick_contrainer)
 
-        fab = findViewById(R.id.fab)
-        bottomAppBar = findViewById(R.id.bottom_app_bar)
+        fab = findViewById(com.example.furnitures.R.id.fab)
+        bottomAppBar = findViewById(com.example.furnitures.R.id.bottom_app_bar)
 
         navigator = BottomBarNavigator(this)
         bottomBarViewModel = ViewModelProviders.of(this).get(BottomBarViewModel::class.java)
@@ -37,7 +38,7 @@ class BottomBarActivity : AppCompatActivity() {
         if (savedInstanceState == null) {
             supportFragmentManager
                 .beginTransaction()
-                .add(R.id.activity_trick_container__frame_layout, SelectionFragment.newInstance(), SelectionFragment::class.java.name)
+                .add(com.example.furnitures.R.id.activity_trick_container__frame_layout, SelectionFragment.newInstance(), SelectionFragment::class.java.name)
                 .commit()
         }
 
@@ -82,7 +83,7 @@ class BottomBarActivity : AppCompatActivity() {
     // app:menu="@menu/menu_tricks_first_bottom_bar" nicht möglich
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         val inflater = menuInflater
-        inflater.inflate(R.menu.menu_tricks_first_bottom_bar, menu)
+        inflater.inflate(com.example.furnitures.R.menu.menu_tricks_first_bottom_bar, menu)
         return true
     }
 
@@ -92,6 +93,9 @@ class BottomBarActivity : AppCompatActivity() {
                 val bottomNavDrawerFragment = BottomBarDialogSheet()
                 bottomNavDrawerFragment.show(supportFragmentManager, bottomNavDrawerFragment.tag)
             }
+            R.id.app_bar_search -> {
+                navigator.openBottomBarItem(BottomBarItem.CreateTrick)
+            }
         }
         return true
     }
@@ -99,7 +103,7 @@ class BottomBarActivity : AppCompatActivity() {
     private fun removeBottomNavigationIcon(newViewState: ViewState) {
         if (newViewState == ViewState.CHANGED_STATE)
             bottomAppBar.navigationIcon = null
-        else bottomAppBar.navigationIcon = getDrawable(R.drawable.baseline_menu_white_24)
+        else bottomAppBar.navigationIcon = getDrawable(com.example.furnitures.R.drawable.baseline_menu_white_24)
     }
 
     private fun switchFabAlignment(newViewState: ViewState) {
@@ -110,17 +114,17 @@ class BottomBarActivity : AppCompatActivity() {
 
     private fun replaceFabMenu(newViewState: ViewState) {
         if (newViewState == ViewState.CHANGED_STATE)
-            bottomAppBar.replaceMenu(R.menu.menu_tricks_secondary_bottom_bar)
-        else bottomAppBar.replaceMenu(R.menu.menu_tricks_first_bottom_bar)
+            bottomAppBar.replaceMenu(com.example.furnitures.R.menu.menu_tricks_secondary_bottom_bar)
+        else bottomAppBar.replaceMenu(com.example.furnitures.R.menu.menu_tricks_first_bottom_bar)
     }
 
     private fun setImageDrawable(newViewState: ViewState) {
         if (newViewState == ViewState.CHANGED_STATE)
-            fab.setImageDrawable(getDrawable(R.drawable.baseline_reply_white_24))
-        else fab.setImageDrawable(getDrawable(R.drawable.ic_dice_24dp))
+            fab.setImageDrawable(getDrawable(com.example.furnitures.R.drawable.baseline_reply_white_24))
+        else fab.setImageDrawable(getDrawable(com.example.furnitures.R.drawable.ic_dice_24dp))
     }
 
-    private fun switchFragment(addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener){
+    private fun switchFragment(addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener) {
         isClicked = true
         fab.hide(addVisibilityChanged)
         invalidateOptionsMenu()

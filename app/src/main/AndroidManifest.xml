@@ -9,7 +9,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
-        <activity android:name=".calculator.bottombar.BottomBarActivity" >
+        <activity android:name=".calculator.bottombar.create.CreateActivity">
+        </activity>
+        <activity android:name=".calculator.bottombar.BottomBarActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,4 +19,5 @@
             </intent-filter>
         </activity>
     </application>
+
 </manifest>

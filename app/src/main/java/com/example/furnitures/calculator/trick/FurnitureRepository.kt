@@ -13,6 +13,8 @@ interface FurnitureRepository {
 
     fun getFurnitureById(id: String): Furniture?
 
+    fun createFurniture(furnitureViewState: FurnitureViewState)
+
     fun deleteFurnitureById(id: String)
 
     fun updateFurnitureOnClick(clickedFurniture: FurnitureViewState)

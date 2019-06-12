@@ -2,10 +2,7 @@ package com.example.furnitures.calculator.bottombar.selection
 
 import android.app.Application
 import androidx.lifecycle.*
-import com.example.furnitures.calculator.trick.Furniture
-import com.example.furnitures.calculator.trick.FurnitureTypeHelper
-import com.example.furnitures.calculator.trick.FurnitureViewState
-import com.example.furnitures.calculator.trick.RepositoryFactory
+import com.example.furnitures.calculator.trick.*
 
 /**
  * Copyright (c) 2017 fluidmobile GmbH. All rights reserved.
@@ -19,7 +16,7 @@ class SelectionViewModel(application: Application) : AndroidViewModel(applicatio
     // Wenn sich Filter ändern -> zugreifen auf die Daten und diese verändern
     // Daten Liste (Oberste Schicht)
     private val furnitures = repository.getFurnitures()
-    private val furnituresFilter = MutableLiveData<FurtnitureCategory>()
+    private val furnituresFilter = MutableLiveData<FurnitureCategory>()
     private val furnitureMediator = MediatorLiveData<List<Furniture>>()
 
     // Gemappte Daten für den View -> Observed alle Änderungen der Daten in Transformations.map
@@ -65,12 +62,12 @@ class SelectionViewModel(application: Application) : AndroidViewModel(applicatio
         return furnituresViewState
     }
 
-    override fun onFilterFurnitures(filter: FurtnitureCategory) {
+    override fun onFilterFurnitures(filter: FurnitureCategory) {
         furnituresFilter.value = filter
     }
 
-    private fun filter(furnituresList: List<Furniture>, filter: FurtnitureCategory): List<Furniture>{
-        return if(filter != FurtnitureCategory.UNDEFINED)
+    private fun filter(furnituresList: List<Furniture>, filter: FurnitureCategory): List<Furniture> {
+        return if (filter != FurnitureCategory.UNDEFINED)
             furnituresList.filter { it.furnitureCategory == filter }
         else furnituresList
     }
@@ -79,9 +76,11 @@ class SelectionViewModel(application: Application) : AndroidViewModel(applicatio
     private fun map(furniture: Furniture): FurnitureViewState {
         return FurnitureViewState(
             id = furniture.id,
+            position = furniture.position,
             furnitureType = furniture.furnitureType,
             furnitureCategory = furniture.furnitureCategory,
             name = FurnitureTypeHelper.getString(furniture.furnitureType),
+            userCreatedName = furniture.userCreateName,
             drawableResId = FurnitureTypeHelper.getDrawable(furniture.furnitureType),
             isSelected = furniture.isSelected
         )
@@ -89,7 +88,7 @@ class SelectionViewModel(application: Application) : AndroidViewModel(applicatio
 
     private fun mapList(furnitureList: List<Furniture>): List<FurnitureViewState> {
         return furnitureList
-            //.filterNot { it.furnitureType == FurnitureType.OTHER }
+            //.filterNot { it.trickType == FurnitureType.OTHER }
             .map { map(it) }
     }
 }

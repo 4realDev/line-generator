@@ -6,6 +6,11 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:textColorHint">@color/colorSecondary</item>
+        <item name="colorControlNormal">@color/colorSecondary</item>
+        <item name="colorControlActivated">@color/colorSecondary</item>
+        <item name="colorControlHighlight">@color/colorSecondary</item>
     </style>
 
     <!-- setSupportedToolBar(bottom_app_bar) & ToolBar funktionieren nicht gleichzeitig -->
@@ -16,14 +21,14 @@
     </style>
 
     <!--<style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">-->
-        <!--...-->
+    <!--...-->
 
-        <!--<item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>-->
+    <!--<item name="toolbarNavigationButtonStyle">@style/Toolbar.Button.Navigation.Tinted</item>-->
 
     <!--</style>-->
 
     <!--<style name="Toolbar.Button.Navigation.Tinted" parent="Widget.AppCompat.Toolbar.Button.Navigation">-->
-        <!--<item name="tint">@color/nav_button_tint</item>-->
+    <!--<item name="tint">@color/nav_button_tint</item>-->
     <!--</style>-->
 
     <!--<style name="BottomSheet" parent="@style/Widget.Design.BottomSheet.Modal">-->
