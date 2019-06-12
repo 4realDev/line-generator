@@ -2,7 +2,7 @@ package com.example.furnitures.calculator.bottombar
 
 import androidx.fragment.app.FragmentActivity
 import com.example.furnitures.R
-import com.example.furnitures.calculator.bottombar.create.CreateActivity
+import com.example.furnitures.calculator.bottombar.create.CreateFragment
 import com.example.furnitures.calculator.bottombar.list.ListTrickFragment
 import com.example.furnitures.calculator.bottombar.selection.SelectionFragment
 
@@ -36,7 +36,11 @@ class BottomBarNavigator(activity: FragmentActivity) : BottomBarContract.Navigat
     }
 
     fun openCreate() {
-        val intent = CreateActivity.newIntent(activity)
-        activity.startActivity(intent)
+        val tag = CreateFragment::class.java.name
+        activity.supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.activity_trick_container__frame_layout, CreateFragment.newInstance(), tag)
+            .addToBackStack(tag)
+            .commit()
     }
 }

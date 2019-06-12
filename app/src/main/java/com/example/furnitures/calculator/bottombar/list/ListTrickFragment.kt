@@ -77,9 +77,7 @@ class ListTrickFragment : Fragment() {
     }
 
     companion object {
-        fun newInstance(): ListTrickFragment {
-            return ListTrickFragment()
-        }
+        fun newInstance(): ListTrickFragment = ListTrickFragment()
     }
 
 

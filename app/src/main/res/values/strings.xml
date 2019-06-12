@@ -8,11 +8,10 @@
     <string name="furniture_armchair">Armchair</string>
     <string name="furniture_rename">Rename furniture</string>
 
-    <string name="action_favorite">Mark Favorite</string>
-    <string name="action_search">Search</string>
-    <string name="action_delete">Delete</string>
-    <string name="action_archieve">Archieve</string>
-    <string name="action_mail">Mail</string>
+    <string name="menu_title_settings">Settings</string>
+    <string name="menu_title_selection">Select</string>
+    <string name="menu_title_list">List</string>
+    <string name="menu_title_create">New</string>
 
     <string name="nav_item1">Navigation Item 1</string>
     <string name="nav_item2">Navigation Item 2</string>
