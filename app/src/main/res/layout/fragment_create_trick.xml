@@ -3,9 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark"
-    android:gravity="center_vertical"
+    android:gravity="center"
     android:orientation="vertical"
-    android:padding="25dp">
+    android:paddingStart="25dp"
+    android:paddingEnd="25dp">
 
     <ImageView
         android:layout_width="125dp"
@@ -17,15 +18,10 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        app:boxCornerRadiusBottomEnd="5dp"
-        app:boxCornerRadiusBottomStart="5dp"
-        app:boxCornerRadiusTopEnd="5dp"
-        app:boxCornerRadiusTopStart="5dp"
-        app:boxStrokeWidth="5dp"
+        android:layout_marginTop="25dp"
+        android:theme="@style/TextInputLayoutStyle"
         app:errorEnabled="true"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true">

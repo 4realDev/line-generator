@@ -13,22 +13,13 @@ interface BottomBarContract {
         fun onBottomBarItemClicked(item: BottomBarItem)
         //endregion
 
-        //region NavigationEvents
-        fun getViewState(): LiveData<ViewState>
-
         fun getBottomBarNavigationEvent(): LiveData<BottomBarItem>
         //endregion NavigationEvents
-
-        fun changeViewState()
     }
 
     interface Navigator {
         fun openBottomBarItem(item: BottomBarItem)
     }
-}
-
-enum class ViewState {
-    INITIAL_STATE, CHANGED_STATE
 }
 
 sealed class BottomBarItem {

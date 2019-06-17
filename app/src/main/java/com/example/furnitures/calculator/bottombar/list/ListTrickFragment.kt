@@ -47,6 +47,8 @@ class ListTrickFragment : Fragment() {
         listTrickItemMoveCallback = ListTrickItemMoveCallback(adapter)
         itemTouchHelper = ItemTouchHelper(listTrickItemMoveCallback)
 
+        requireActivity().title = "YOUR TRICK LIST"
+
         // Use ItemTouchHelper (convenience class / bequemlichkeits Klasse)
         // Class that make our RecyclerView swipable
         // Pass SimpleCallBack to create the two Methods
@@ -61,7 +63,7 @@ class ListTrickFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        requireActivity().title = getString(R.string.toolbar_title_list)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = adapter
         recyclerView.addItemDecoration(DividerItemDecoration(context, DividerItemDecoration.HORIZONTAL))

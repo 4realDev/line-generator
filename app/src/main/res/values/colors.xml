@@ -27,12 +27,15 @@
     <color name="trick_light_black">#2e2d2d</color>
 
     <color name="spotify_green">#1db954</color>
-    <color name="spotify_dark_green">#008827</color>
     <color name="spotify_light_green">#62ec83</color>
     <color name="spotify_black">#121212</color>
     <color name="spotify_light_black">#212121</color>
     <color name="spotify_grey">#535353</color>
-    <color name="spotify_light_grey">#b3b3b3</color>
+
+    <color name="spotify_dark_green">#008827</color>
+    <color name="spotify_grey2">#828282</color>
+    <color name="spotify_grey3">#b3b3b3</color>
+    <color name="spotify_grey4">#ecebe8</color>
 
 
     <color name="ruby_white">#fbfcfc</color>

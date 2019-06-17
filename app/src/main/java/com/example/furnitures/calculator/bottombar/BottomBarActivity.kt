@@ -3,101 +3,38 @@ package com.example.furnitures.calculator.bottombar
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import com.example.furnitures.R
-import com.example.furnitures.calculator.bottombar.selection.SelectionFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
-    //    private lateinit var fab: FloatingActionButton
     private lateinit var bottomAppBar: BottomNavigationView
     private lateinit var bottomBarViewModel: BottomBarViewModel
     private lateinit var navigator: BottomBarContract.Navigator
-//    private lateinit var addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener
-//    private var isClicked: Boolean = false
+    private lateinit var toolbar: androidx.appcompat.widget.Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(com.example.furnitures.R.layout.activity_bottom_bar)
 
-        //fab = findViewById(com.example.furnitures.R.id.fab)
         bottomAppBar = findViewById(com.example.furnitures.R.id.bottom_app_bar)
+        toolbar = findViewById(R.id.activity_bottom_bar_appbar)
+
         bottomAppBar.setOnNavigationItemSelectedListener(this)
+        setSupportActionBar(toolbar)
 
         navigator = BottomBarNavigator(this)
         bottomBarViewModel = ViewModelProviders.of(this).get(BottomBarViewModel::class.java)
 
-//        setSupportActionBar(bottomAppBar)
+        navigator.openBottomBarItem(BottomBarItem.SelectionTrick)
 
-        if (savedInstanceState == null) {
-            supportFragmentManager
-                .beginTransaction()
-                .add(com.example.furnitures.R.id.activity_trick_container__frame_layout, SelectionFragment.newInstance(), SelectionFragment::class.java.name)
-                .commit()
-        }
-
-//        addVisibilityChanged = object : FloatingActionButton.OnVisibilityChangedListener() {
-//            override fun onHidden(fab: FloatingActionButton?) {
-//                super.onHidden(fab)
-//                bottomBarViewModel.changeViewState()
-//            }
-//        }
-
-//        fab.setOnClickListener {
-//
-//            switchFragment(addVisibilityChanged)
-//        }
-
-//        bottomBarViewModel.getViewState().observe(this, Observer { newViewState ->
-//
-//            if (newViewState == ViewState.CHANGED_STATE && isClicked) {
-//                //bottomBarViewModel.onBottomBarItemClicked(BottomBarItem.ListTrick)
-//                navigator.openBottomBarItem(BottomBarItem.ListTrick)
-//                isClicked = false
-//            }
-//
-//            if (newViewState == ViewState.INITIAL_STATE && isClicked) {
-//                supportFragmentManager.popBackStack()
-//                isClicked = false
-//            }
-//
-////            switchFabAlignment(newViewState!!)
-////            removeBottomNavigationIcon(newViewState)
-////            replaceFabMenu(newViewState)
-////            setImageDrawable(newViewState)
-////            fab.show()
-//        })
-
-//        bottomBarViewModel.getBottomBarNavigationEvent().observe(this, Observer { newItem ->
-//            navigator.openBottomBarItem(newItem)
-//        })
+        // Item by default should be selection
+        bottomAppBar.selectedItemId = R.id.menu_bottombar_selection
     }
-
-    // Inflaten des ersten Menu's (mit Search Icon)
-    // app:menu="@menu/menu_tricks_first_bottom_bar" nicht möglich
-    override fun onCreateOptionsMenu(menu: Menu): Boolean {
-        val inflater = menuInflater
-        inflater.inflate(com.example.furnitures.R.menu.menu_tricks_first_bottom_bar, menu)
-        return true
-    }
-
-//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        when (item.itemId) {
-//            R.id.menu_bottombar_settings -> {
-//                val bottomNavDrawerFragment = BottomBarDialogSheet()
-//                bottomNavDrawerFragment.show(supportFragmentManager, bottomNavDrawerFragment.tag)
-//            }
-//            R.id.menu_bottombar_selection -> navigator.openBottomBarItem(BottomBarItem.SelectionTrick)
-//            R.id.menu_bottombar_list -> navigator.openBottomBarItem(BottomBarItem.ListTrick)
-//            R.id.menu_bottombar_create -> navigator.openBottomBarItem(BottomBarItem.CreateTrick)
-//        }
-//        return true
-//    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -111,42 +48,6 @@ class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
         }
         return true
     }
-
-//    private fun removeBottomNavigationIcon(newViewState: ViewState) {
-//        if (newViewState == ViewState.CHANGED_STATE)
-//            bottomAppBar.navigationIcon = null
-//        else bottomAppBar.navigationIcon = getDrawable(com.example.furnitures.R.drawable.baseline_menu_white_24)
-//    }
-//
-//    private fun switchFabAlignment(newViewState: ViewState) {
-//        if (newViewState == ViewState.CHANGED_STATE)
-//            bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-//        else bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-//    }
-//
-//    private fun replaceFabMenu(newViewState: ViewState) {
-//        if (newViewState == ViewState.CHANGED_STATE)
-//            //bottomAppBar.replaceMenu(com.example.furnitures.R.menu.menu_tricks_secondary_bottom_bar)
-//        else bottomAppBar.replaceMenu(com.example.furnitures.R.menu.menu_tricks_first_bottom_bar)
-//    }
-
-//    private fun setImageDrawable(newViewState: ViewState) {
-//        if (newViewState == ViewState.CHANGED_STATE)
-//            fab.setImageDrawable(getDrawable(com.example.furnitures.R.drawable.baseline_reply_white_24))
-//        else fab.setImageDrawable(getDrawable(com.example.furnitures.R.drawable.ic_dice_24dp))
-//    }
-//
-//    private fun switchFragment(addVisibilityChanged: FloatingActionButton.OnVisibilityChangedListener) {
-//        isClicked = true
-//        fab.hide(addVisibilityChanged)
-//        invalidateOptionsMenu()
-//    }
-
-//    override fun onBackPressed() {
-//        super.onBackPressed()
-//        switchFragment(addVisibilityChanged)
-//        isClicked = false
-//    }
 
     companion object {
         fun newIntent(context: Context): Intent = Intent(context, BottomBarActivity::class.java)

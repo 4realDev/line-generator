@@ -83,7 +83,7 @@
             android:paddingEnd="15dp"
             android:paddingBottom="10dp"
             android:src="@drawable/ic_list_white_24dp"
-            android:tint="@color/trick_light_golden" />
+            android:tint="@color/colorAccent" />
 
     </LinearLayout>
 

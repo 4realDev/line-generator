@@ -76,9 +76,12 @@ class FurnitureRepositoryImp : FurnitureRepository {
     }
 
     override fun createInitialFurnitures() = listOf(
-        Furniture(randomUUID(), null, 0, FurnitureType.BED, FurnitureCategory.SLIDE, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), null, 1, FurnitureType.ARMCHAIR, FurnitureCategory.OTHER, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), null, 2, FurnitureType.SOFA, FurnitureCategory.GRIND, 0, 22.0, false, true, false)
+        Furniture(randomUUID(), null, 0, FurnitureType.BED, FurnitureCategory.SLIDE, 0, 22.0, true, true, false),
+        Furniture(randomUUID(), null, 1, FurnitureType.ARMCHAIR, FurnitureCategory.OTHER, 0, 22.0, true, true, false),
+        Furniture(randomUUID(), null, 2, FurnitureType.SOFA, FurnitureCategory.GRIND, 0, 22.0, true, true, false),
+        Furniture(randomUUID(), null, 3, FurnitureType.BED, FurnitureCategory.SLIDE, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 4, FurnitureType.ARMCHAIR, FurnitureCategory.OTHER, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 5, FurnitureType.SOFA, FurnitureCategory.GRIND, 0, 22.0, false, true, false)
     )
 
     private fun map(furnitureViewState: FurnitureViewState): Furniture {

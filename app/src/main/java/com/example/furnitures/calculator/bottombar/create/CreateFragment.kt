@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.example.furnitures.R
 import com.example.furnitures.calculator.trick.FurnitureCategory
 import com.google.android.material.textfield.TextInputEditText
 import info.hoang8f.android.segmented.SegmentedGroup
@@ -22,7 +23,6 @@ class CreateFragment : Fragment() {
     private var category: FurnitureCategory = FurnitureCategory.SLIDE
     private lateinit var createBtn: Button
     private lateinit var categoryGroup: SegmentedGroup
-    //private lateinit var toolbar: Toolbar
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,16 +34,15 @@ class CreateFragment : Fragment() {
         trickName = view.findViewById(com.example.furnitures.R.id.fragment_create__trick_name_input)
         createBtn = view.findViewById(com.example.furnitures.R.id.activity_create_trick__create_button)
         categoryGroup = view.findViewById(com.example.furnitures.R.id.activity_create_trick__category_group)
-        //toolbar = view.findViewById(com.example.furnitures.R.id.activity_bottom_bar_appbar)
         return view
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //toolbar.title = "Feedback"
-        activity?.title = "SOMETHING"
+        requireActivity().title = getString(R.string.toolbar_title_create)
         setupListeners()
     }
+
 
     private fun validateInput(): Boolean {
         return if (name == null) {

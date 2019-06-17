@@ -42,7 +42,7 @@ class SelectionFragment : Fragment(), SelectionAdapter.FurnitureClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        //setTitle(R.string.furniture_title);
+        requireActivity().title = getString(R.string.toolbar_title_selection)
         val spanCount = resources.getInteger(R.integer.fragment_selection__recycler_span_count)
         val spacing = resources.getDimensionPixelSize(R.dimen.fragment_selection__recycler_spacing_grid)
         val adapter = SelectionAdapter(this)
