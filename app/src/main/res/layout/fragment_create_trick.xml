@@ -18,10 +18,13 @@
 
 
     <com.google.android.material.textfield.TextInputLayout
+        android:theme="@style/TextInputLayoutStyle"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
-        android:theme="@style/TextInputLayoutStyle"
+        android:textColorHint="@color/colorSecondary"
+        app:boxStrokeColor="@color/colorSecondary"
         app:errorEnabled="true"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true">

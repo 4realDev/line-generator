@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- ToolBar -->
     <color name="colorPrimary">@color/spotify_light_black</color>
@@ -37,6 +37,7 @@
     <color name="spotify_grey3">#b3b3b3</color>
     <color name="spotify_grey4">#ecebe8</color>
 
+    <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/colorSecondary</color>
 
     <color name="ruby_white">#fbfcfc</color>
     <color name="ruby_yellow_accent_dark">#f1cb1c</color>
