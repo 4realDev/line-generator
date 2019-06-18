@@ -45,7 +45,7 @@ class CreateFragment : Fragment() {
 
 
     private fun validateInput(): Boolean {
-        return if (name == null) {
+        return if (name.isNullOrEmpty()) {
             trickName.error = "Field can't be empty"
             false
         } else {
