@@ -1,5 +1,6 @@
 package com.example.furnitures.calculator.bottombar.selection
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +8,6 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getColor
 import androidx.core.content.ContextCompat.getDrawable
 import androidx.core.graphics.drawable.DrawableCompat
@@ -19,11 +19,6 @@ import com.example.furnitures.calculator.trick.FurnitureViewState
 import com.example.furnitures.calculator.trick.HeaderViewState
 import com.example.furnitures.calculator.trick.RowViewState
 
-
-// Add Headers between Trick Views
-// Basic Idea: associate each layout with a separate class (HeaderRowType, TrickRowType)
-// Connect all via common interface (RowType{ HEADER_ROW_TYPE, TRICK_ROW_TYPE })
-
 class SelectionAdapter(private val furnitureClickListener: FurnitureClickListener) : ListAdapter<RowViewState, SelectionAdapter.ViewHolder>(DiffCallback()) {
 
     override fun getItemViewType(position: Int): Int {
@@ -32,9 +27,9 @@ class SelectionAdapter(private val furnitureClickListener: FurnitureClickListene
         else com.example.furnitures.R.layout.list_item_select_trick_header
     }
 
-    fun isHeader(position: Int): Boolean{
+    fun isHeader(position: Int): Boolean {
         val item = getItem(position)
-        return when(item){
+        return when (item) {
             is HeaderViewState -> true
             is FurnitureViewState -> false
             else -> throw IllegalStateException("RowType doesn't exist $item")
@@ -68,7 +63,7 @@ class SelectionAdapter(private val furnitureClickListener: FurnitureClickListene
                 holder.headerTitle?.text = item.furnitureCategory.toString()
 
                 // ItemView wird im RecyclerView immer wieder verwendet! d.h. muss man je nach View die Eigenschaft wieder Entfernen
-                if(item.id == "FIRST_HEADER_ID" && position == 0){
+                if (item.id == "FIRST_HEADER_ID" && position == 0) {
                     val headerView: View = holder.itemView
                     val headerContext: Context = holder.itemView.context
                     val params = LinearLayout.LayoutParams(
@@ -77,8 +72,7 @@ class SelectionAdapter(private val furnitureClickListener: FurnitureClickListene
                     )
                     params.setMargins(0, 0, 0, pxFromDp(headerContext, 26f).toInt())
                     headerView.layoutParams = params
-                }
-                else{
+                } else {
                     val headerView: View = holder.itemView
                     val headerContext: Context = holder.itemView.context
                     val params = LinearLayout.LayoutParams(
@@ -122,7 +116,7 @@ class SelectionAdapter(private val furnitureClickListener: FurnitureClickListene
                 image?.background?.setTint(if (item.isSelected) getColor(itemView.context, com.example.furnitures.R.color.colorAccent) else getColor(itemView.context, com.example.furnitures.R.color.colorSecondary))
                 // instantiate multiple Drawable objects from same image resource, they change properties for all
                 // mutate() -> mutable drawable not shares its state with any other drawable
-                image?.drawable?.mutate()?.let { DrawableCompat.setTint(it, ContextCompat.getColor(itemView.context, if (item.isSelected) com.example.furnitures.R.color.colorAccent else com.example.furnitures.R.color.colorSecondary)) }
+                image?.drawable?.mutate()?.let { DrawableCompat.setTint(it, getColor(itemView.context, if (item.isSelected) com.example.furnitures.R.color.colorAccent else com.example.furnitures.R.color.colorSecondary)) }
             }
         }
 
@@ -142,11 +136,12 @@ class SelectionAdapter(private val furnitureClickListener: FurnitureClickListene
         }
 
         // Gleicher Inhalt?
+        @SuppressLint("DiffUtilEquals") // ignore unnecessary error
         override fun areContentsTheSame(oldItem: RowViewState, newItem: RowViewState): Boolean {
-            return if(oldItem is FurnitureViewState && newItem is FurnitureViewState)
-                oldItem as FurnitureViewState == newItem as FurnitureViewState
-            else if(oldItem is HeaderViewState && newItem is HeaderViewState)
-                oldItem as HeaderViewState == newItem as HeaderViewState
+            return if (oldItem is FurnitureViewState && newItem is FurnitureViewState)
+                oldItem == newItem
+            else if (oldItem is HeaderViewState && newItem is HeaderViewState)
+                oldItem == newItem
             else false
         }
     }
