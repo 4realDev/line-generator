@@ -12,21 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.furnitures.calculator.extensions.pxFromDp
 import com.example.furnitures.calculator.trick.FurnitureViewState
 
-
-
-
 class SelectionFragment : Fragment(), SelectionAdapter.FurnitureClickListener {
-
     private lateinit var recyclerView: RecyclerView
-    //private FurnitureContract.Navigator navigator;
     private lateinit var viewModel: FurnitureContract.ViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        //AppAnalyzer.logEvent(AppAnalyzer.EVENT_SHOW_TRUCK_CALCULATOR_ITEMS);
-        //setHasOptionsMenu(true);
-        //navigator = new CalculatorNavigator(this);
-
         // wenn man this übergibt, übergibt man den Lifecycler des Fragments
         // ruft die Activity auch ViewModelProviders auf, so erstellt man zwei unterschiedliche Instanzen vom ViewModel
         // Damit beide die selbe Referenzieren, muss man bei beiden den selben Lifecylcer übergeben
@@ -51,35 +42,20 @@ class SelectionFragment : Fragment(), SelectionAdapter.FurnitureClickListener {
         // kommischerweise reverse?
         manager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int {
-                val viewType = adapter.getItemViewType(position)
-                if(adapter.isHeader(position)) return spanCount
-                else return 1
+                return if (adapter.isHeader(position)) spanCount
+                else 1
             }
         }
 
         recyclerView.layoutManager = manager
         // Zusätzliche 25dp am Boden für einheitliches Padding
-        recyclerView.setPadding(0, 0, 0, pxFromDp(this.context!!, 25f).toInt())
+        recyclerView.setPadding(0, 0, 0, pxFromDp(this.context!!, spacing.toFloat()).toInt())
         recyclerView.adapter = adapter
         viewModel.getFurnitureViewStateWithHeader().observe(viewLifecycleOwner, Observer { newData ->
             if (newData != null) adapter.submitList(newData)
         })
-
-        //viewModel.getUpNavigationEvent().observe(this, nothing -> navigator.onNavigateUpFromFurniture());
     }
 
-    //@Override
-    //public boolean onOptionsItemSelected(MenuItem item) {
-    //    switch (item.getItemId()) {
-    //        case android.R.id.home:
-    //            viewModel.onUpClicked();
-    //            return true;
-    //        default:
-    //            return super.onOptionsItemSelected(item);
-    //    }
-    //}
-
-    //region ListTrickAdapter.FurnitureClickListener
     override fun onFurnitureClicked(furniture: FurnitureViewState) {
         viewModel.onFurnitureClicked(furniture)
     }
