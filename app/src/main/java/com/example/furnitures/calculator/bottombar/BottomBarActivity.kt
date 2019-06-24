@@ -38,10 +38,6 @@ class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.menu_bottombar_settings -> {
-                val bottomNavDrawerFragment = BottomBarDialogSheet()
-                bottomNavDrawerFragment.show(supportFragmentManager, bottomNavDrawerFragment.tag)
-            }
             R.id.menu_bottombar_selection -> navigator.openBottomBarItem(BottomBarItem.SelectionTrick)
             R.id.menu_bottombar_list -> navigator.openBottomBarItem(BottomBarItem.ListTrick)
             R.id.menu_bottombar_create -> navigator.openBottomBarItem(BottomBarItem.CreateTrick)
