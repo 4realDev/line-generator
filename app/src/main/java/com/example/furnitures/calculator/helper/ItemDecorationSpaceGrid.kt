@@ -1,7 +1,6 @@
 package com.example.furnitures.calculator.helper
 
 import android.graphics.Rect
-import androidx.recyclerview.widget.RecyclerView
 import android.view.View
 
 /**

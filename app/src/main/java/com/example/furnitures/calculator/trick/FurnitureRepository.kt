@@ -5,7 +5,7 @@ import androidx.lifecycle.LiveData
 interface FurnitureRepository {
 
     /* region data */
-    fun getFurnitures(): LiveData<List<Furniture>>
+    fun getSortedFurnitures(): LiveData<List<Furniture>>
 
     //fun getSelectedFurnitures(): LiveData<List<Furniture>>
 

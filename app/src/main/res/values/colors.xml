@@ -30,6 +30,7 @@
     <color name="spotify_light_green">#62ec83</color>
     <color name="spotify_black">#121212</color>
     <color name="spotify_light_black">#212121</color>
+    <color name="spotify_medium_black">#242323</color>
     <color name="spotify_grey">#535353</color>
 
     <color name="spotify_dark_green">#008827</color>

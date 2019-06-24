@@ -2,7 +2,7 @@ package com.example.furnitures.calculator.trick
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import java.util.*
+import com.example.furnitures.calculator.extensions.randomUUID
 
 class FurnitureRepositoryImp : FurnitureRepository {
 
@@ -16,7 +16,11 @@ class FurnitureRepositoryImp : FurnitureRepository {
         furnitures.value = createInitialFurnitures()
     }
 
-    override fun getFurnitures(): LiveData<List<Furniture>> = furnitures
+    // sortierung vorher behebt fehler beim header einfügen
+    override fun getSortedFurnitures(): LiveData<List<Furniture>>{
+        sortFurnitures()
+        return furnitures
+    }
 
     //override fun getSelectedFurnitures(): LiveData<List<Furniture>> = selectedFurnitures
 
@@ -38,6 +42,7 @@ class FurnitureRepositoryImp : FurnitureRepository {
     override fun createFurniture(furnitureViewState: FurnitureViewState) {
         val furniture = map(furnitureViewState)
         furnitures.value = furnitures.value?.plus(furniture)
+        sortFurnitures()
     }
 
     override fun deleteFurnitureById(id: String) {
@@ -75,13 +80,38 @@ class FurnitureRepositoryImp : FurnitureRepository {
         }
     }
 
+    // randomUUID
+    // universally unique identifier class (UUID) generates a random 128-bit value
+    // 44e128a5-ac7a-4c9a-be4c-224b6bf81b20
     override fun createInitialFurnitures() = listOf(
-        Furniture(randomUUID(), null, 0, FurnitureType.BED, FurnitureCategory.SLIDE, 0, 22.0, true, true, false),
-        Furniture(randomUUID(), null, 1, FurnitureType.ARMCHAIR, FurnitureCategory.OTHER, 0, 22.0, true, true, false),
-        Furniture(randomUUID(), null, 2, FurnitureType.SOFA, FurnitureCategory.GRIND, 0, 22.0, true, true, false),
-        Furniture(randomUUID(), null, 3, FurnitureType.BED, FurnitureCategory.SLIDE, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), null, 4, FurnitureType.ARMCHAIR, FurnitureCategory.OTHER, 0, 22.0, false, true, false),
-        Furniture(randomUUID(), null, 5, FurnitureType.SOFA, FurnitureCategory.GRIND, 0, 22.0, false, true, false)
+        Furniture(randomUUID(), null, 0, FurnitureType.SOFA, FurnitureCategory.GRIND, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 1, FurnitureType.SOFA, FurnitureCategory.GRIND, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 2, FurnitureType.SOFA, FurnitureCategory.GRIND, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 3, FurnitureType.SOFA, FurnitureCategory.GRIND, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 4, FurnitureType.SOFA, FurnitureCategory.GRIND, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 5, FurnitureType.SOFA, FurnitureCategory.GRIND, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 6, FurnitureType.SOFA, FurnitureCategory.GRIND, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 7, FurnitureType.SOFA, FurnitureCategory.GRIND, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 8, FurnitureType.SOFA, FurnitureCategory.GRIND, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 9, FurnitureType.SOFA, FurnitureCategory.GRIND, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 10, FurnitureType.SOFA, FurnitureCategory.GRIND, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 11, FurnitureType.SOFA, FurnitureCategory.GRIND, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 12, FurnitureType.BED, FurnitureCategory.SLIDE, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 13, FurnitureType.BED, FurnitureCategory.SLIDE, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 14, FurnitureType.BED, FurnitureCategory.SLIDE, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 15, FurnitureType.BED, FurnitureCategory.SLIDE, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 16, FurnitureType.BED, FurnitureCategory.SLIDE, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 17, FurnitureType.BED, FurnitureCategory.SLIDE, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 18, FurnitureType.BED, FurnitureCategory.SLIDE, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 19, FurnitureType.BED, FurnitureCategory.SLIDE, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 20, FurnitureType.BED, FurnitureCategory.SLIDE, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 21, FurnitureType.BED, FurnitureCategory.SLIDE, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 22, FurnitureType.ARMCHAIR, FurnitureCategory.OTHER, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 23, FurnitureType.ARMCHAIR, FurnitureCategory.OTHER, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 24, FurnitureType.ARMCHAIR, FurnitureCategory.OTHER, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 25, FurnitureType.ARMCHAIR, FurnitureCategory.OTHER, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 26, FurnitureType.ARMCHAIR, FurnitureCategory.OTHER, 0, 22.0, false, true, false),
+        Furniture(randomUUID(), null, 27, FurnitureType.ARMCHAIR, FurnitureCategory.OTHER, 0, 22.0, false, true, false)
     )
 
     private fun map(furnitureViewState: FurnitureViewState): Furniture {
@@ -99,9 +129,7 @@ class FurnitureRepositoryImp : FurnitureRepository {
         )
     }
 
-    // universally unique identifier class (UUID) generates a random 128-bit value
-    // 44e128a5-ac7a-4c9a-be4c-224b6bf81b20
-    private fun randomUUID(): String {
-        return UUID.randomUUID().toString()
+    private fun sortFurnitures(){
+        furnitures.value = furnitures.value!!.sortedBy { it.furnitureCategory.sortWeight}
     }
 }

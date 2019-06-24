@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/list_item_furniture__header"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="3dp">
+
+    <TextView
+        android:id="@+id/list_item_furniture__header_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/spotify_medium_black"
+        android:letterSpacing="0.15"
+        android:text="SLIDES"
+        android:textAlignment="center"
+        android:textColor="@color/spotify_grey"
+        android:textSize="32sp"
+        android:textStyle="bold" />
+</androidx.cardview.widget.CardView>

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="fragment_selection__recycler_spacing_grid">25dp</dimen>
+    <dimen name="fragment_list__recycler_spacing">6dp</dimen>
 </resources>

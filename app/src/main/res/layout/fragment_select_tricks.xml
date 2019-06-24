@@ -7,6 +7,4 @@
     android:background="@color/colorPrimaryDark"
     android:clipToPadding="false"
     android:layoutAnimation="@anim/layout_animation_slide_from_right"
-    android:paddingTop="26dp"
-    android:paddingBottom="108dp"
     tools:listitem="@layout/list_item_select_trick" />

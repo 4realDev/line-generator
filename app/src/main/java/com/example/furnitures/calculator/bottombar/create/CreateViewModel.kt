@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import com.example.furnitures.calculator.extensions.randomUUID
 import com.example.furnitures.calculator.trick.*
-import java.util.*
 
 class CreateViewModel(application: Application) : AndroidViewModel(application), CreateContract.ViewModel {
 
@@ -41,9 +41,5 @@ class CreateViewModel(application: Application) : AndroidViewModel(application),
         )
 
         repository.createFurniture(newFurniture)
-    }
-
-    private fun randomUUID(): String {
-        return UUID.randomUUID().toString()
     }
 }

@@ -9,10 +9,10 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.furnitures.R
 import com.example.furnitures.calculator.extensions.pxFromDp
-import com.example.furnitures.calculator.helper.ItemDecorationSpaceGrid
 import com.example.furnitures.calculator.trick.FurnitureViewState
+
+
 
 
 class SelectionFragment : Fragment(), SelectionAdapter.FurnitureClickListener {
@@ -42,19 +42,26 @@ class SelectionFragment : Fragment(), SelectionAdapter.FurnitureClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        requireActivity().title = getString(R.string.toolbar_title_selection)
-        val spanCount = resources.getInteger(R.integer.fragment_selection__recycler_span_count)
-        val spacing = resources.getDimensionPixelSize(R.dimen.fragment_selection__recycler_spacing_grid)
+        requireActivity().title = getString(com.example.furnitures.R.string.toolbar_title_selection)
+        val spanCount = resources.getInteger(com.example.furnitures.R.integer.fragment_selection__recycler_span_count)
+        val spacing = resources.getDimensionPixelSize(com.example.furnitures.R.dimen.fragment_selection__recycler_spacing_grid)
         val adapter = SelectionAdapter(this)
-        // Problem wenn recycler wrap content hat -> dann setHasFixedSize
-        // recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = GridLayoutManager(activity, spanCount)
-        val spaceGrid = ItemDecorationSpaceGrid(spanCount, spacing, spacing, true, 0)
-        recyclerView.addItemDecoration(spaceGrid)
-        recyclerView.setPadding(0, pxFromDp(this.context!!, 26f).toInt(), 0, pxFromDp(this.context!!, 108f).toInt())
-        recyclerView.adapter = adapter
+        val manager = GridLayoutManager(activity, spanCount)
 
-        viewModel.getFurnitureList().observe(viewLifecycleOwner, Observer { newData ->
+        // kommischerweise reverse?
+        manager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int {
+                val viewType = adapter.getItemViewType(position)
+                if(adapter.isHeader(position)) return spanCount
+                else return 1
+            }
+        }
+
+        recyclerView.layoutManager = manager
+        // Zusätzliche 25dp am Boden für einheitliches Padding
+        recyclerView.setPadding(0, 0, 0, pxFromDp(this.context!!, 25f).toInt())
+        recyclerView.adapter = adapter
+        viewModel.getFurnitureViewStateWithHeader().observe(viewLifecycleOwner, Observer { newData ->
             if (newData != null) adapter.submitList(newData)
         })
 
