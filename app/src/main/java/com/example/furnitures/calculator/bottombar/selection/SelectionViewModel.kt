@@ -59,8 +59,8 @@ class SelectionViewModel(application: Application) : AndroidViewModel(applicatio
 
         fun getHeaderIndexSlide(): Int? {
             completeRowViewStateList.forEachIndexed { index, rowViewState ->
-                if(rowViewState.furnitureCategory == FurnitureCategory.GRIND && index != completeRowViewStateList.lastIndex) {
-                    if(completeRowViewStateList[index].furnitureCategory != completeRowViewStateList[index + 1].furnitureCategory){
+                if (rowViewState.furnitureCategory == FurnitureCategory.GRIND && index != completeRowViewStateList.lastIndex) {
+                    if (completeRowViewStateList[index].furnitureCategory != completeRowViewStateList[index + 1].furnitureCategory) {
                         headerIndexSlide = index + 1
                     }
                 }
@@ -70,8 +70,8 @@ class SelectionViewModel(application: Application) : AndroidViewModel(applicatio
 
         fun getHeaderIndexOther(): Int? {
             completeRowViewStateList.forEachIndexed { index, rowViewState ->
-                if(rowViewState.furnitureCategory == FurnitureCategory.SLIDE && index != completeRowViewStateList.lastIndex){
-                    if(completeRowViewStateList[index].furnitureCategory != completeRowViewStateList[index + 1].furnitureCategory){
+                if (rowViewState.furnitureCategory == FurnitureCategory.SLIDE && index != completeRowViewStateList.lastIndex) {
+                    if (completeRowViewStateList[index].furnitureCategory != completeRowViewStateList[index + 1].furnitureCategory) {
                         headerIndexOther = index + 1
                     }
                 }
