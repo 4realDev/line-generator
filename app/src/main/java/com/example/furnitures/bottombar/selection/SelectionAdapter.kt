@@ -116,7 +116,7 @@ class SelectionAdapter(private val furnitureClickListener: FurnitureClickListene
                 if (name != null)
                     title?.setText(name)
                 image?.setImageResource(item.drawableResId)
-                image?.background = getDrawable(itemView.context, R.drawable.background_furniture)
+                image?.background = getDrawable(itemView.context, R.drawable.background_trick_stroked_cicle)
 
                 // Verhindern, das alle Furnitures mit selber Image Resource gleichzeitig getriggert werden
                 // instantiate multiple Drawable objects from same image resource change properties for all
