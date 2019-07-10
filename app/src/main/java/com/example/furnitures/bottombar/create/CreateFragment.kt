@@ -207,12 +207,25 @@ class CreateFragment : Fragment() {
     }
 
     private fun loadLayoutAnimation() {
-        val animFallDownRecycler = AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_animation_fall_down)
-        animFallDownRecycler.animation.startOffset = 0
-        animFallDownRecycler.animation.duration = 300
-        animFallDownRecycler.delay = 0.25f
-        fragment_create_trick.layoutAnimation = animFallDownRecycler
-        fragment_create_trick.startLayoutAnimation()
+        val animFadeInFragment = AnimationUtils.loadAnimation(requireContext(), R.anim.item_animation_fade_in)
+        val animFadeInImage = AnimationUtils.loadAnimation(requireContext(), R.anim.item_animation_scale)
+        val animFadeInInputText = AnimationUtils.loadAnimation(requireContext(), R.anim.item_animation_fade_in)
+        val animFadeInCategory = AnimationUtils.loadAnimation(requireContext(), R.anim.item_animation_fade_in)
+        val animFadeInDifficulty = AnimationUtils.loadAnimation(requireContext(), R.anim.item_animation_fade_in)
+        val animFadeInCreateBtn = AnimationUtils.loadAnimation(requireContext(), R.anim.item_animation_fade_in)
+        animFadeInFragment.startOffset = 0
+        animFadeInFragment.duration = 1000
+        animFadeInInputText.startOffset = 600
+        animFadeInCategory.startOffset = 600
+        animFadeInDifficulty.startOffset = 600
+        animFadeInCreateBtn.startOffset = 600
+        animFadeInImage.startOffset = 1000
+        fragment_create_trick.startAnimation(animFadeInFragment)
+        fragment_create_trick__image.startAnimation(animFadeInImage)
+        fragment_create_trick__text_input_layout.startAnimation(animFadeInInputText)
+        fragment_create_trick__category_group.startAnimation(animFadeInCategory)
+        fragment_create_trick__difficulty_group.startAnimation(animFadeInDifficulty)
+        fragment_create_trick__create_button.startAnimation(animFadeInCreateBtn)
     }
 
     companion object {
