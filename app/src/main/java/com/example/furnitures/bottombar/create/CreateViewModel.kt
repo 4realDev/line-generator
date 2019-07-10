@@ -1,4 +1,4 @@
-package com.example.furnitures.calculator.bottombar.create
+package com.example.furnitures.bottombar.create
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel

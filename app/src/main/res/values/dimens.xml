@@ -2,4 +2,6 @@
 <resources>
     <dimen name="fragment_selection__recycler_spacing_grid">25dp</dimen>
     <dimen name="fragment_list__recycler_spacing">6dp</dimen>
+    <!-- Android Component Height by default always 48dp -->
+    <dimen name="fragment_create_trick__collapsed_create_button">48dp</dimen>
 </resources>

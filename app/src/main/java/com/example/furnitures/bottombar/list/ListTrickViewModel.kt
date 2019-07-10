@@ -1,4 +1,4 @@
-package com.example.furnitures.calculator.bottombar.list
+package com.example.furnitures.bottombar.list
 
 import android.app.Application
 import android.util.Log
@@ -20,6 +20,7 @@ class ListTrickViewModel(application: Application) : AndroidViewModel(applicatio
     // Verwendung von statische Liste
     // LiveData nur sinnvoll, wenn beide Screen parallel laufen könnten
     private val selectedFurnituresList = repository.getSelectedFurnituresList()
+    private val shuffledSelectedFurnitureList = selectedFurnituresList.shuffled()
 
     // List wird übergeben anstatt LiveData
     // Transformations.map auf selectedFurnituresLIVEDATA wird nicht aufgerufen
@@ -36,7 +37,7 @@ class ListTrickViewModel(application: Application) : AndroidViewModel(applicatio
         // Methoden Referenz
         // for-Schleife beider ein Element der Liste in ein anderes Element der Liste gemappt wird
         // index = Listen Position
-        selectedFurnitureListViewState.value = selectedFurnituresList.mapIndexed(::map)
+        selectedFurnitureListViewState.value = shuffledSelectedFurnitureList.mapIndexed(::map)
     }
 
     override fun getSelectedItemsViewState(): LiveData<List<FurnitureViewState>> = selectedFurnitureListViewState

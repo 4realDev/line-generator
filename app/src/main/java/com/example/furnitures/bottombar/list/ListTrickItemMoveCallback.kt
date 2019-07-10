@@ -1,4 +1,4 @@
-package com.example.furnitures.calculator.bottombar.list
+package com.example.furnitures.bottombar.list
 
 import android.graphics.Canvas
 import android.util.Log

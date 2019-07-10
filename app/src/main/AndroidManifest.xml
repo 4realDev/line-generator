@@ -9,14 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".calculator.bottombar.create.CreateActivity">
+        <activity android:name="com.example.furnitures.bottombar.create.CreateActivity">
         </activity>
         <!-- android:windowSoftInputMode="adjustPan" notwendig für EditText -->
         <!-- controll input method (such as on-screen keyboard) on changing focus of editable textviews -->
         <!-- stateVisible - visible by default -->
         <!-- adjustResize by default - try to show whole content -->
         <!-- überschreiben mit adjustPan - zeige alles über dem ediable TextView -->
-        <activity android:name=".calculator.bottombar.BottomBarActivity" android:windowSoftInputMode="adjustPan">
+        <activity android:name="com.example.furnitures.bottombar.BottomBarActivity" android:windowSoftInputMode="adjustPan">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

@@ -1,4 +1,4 @@
-package com.example.furnitures.calculator.bottombar.selection
+package com.example.furnitures.bottombar.selection
 
 import androidx.lifecycle.LiveData
 import com.example.furnitures.calculator.trick.FurnitureViewState

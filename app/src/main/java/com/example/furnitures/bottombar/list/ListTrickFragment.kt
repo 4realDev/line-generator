@@ -1,9 +1,10 @@
-package com.example.furnitures.calculator.bottombar.list
+package com.example.furnitures.bottombar.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.animation.AnimationUtils
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -76,6 +77,17 @@ class ListTrickFragment : Fragment() {
             ->
             if (newData != null) adapter.onFurnitureItemsUpdate(newData)
         })
+
+        loadAnimation()
+    }
+
+    private fun loadAnimation() {
+        val animFallDownRecycler = AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_animation_fall_down)
+        animFallDownRecycler.animation.startOffset = 0
+        animFallDownRecycler.animation.duration = 300
+        animFallDownRecycler.delay = 0.25f
+        recyclerView.layoutAnimation = animFallDownRecycler
+        recyclerView.startLayoutAnimation()
     }
 
     companion object {

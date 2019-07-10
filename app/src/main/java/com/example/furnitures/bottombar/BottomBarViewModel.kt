@@ -1,4 +1,4 @@
-package com.example.furnitures.calculator.bottombar
+package com.example.furnitures.bottombar
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -8,6 +8,9 @@ import androidx.lifecycle.MutableLiveData
 class BottomBarViewModel(application: Application) : AndroidViewModel(application), BottomBarContract.ViewModel {
 
     private var bottomBarNavigationEvent = MutableLiveData<BottomBarItem>()
+
+    // Contract Property
+    override var selectTrickInitialAnimation: Boolean = false
 
     override fun getBottomBarNavigationEvent(): LiveData<BottomBarItem> = bottomBarNavigationEvent
 

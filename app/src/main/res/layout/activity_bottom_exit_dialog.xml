@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/activity_exit_dialog__cancle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:paddingTop="20dp"
+        android:paddingBottom="5dp"
+        android:shadowColor="@color/white"
+        android:shadowDx="0.0"
+        android:shadowDy="0.0"
+        android:shadowRadius="6"
+        android:text="@string/action_cancel"
+        android:textSize="24dp" />
+
+    <Button
+        android:id="@+id/activity_exit_dialog__exit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@null"
+        android:paddingTop="5dp"
+        android:paddingBottom="20dp"
+        android:shadowColor="@color/white"
+        android:shadowDx="0.0"
+        android:shadowDy="0.0"
+        android:shadowRadius="6"
+        android:text="@string/action_exit"
+        android:textSize="24dp" />
+
+</LinearLayout>

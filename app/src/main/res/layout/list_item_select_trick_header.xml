@@ -3,7 +3,8 @@
     android:id="@+id/list_item_furniture__header"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:elevation="3dp">
+    android:backgroundTint="@color/colorPrimaryDark"
+    android:elevation="3dp" >
 
     <TextView
         android:id="@+id/list_item_furniture__header_title"

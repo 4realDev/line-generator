@@ -11,8 +11,13 @@
     <!-- Set another style as by the default -> need to override the default with own style -->
     <!-- normal boxStrokeColor zu finden unter Colors.xml -->
     <style name="TextInputLayoutStyle">
-        <item name="colorControlNormal">@color/colorSecondary</item>
+        <!--<item name="colorControlNormal">@color/colorSecondary</item>-->
         <item name="colorControlActivated">@color/white</item>
+    </style>
+
+    <style name="DialogAnimation">
+    <item name="android:windowEnterAnimation">@android:anim/slide_in_left</item>
+    <item name="android:windowExitAnimation">@android:anim/slide_out_right</item>
     </style>
 
 </resources>

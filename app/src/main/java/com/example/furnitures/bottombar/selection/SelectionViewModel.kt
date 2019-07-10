@@ -1,4 +1,4 @@
-package com.example.furnitures.calculator.bottombar.selection
+package com.example.furnitures.bottombar.selection
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -15,7 +15,7 @@ private const val FIRST_HEADER_ID: String = "FIRST_HEADER_ID"
 private const val SLIDE_HEADER_ID: String = "SLIDE_HEADER_ID"
 private const val OTHER_HEADER_ID: String = "OTHER_HEADER_ID"
 
-class SelectionViewModel(application: Application) : AndroidViewModel(application), FurnitureContract.ViewModel {
+class SelectionViewModel(application: Application) : AndroidViewModel(application), FurnitureContract.ViewModel{
 
     private val repository = RepositoryFactory.getFurnitureRepository()
     private val furnitures = repository.getSortedFurnitures()
@@ -52,6 +52,10 @@ class SelectionViewModel(application: Application) : AndroidViewModel(applicatio
         var headerIndexSlide: Int? = null
         var headerIndexOther: Int? = null
 
+        var grindBoolean: Boolean = false
+        var slideBoolean: Boolean = false
+        var otherBoolean: Boolean = false
+
         fun getHeaderIndexGrind(): Int? {
             headerIndexGrind = START_HEADER_POSITION
             return headerIndexGrind
@@ -79,9 +83,17 @@ class SelectionViewModel(application: Application) : AndroidViewModel(applicatio
             return headerIndexOther
         }
 
-        completeRowViewStateList.add(getHeaderIndexGrind()!!, HeaderViewState(FIRST_HEADER_ID, getHeaderIndexGrind()!!, FurnitureCategory.GRIND))
-        completeRowViewStateList.add(getHeaderIndexSlide()!!, HeaderViewState(SLIDE_HEADER_ID, getHeaderIndexSlide()!!, FurnitureCategory.SLIDE))
-        completeRowViewStateList.add(getHeaderIndexOther()!!, HeaderViewState(OTHER_HEADER_ID, getHeaderIndexOther()!!, FurnitureCategory.OTHER))
+        completeRowViewStateList.forEach {
+            if (it is FurnitureViewState) {
+                if(it.isSelected && it.furnitureCategory == FurnitureCategory.GRIND) grindBoolean = true
+                if(it.isSelected && it.furnitureCategory == FurnitureCategory.SLIDE) slideBoolean = true
+                if(it.isSelected && it.furnitureCategory == FurnitureCategory.OTHER) otherBoolean = true
+            }
+        }
+
+        completeRowViewStateList.add(getHeaderIndexGrind()!!, HeaderViewState(FIRST_HEADER_ID, getHeaderIndexGrind()!!, FurnitureCategory.GRIND, grindBoolean))
+        completeRowViewStateList.add(getHeaderIndexSlide()!!, HeaderViewState(SLIDE_HEADER_ID, getHeaderIndexSlide()!!, FurnitureCategory.SLIDE, slideBoolean))
+        completeRowViewStateList.add(getHeaderIndexOther()!!, HeaderViewState(OTHER_HEADER_ID, getHeaderIndexOther()!!, FurnitureCategory.OTHER, otherBoolean))
 
         return completeRowViewStateList
     }

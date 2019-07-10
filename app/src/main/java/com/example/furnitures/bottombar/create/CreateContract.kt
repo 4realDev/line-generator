@@ -1,4 +1,4 @@
-package com.example.furnitures.calculator.bottombar.create
+package com.example.furnitures.bottombar.create
 
 import androidx.lifecycle.LiveData
 import com.example.furnitures.calculator.trick.FurnitureCategory

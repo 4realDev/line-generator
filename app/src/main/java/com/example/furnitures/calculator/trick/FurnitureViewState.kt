@@ -15,7 +15,8 @@ data class FurnitureViewState(
 data class HeaderViewState(
     override val id: String,
     val position: Int,
-    override val furnitureCategory: FurnitureCategory
+    override val furnitureCategory: FurnitureCategory,
+    val selected: Boolean
 ): RowViewState
 
 interface RowViewState{

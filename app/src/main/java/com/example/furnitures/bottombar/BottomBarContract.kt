@@ -1,4 +1,4 @@
-package com.example.furnitures.calculator.bottombar
+package com.example.furnitures.bottombar
 
 import androidx.lifecycle.LiveData
 
@@ -13,12 +13,19 @@ interface BottomBarContract {
         fun onBottomBarItemClicked(item: BottomBarItem)
         //endregion
 
+        //region Data
+        var selectTrickInitialAnimation: Boolean
+        // endregion
+
+        // region NavigationEvents
         fun getBottomBarNavigationEvent(): LiveData<BottomBarItem>
-        //endregion NavigationEvents
+        //endregion
     }
 
     interface Navigator {
         fun openBottomBarItem(item: BottomBarItem)
+        fun onBackPressed()
+        fun onExitClicked()
     }
 }
 
