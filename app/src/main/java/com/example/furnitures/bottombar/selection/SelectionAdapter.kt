@@ -16,10 +16,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.furnitures.R
-import com.example.furnitures.calculator.extensions.pxFromDp
-import com.example.furnitures.calculator.trick.FurnitureViewState
-import com.example.furnitures.calculator.trick.HeaderViewState
-import com.example.furnitures.calculator.trick.RowViewState
+import com.example.furnitures.extensions.pxFromDp
+import com.example.furnitures.trick.FurnitureViewState
+import com.example.furnitures.trick.HeaderViewState
+import com.example.furnitures.trick.RowViewState
 
 class SelectionAdapter(private val furnitureClickListener: FurnitureClickListener) : ListAdapter<RowViewState, SelectionAdapter.ViewHolder>(DiffCallback()) {
 

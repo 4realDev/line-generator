@@ -1,4 +1,4 @@
-package com.example.furnitures.calculator.helper
+package com.example.furnitures.helper
 
 import android.graphics.Rect
 import android.view.View

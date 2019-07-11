@@ -1,4 +1,4 @@
-package com.example.furnitures.calculator.trick
+package com.example.furnitures.trick
 
 data class FurnitureViewState(
     override val id: String,

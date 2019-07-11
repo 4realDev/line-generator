@@ -5,10 +5,10 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.furnitures.calculator.trick.Furniture
-import com.example.furnitures.calculator.trick.FurnitureTypeHelper
-import com.example.furnitures.calculator.trick.FurnitureViewState
-import com.example.furnitures.calculator.trick.RepositoryFactory
+import com.example.furnitures.trick.Furniture
+import com.example.furnitures.trick.FurnitureTypeHelper
+import com.example.furnitures.trick.FurnitureViewState
+import com.example.furnitures.trick.RepositoryFactory
 
 // index = 0 -> position = 1
 

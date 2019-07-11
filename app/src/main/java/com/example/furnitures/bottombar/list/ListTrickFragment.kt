@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.furnitures.R
-import com.example.furnitures.calculator.helper.ItemDecorationEqualSpacing
-import com.example.furnitures.calculator.trick.FurnitureViewState
+import com.example.furnitures.helper.ItemDecorationEqualSpacing
+import com.example.furnitures.trick.FurnitureViewState
 
 class ListTrickFragment : Fragment() {
 

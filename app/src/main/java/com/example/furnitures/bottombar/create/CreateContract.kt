@@ -1,7 +1,7 @@
 package com.example.furnitures.bottombar.create
 
 import androidx.lifecycle.LiveData
-import com.example.furnitures.calculator.trick.FurnitureCategory
+import com.example.furnitures.trick.FurnitureCategory
 
 class CreateContract {
     interface ViewModel {

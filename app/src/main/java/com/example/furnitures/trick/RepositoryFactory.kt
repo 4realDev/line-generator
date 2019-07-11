@@ -1,4 +1,4 @@
-package com.example.furnitures.calculator.trick
+package com.example.furnitures.trick
 
 object RepositoryFactory {
 

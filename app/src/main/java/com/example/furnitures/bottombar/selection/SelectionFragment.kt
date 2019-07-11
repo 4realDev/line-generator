@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.furnitures.R
 import com.example.furnitures.bottombar.BottomBarContract
 import com.example.furnitures.bottombar.BottomBarViewModel
-import com.example.furnitures.calculator.extensions.pxFromDp
-import com.example.furnitures.calculator.trick.FurnitureViewState
+import com.example.furnitures.extensions.pxFromDp
+import com.example.furnitures.trick.FurnitureViewState
 
 class SelectionFragment : Fragment(), SelectionAdapter.FurnitureClickListener {
     private lateinit var recyclerView: RecyclerView

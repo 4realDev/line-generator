@@ -4,8 +4,8 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.furnitures.calculator.extensions.randomUUID
-import com.example.furnitures.calculator.trick.*
+import com.example.furnitures.extensions.randomUUID
+import com.example.furnitures.trick.*
 
 class CreateViewModel(application: Application) : AndroidViewModel(application), CreateContract.ViewModel {
 

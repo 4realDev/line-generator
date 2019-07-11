@@ -4,7 +4,7 @@ import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
-import com.example.furnitures.calculator.trick.*
+import com.example.furnitures.trick.*
 
 private const val START_HEADER_POSITION: Int = 0
 

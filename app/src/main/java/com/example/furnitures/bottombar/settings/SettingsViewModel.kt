@@ -3,7 +3,7 @@ package com.example.furnitures.bottombar.create
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import com.example.furnitures.calculator.trick.RepositoryFactory
+import com.example.furnitures.trick.RepositoryFactory
 
 class SettingsViewModel(application: Application) : AndroidViewModel(application), SettingsContract.ViewModel {
 

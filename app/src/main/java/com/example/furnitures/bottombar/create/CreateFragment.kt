@@ -20,7 +20,7 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.furnitures.R
-import com.example.furnitures.calculator.trick.FurnitureCategory
+import com.example.furnitures.trick.FurnitureCategory
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import info.hoang8f.android.segmented.SegmentedGroup

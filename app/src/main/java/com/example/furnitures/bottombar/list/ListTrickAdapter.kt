@@ -12,7 +12,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import com.example.furnitures.calculator.trick.FurnitureViewState
+import com.example.furnitures.trick.FurnitureViewState
 
 
 class ListTrickAdapter(

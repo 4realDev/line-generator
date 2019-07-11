@@ -1,4 +1,4 @@
-package com.example.furnitures.calculator.extensions
+package com.example.furnitures.extensions
 
 import android.content.Context
 

@@ -1,4 +1,4 @@
-package com.example.furnitures.calculator.trick
+package com.example.furnitures.trick
 
 /**
  * Copyright (c) 2017 fluidmobile GmbH. All rights reserved.

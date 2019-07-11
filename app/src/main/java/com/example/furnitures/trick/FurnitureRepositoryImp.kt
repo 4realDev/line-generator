@@ -1,8 +1,8 @@
-package com.example.furnitures.calculator.trick
+package com.example.furnitures.trick
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.furnitures.calculator.extensions.randomUUID
+import com.example.furnitures.extensions.randomUUID
 
 class FurnitureRepositoryImp : FurnitureRepository {
 

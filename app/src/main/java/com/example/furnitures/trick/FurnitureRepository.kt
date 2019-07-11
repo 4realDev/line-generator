@@ -1,4 +1,4 @@
-package com.example.furnitures.calculator.trick
+package com.example.furnitures.trick
 
 import androidx.lifecycle.LiveData
 
