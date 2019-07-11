@@ -35,7 +35,7 @@ class BottomBarNavigator(activity: FragmentActivity) : BottomBarContract.Navigat
         val tag = SelectionFragment::class.java.name
         activity.supportFragmentManager
             .beginTransaction()
-            .replace(com.example.furnitures.R.id.activity_trick_container__frame_layout, SelectionFragment.newInstance(), tag)
+            .replace(R.id.activity_trick_container__frame_layout, SelectionFragment.newInstance(), tag)
             .commit()
     }
 
@@ -43,7 +43,7 @@ class BottomBarNavigator(activity: FragmentActivity) : BottomBarContract.Navigat
         val tag = ListTrickFragment::class.java.name
         activity.supportFragmentManager
             .beginTransaction()
-            .replace(com.example.furnitures.R.id.activity_trick_container__frame_layout, ListTrickFragment.newInstance(), tag)
+            .replace(R.id.activity_trick_container__frame_layout, ListTrickFragment.newInstance(), tag)
             .commit()
     }
 
@@ -51,7 +51,7 @@ class BottomBarNavigator(activity: FragmentActivity) : BottomBarContract.Navigat
         val tag = CreateFragment::class.java.name
         activity.supportFragmentManager
             .beginTransaction()
-            .replace(com.example.furnitures.R.id.activity_trick_container__frame_layout, CreateFragment.newInstance(), tag)
+            .replace(R.id.activity_trick_container__frame_layout, CreateFragment.newInstance(), tag)
             .commit()
     }
 
