@@ -80,7 +80,7 @@ class SettingsFragment : Fragment() {
         numberPickerDifficulty.wrapSelectorWheel = true
         numberPickerDifficulty.displayedValues = difficultyList
 
-        class StringFormatter: NumberPicker.Formatter {
+        class StringFormatter : NumberPicker.Formatter {
             override fun format(value: Int): String {
                 val defaultDifficulty = difficultyList[2]
                 // displayedValues sets value back to 0
@@ -102,7 +102,7 @@ class SettingsFragment : Fragment() {
 
     private fun setupListeners() {
         createBtn.setOnClickListener {
-//            validateInput()
+            //            validateInput()
             loadButtonToggle()
             true
         }
