@@ -49,6 +49,7 @@ class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
             id.menu_bottombar_selection -> navigator.openBottomBarItem(BottomBarItem.SelectionTrick)
             id.menu_bottombar_list -> navigator.openBottomBarItem(BottomBarItem.ListTrick)
             id.menu_bottombar_create -> navigator.openBottomBarItem(BottomBarItem.CreateTrick)
+            id.menu_bottombar_settings -> navigator.openBottomBarItem(BottomBarItem.SettingsTrick)
         }
         return true
     }

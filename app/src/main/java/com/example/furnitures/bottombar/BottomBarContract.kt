@@ -33,4 +33,5 @@ sealed class BottomBarItem {
     object ListTrick : BottomBarItem()
     object SelectionTrick : BottomBarItem()
     object CreateTrick : BottomBarItem()
+    object SettingsTrick: BottomBarItem()
 }

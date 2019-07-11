@@ -12,7 +12,7 @@
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
         android:scaleType="center"
-        tools:src="@drawable/background_trick_filled_cicle" />
+        tools:src="@drawable/background_trick_stroked_cicle" />
 
     <TextView
         android:id="@+id/list_item_furniture__title"

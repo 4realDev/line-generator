@@ -13,8 +13,8 @@
     <string name="menu_title_list">List</string>
     <string name="menu_title_create">New</string>
 
-    <string name="toolbar_title_settings">Settings</string>
-    <string name="toolbar_title_selection">Select your Trick</string>
+    <string name="toolbar_title_settings">Setup your Line</string>
+    <string name="toolbar_title_selection">Select your Tricks</string>
     <string name="toolbar_title_list">Your Trick List</string>
     <string name="toolbar_title_create">Create your Trick</string>
 

@@ -1,10 +1,11 @@
 package com.example.furnitures.bottombar
 
 import androidx.fragment.app.FragmentActivity
+import com.example.furnitures.R
 import com.example.furnitures.bottombar.create.CreateFragment
+import com.example.furnitures.bottombar.create.SettingsFragment
 import com.example.furnitures.bottombar.list.ListTrickFragment
 import com.example.furnitures.bottombar.selection.SelectionFragment
-
 
 
 class BottomBarNavigator(activity: FragmentActivity) : BottomBarContract.Navigator {
@@ -16,6 +17,7 @@ class BottomBarNavigator(activity: FragmentActivity) : BottomBarContract.Navigat
             BottomBarItem.SelectionTrick -> openSelection()
             BottomBarItem.ListTrick -> openList()
             BottomBarItem.CreateTrick -> openCreate()
+            BottomBarItem.SettingsTrick -> openSettings()
         }
     }
 
@@ -50,6 +52,14 @@ class BottomBarNavigator(activity: FragmentActivity) : BottomBarContract.Navigat
         activity.supportFragmentManager
             .beginTransaction()
             .replace(com.example.furnitures.R.id.activity_trick_container__frame_layout, CreateFragment.newInstance(), tag)
+            .commit()
+    }
+
+    fun openSettings() {
+        val tag = BottomBarItem.SettingsTrick::class.java.name
+        activity.supportFragmentManager
+            .beginTransaction()
+            .replace(R.id.activity_trick_container__frame_layout, SettingsFragment.newInstance(), tag)
             .commit()
     }
 }
