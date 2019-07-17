@@ -7,8 +7,6 @@ interface FurnitureRepository {
     /* region data */
     fun getSortedFurnitures(): LiveData<List<Furniture>>
 
-    //fun getSelectedFurnitures(): LiveData<List<Furniture>>
-
     fun getSelectedFurnituresList(): List<Furniture>
 
     fun getFurnitureById(id: String): Furniture?

@@ -71,8 +71,9 @@
                         android:id="@+id/fragment_create__trick_name_input"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:hint="Trick"
+                        android:hint="@string/furniture_create_fragment_text_input_field"
                         android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
                         android:textColor="@color/white" />
 
                 </com.google.android.material.textfield.TextInputLayout>
@@ -91,14 +92,14 @@
                     segmentedgroup:sc_tint_color="@color/colorSecondary">
 
                     <RadioButton
-                        android:id="@+id/fragment_create_trick__category_grindes"
+                        android:id="@+id/fragment_create_trick__category_grinds"
                         style="@style/RadioButton"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:checked="true"
                         android:foreground="?attr/selectableItemBackground"
-                        android:text="Grindes"
+                        android:text="@string/furniture_category_grinds"
                         android:textSize="14sp" />
 
                     <RadioButton
@@ -108,7 +109,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:foreground="?attr/selectableItemBackground"
-                        android:text="Slides"
+                        android:text="@string/furniture_category_slides"
                         android:textSize="14sp" />
 
                     <RadioButton
@@ -118,7 +119,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:foreground="?attr/selectableItemBackground"
-                        android:text="Others"
+                        android:text="@string/furniture_category_others"
                         android:textSize="14sp" />
 
                 </info.hoang8f.android.segmented.SegmentedGroup>
@@ -145,7 +146,7 @@
                         android:layout_weight="1"
                         android:checked="true"
                         android:foreground="?attr/selectableItemBackground"
-                        android:text="Joke"
+                        android:text="@string/furniture_difficulty_joke"
                         android:textSize="14sp" />
 
                     <RadioButton
@@ -155,7 +156,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:foreground="?attr/selectableItemBackground"
-                        android:text="Easy"
+                        android:text="@string/furniture_difficulty_easy"
                         android:textSize="14sp" />
 
                     <RadioButton
@@ -165,7 +166,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:foreground="?attr/selectableItemBackground"
-                        android:text="Middle"
+                        android:text="@string/furniture_difficulty_middle"
                         android:textSize="14sp" />
 
                     <RadioButton
@@ -175,7 +176,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:foreground="?attr/selectableItemBackground"
-                        android:text="Hard"
+                        android:text="@string/furniture_difficulty_hard"
                         android:textSize="14sp" />
 
                     <RadioButton
@@ -185,7 +186,7 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:foreground="?attr/selectableItemBackground"
-                        android:text="Crazy"
+                        android:text="@string/furniture_difficulty_crazy"
                         android:textSize="14sp" />
 
                 </info.hoang8f.android.segmented.SegmentedGroup>
@@ -219,7 +220,7 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:letterSpacing="0.15"
-                        android:text="Create Trick"
+                        android:text="@string/furniture_create_fragment_create_buttom"
                         android:textAllCaps="true"
                         android:textColor="@color/white"
                         android:textStyle="bold" />

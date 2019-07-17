@@ -21,6 +21,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.furnitures.R
 import com.example.furnitures.trick.FurnitureCategory
+import com.example.furnitures.trick.FurnitureDifficulty
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import info.hoang8f.android.segmented.SegmentedGroup
@@ -40,6 +41,9 @@ class CreateFragment : Fragment() {
 
     private lateinit var categoryGroup: SegmentedGroup
     private lateinit var category: FurnitureCategory
+
+    private lateinit var difficultyGroup: SegmentedGroup
+    private lateinit var difficulty: FurnitureDifficulty
 
     private lateinit var snackBar: Snackbar
     private lateinit var snackBarView: View
@@ -62,6 +66,7 @@ class CreateFragment : Fragment() {
         createBtnCheck = view.findViewById(R.id.fragment_create_trick__create_button_check)
         categoryImage = view.findViewById(R.id.fragment_create_trick__image)
         categoryGroup = view.findViewById(R.id.fragment_create_trick__category_group)
+        difficultyGroup = view.findViewById(R.id.fragment_create_trick__difficulty_group)
 
         snackBar = Snackbar.make(view.findViewById(R.id.fragment_create_trick__coordinatorLayout), "", Snackbar.LENGTH_SHORT)
         snackBarView = snackBar.view
@@ -81,6 +86,7 @@ class CreateFragment : Fragment() {
     private fun setupDefaultValues() {
         categoryImage.setImageResource(R.drawable.ic_letter_g)
         category = FurnitureCategory.GRIND
+        difficulty = FurnitureDifficulty.JOKE
         createBtnCollapsedWidth = resources.getDimension(R.dimen.fragment_create_trick__collapsed_create_button).toInt()
     }
 
@@ -102,7 +108,7 @@ class CreateFragment : Fragment() {
 
         categoryGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
-                R.id.fragment_create_trick__category_grindes -> {
+                R.id.fragment_create_trick__category_grinds -> {
                     category = FurnitureCategory.GRIND
                     loadCategoryAnimation()
                     categoryImage.setImageResource(R.drawable.ic_letter_g)
@@ -119,6 +125,26 @@ class CreateFragment : Fragment() {
                 }
             }
         }
+
+        difficultyGroup.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.fragment_create_trick__difficulty_joke -> {
+                    difficulty = FurnitureDifficulty.JOKE
+                }
+                R.id.fragment_create_trick__difficulty_easy -> {
+                    difficulty = FurnitureDifficulty.EASY
+                }
+                R.id.fragment_create_trick__difficulty_middle -> {
+                    difficulty = FurnitureDifficulty.MIDDLE
+                }
+                R.id.fragment_create_trick__difficulty_hard -> {
+                    difficulty = FurnitureDifficulty.HARD
+                }
+                R.id.fragment_create_trick__difficulty_crazy -> {
+                    difficulty = FurnitureDifficulty.CRAZY
+                }
+            }
+        }
     }
 
     private fun validateInput(): Boolean {
@@ -128,7 +154,7 @@ class CreateFragment : Fragment() {
         } else {
             createBtn.isEnabled = false
             trickName.error = null
-            viewModel.createTrick(name!!, category)
+            viewModel.createTrick(name!!, category, difficulty)
             snackBar.setText("$name successfully added")
             loadButtonToggle()
             true

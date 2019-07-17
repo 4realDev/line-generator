@@ -15,12 +15,14 @@ import android.widget.*
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.furnitures.R
+import com.example.furnitures.bottombar.settings.SettingsService
+import com.example.furnitures.trick.FurnitureDifficulty
+import com.example.furnitures.trick.FurnitureDifficultyHelper
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_create_trick.fragment_create_trick
 import kotlinx.android.synthetic.main.fragment_create_trick.fragment_create_trick__create_button
 import kotlinx.android.synthetic.main.fragment_create_trick.fragment_create_trick__image
 import kotlinx.android.synthetic.main.fragment_settings.*
-
 
 class SettingsFragment : Fragment() {
 
@@ -28,8 +30,13 @@ class SettingsFragment : Fragment() {
     private lateinit var categoryImage: ImageView
     private lateinit var numberPickerMaxTricks: NumberPicker
     private lateinit var numberPickerDifficulty: NumberPicker
-    private val difficultyList: Array<String> = arrayOf("Joke", "Easy", "Middle", "Hard", "Impossible")
-
+    private val difficultyList: Array<String> = arrayOf(
+        FurnitureDifficulty.JOKE.name.toLowerCase().capitalize(),
+        FurnitureDifficulty.EASY.name.toLowerCase().capitalize(),
+        FurnitureDifficulty.MIDDLE.name.toLowerCase().capitalize(),
+        FurnitureDifficulty.HARD.name.toLowerCase().capitalize(),
+        FurnitureDifficulty.CRAZY.name.toLowerCase().capitalize()
+    )
     private lateinit var createBtn: FrameLayout
     private lateinit var createBtnText: TextView
     private lateinit var createBtnProgressBar: ProgressBar
@@ -69,58 +76,49 @@ class SettingsFragment : Fragment() {
         setupDefaultValues()
         setupListeners()
         loadLayoutAnimation()
-
-        numberPickerMaxTricks.minValue = 1
-        numberPickerMaxTricks.maxValue = 69
-        numberPickerMaxTricks.value = 5
-        numberPickerMaxTricks.wrapSelectorWheel = true
-
-        numberPickerDifficulty.maxValue = difficultyList.size - 1
-        numberPickerDifficulty.value = 2
-        numberPickerDifficulty.wrapSelectorWheel = true
-        numberPickerDifficulty.displayedValues = difficultyList
-
-        class StringFormatter : NumberPicker.Formatter {
-            override fun format(value: Int): String {
-                val defaultDifficulty = difficultyList[2]
-                // displayedValues sets value back to 0
-                // catch 0 and set default value
-                return when (value) {
-                    0 -> defaultDifficulty
-                    else -> throw Throwable("Unknown value: $value")
-                }
-            }
-        }
-
-        numberPickerDifficulty.setFormatter(StringFormatter())
     }
 
     private fun setupDefaultValues() {
-//        categoryImage.setImageResource(R.drawable.ic_letter_g)
         createBtnCollapsedWidth = resources.getDimension(R.dimen.fragment_create_trick__collapsed_create_button).toInt()
+
+        numberPickerMaxTricks.minValue = 1
+        numberPickerMaxTricks.maxValue = 69
+        numberPickerMaxTricks.value = SettingsService.getMaxTricks(context!!)
+        numberPickerMaxTricks.wrapSelectorWheel = true
+
+        val defaultDifficulty = SettingsService.getDifficulty(context!!).weight - 1
+        numberPickerDifficulty.maxValue = difficultyList.size - 1
+        numberPickerDifficulty.value = defaultDifficulty
+        numberPickerDifficulty.wrapSelectorWheel = true
+        numberPickerDifficulty.displayedValues = difficultyList
+
+//        class StringFormatter : NumberPicker.Formatter {
+//            override fun format(value: Int): String {
+//                // catch 0 and set default value
+//                return when (value) {
+//                    0 -> SettingsService.getDifficulty(context!!)
+//                    else -> throw Throwable("Unknown value: $value")
+//                }
+//            }
+//        }
+//
+//        numberPickerDifficulty.setFormatter(StringFormatter())
     }
 
     private fun setupListeners() {
         createBtn.setOnClickListener {
-            //            validateInput()
             loadButtonToggle()
             true
         }
-    }
 
-//    private fun validateInput(): Boolean {
-//        return if (name.isNullOrEmpty()) {
-//            trickName.error = "Field can't be empty"
-//            false
-//        } else {
-//            createBtn.isEnabled = false
-//            trickName.error = null
-//            viewModel.createTrick(name!!, category)
-//            snackBar.setText("$name successfully added")
-//            loadButtonToggle()
-//            true
-//        }
-//    }
+        numberPickerMaxTricks.setOnValueChangedListener { _, _, newVal ->
+            viewModel.setMaxTricks(newVal)
+        }
+
+        numberPickerDifficulty.setOnValueChangedListener { _, _, newVal ->
+            viewModel.setDifficulty(FurnitureDifficultyHelper.getFurnitureDifficulty(difficultyList[newVal]))
+        }
+    }
 
     private fun loadButtonToggle() {
         animateButtonWidth(createBtnCollapsedWidth)

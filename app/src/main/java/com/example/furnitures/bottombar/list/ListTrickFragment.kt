@@ -12,13 +12,16 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.furnitures.R
+import com.example.furnitures.bottombar.create.SettingsContract
+import com.example.furnitures.bottombar.create.SettingsViewModel
 import com.example.furnitures.helper.ItemDecorationEqualSpacing
 import com.example.furnitures.trick.FurnitureViewState
 
 class ListTrickFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
-    private lateinit var viewModel: ListTrickContract.ViewModel
+    private lateinit var listViewModel: ListTrickContract.ViewModel
+    private lateinit var settingsViewModel: SettingsContract.ViewModel
 
     private lateinit var listTrickItemMoveCallback: ListTrickItemMoveCallback
     private lateinit var itemTouchHelper: ItemTouchHelper
@@ -26,12 +29,12 @@ class ListTrickFragment : Fragment() {
     private val adapter = ListTrickAdapter(
         object : ListTrickAdapter.FurnitureModificationListener {
             override fun onItemRemove(furnitureItem: FurnitureViewState) {
-                viewModel.removeFurnitureItem(furnitureItem)
+                listViewModel.removeFurnitureItem(furnitureItem)
             }
 
             // wird durch onStartDrag aufgerufen
             override fun onItemMove(fromIndex: Int, toIndex: Int) {
-                viewModel.changeFurnitureItemPosition(fromIndex, toIndex)
+                listViewModel.changeFurnitureItemPosition(fromIndex, toIndex)
             }
         },
         object : ListTrickAdapter.OnStartDragListener {
@@ -43,7 +46,12 @@ class ListTrickFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(ListTrickViewModel::class.java)
+        // LifeCycle muss this sein, damit die Liste jedesmal neu generiert werden kann
+        // (ViewModel wird bei jedem Aufruf vom Fragments neu erstellt)
+        listViewModel = ViewModelProviders.of(this).get(ListTrickViewModel::class.java)
+        // LifeCycleOwner muss Activity sein, damit Settings bei Fragment Transaction nicht verloren gehen
+        settingsViewModel = ViewModelProviders.of(requireActivity()).get(SettingsViewModel::class.java)
+
         listTrickItemMoveCallback = ListTrickItemMoveCallback(adapter)
         itemTouchHelper = ItemTouchHelper(listTrickItemMoveCallback)
 
@@ -73,7 +81,7 @@ class ListTrickFragment : Fragment() {
 
         // Observed alle veränderungen der Liste und gibt sie an den Adapter weiter
         // submitList löst automatisch notifyDataSetChanged aus
-        viewModel.getSelectedItemsViewState().observe(viewLifecycleOwner, Observer { newData
+        listViewModel.getSelectedItemsViewState().observe(viewLifecycleOwner, Observer { newData
             ->
             if (newData != null) adapter.onFurnitureItemsUpdate(newData)
         })

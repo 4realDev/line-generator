@@ -20,7 +20,7 @@ class CreateViewModel(application: Application) : AndroidViewModel(application),
         else getInputEvent.value = true
     }
 
-    override fun createTrick(name: String, category: FurnitureCategory) {
+    override fun createTrick(name: String, category: FurnitureCategory, difficulty: FurnitureDifficulty) {
         // new Typ needed -> USER_CREATED
         var categoryDependentType = when (category) {
             FurnitureCategory.SLIDE -> FurnitureType.USER_CREATED_SLIDE
@@ -34,6 +34,7 @@ class CreateViewModel(application: Application) : AndroidViewModel(application),
             position = 0,
             furnitureType = categoryDependentType,
             furnitureCategory = category,
+            furnitureDifficulty = difficulty,
             name = null,
             userCreatedName = name,
             drawableResId = FurnitureTypeHelper.getDrawable(categoryDependentType),

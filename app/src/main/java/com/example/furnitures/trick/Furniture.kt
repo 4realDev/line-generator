@@ -5,15 +5,13 @@ package com.example.furnitures.trick
  */
 data class Furniture(
     val id: String,
-    val userCreateName: String?,
     val position: Int,
     val furnitureType: FurnitureType,
     val furnitureCategory: FurnitureCategory,
-    val count: Int,
-    val volume: Double,
+    val furnitureDifficulty: FurnitureDifficulty,
+    val userCreateName: String?,
     val isSelected: Boolean,
-    val isDefault: Boolean,
-    private val isTombstone: Boolean = false
+    val isDefault: Boolean
 ): Comparable<Furniture>{
     // jedesmal aufgerufen wenn sortBy aufgerufen wird
     override fun compareTo(other: Furniture): Int {
@@ -36,5 +34,9 @@ enum class FurnitureType {
 }
 
 enum class  FurnitureCategory(val sortWeight : Int) {
-    GRIND(1), SLIDE(2), OTHER(3), UNDEFINED(-1),
+    GRIND(1), SLIDE(2), OTHER(3)
+}
+
+enum class FurnitureDifficulty(val weight: Int) {
+    JOKE(1), EASY(2), MIDDLE(3), HARD(4), CRAZY(5)
 }

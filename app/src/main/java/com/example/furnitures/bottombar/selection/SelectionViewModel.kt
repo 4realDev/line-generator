@@ -39,6 +39,7 @@ class SelectionViewModel(application: Application) : AndroidViewModel(applicatio
             position = furniture.position,
             furnitureType = furniture.furnitureType,
             furnitureCategory = furniture.furnitureCategory,
+            furnitureDifficulty = furniture.furnitureDifficulty,
             name = FurnitureTypeHelper.getString(furniture.furnitureType),
             userCreatedName = furniture.userCreateName,
             drawableResId = FurnitureTypeHelper.getDrawable(furniture.furnitureType),
@@ -52,9 +53,9 @@ class SelectionViewModel(application: Application) : AndroidViewModel(applicatio
         var headerIndexSlide: Int? = null
         var headerIndexOther: Int? = null
 
-        var grindBoolean: Boolean = false
-        var slideBoolean: Boolean = false
-        var otherBoolean: Boolean = false
+        var grindBoolean = false
+        var slideBoolean = false
+        var otherBoolean = false
 
         fun getHeaderIndexGrind(): Int? {
             headerIndexGrind = START_HEADER_POSITION

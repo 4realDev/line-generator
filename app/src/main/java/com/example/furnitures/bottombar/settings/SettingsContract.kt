@@ -1,8 +1,10 @@
 package com.example.furnitures.bottombar.create
 
+import com.example.furnitures.trick.FurnitureDifficulty
+
 class SettingsContract {
     interface ViewModel {
-        fun setDifficulty(difficulty: Int)
-        fun setMaxNumbOfTricks(maxNumbOfTricks: Int)
+        fun setMaxTricks(maxTricks: Int)
+        fun setDifficulty(difficulty: FurnitureDifficulty)
     }
 }

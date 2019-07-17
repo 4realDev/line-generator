@@ -5,12 +5,12 @@ import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.furnitures.trick.Furniture
-import com.example.furnitures.trick.FurnitureTypeHelper
-import com.example.furnitures.trick.FurnitureViewState
-import com.example.furnitures.trick.RepositoryFactory
+import com.example.furnitures.bottombar.settings.SettingsService
+import com.example.furnitures.trick.*
+import kotlin.math.pow
+import kotlin.math.roundToInt
 
-// index = 0 -> position = 1
+// numbPickerIndex = 0 -> position = 1
 
 class ListTrickViewModel(application: Application) : AndroidViewModel(application), ListTrickContract.ViewModel {
 
@@ -20,7 +20,8 @@ class ListTrickViewModel(application: Application) : AndroidViewModel(applicatio
     // Verwendung von statische Liste
     // LiveData nur sinnvoll, wenn beide Screen parallel laufen könnten
     private val selectedFurnituresList = repository.getSelectedFurnituresList()
-    private val shuffledSelectedFurnitureList = selectedFurnituresList.shuffled()
+    private val shuffledSelectedFurnitureList = randomizeWithSettings(selectedFurnituresList)
+//    private val shuffledSelectedFurnitureList = selectedFurnituresList.shuffled()
 
     // List wird übergeben anstatt LiveData
     // Transformations.map auf selectedFurnituresLIVEDATA wird nicht aufgerufen
@@ -32,12 +33,138 @@ class ListTrickViewModel(application: Application) : AndroidViewModel(applicatio
 
     init {
         // einmalig, da kein Transformations.map
-        // Anonyme Funktion -> ruft mapIndexed(index, it) auf und springt da rein
-        // selectedFurnitureListViewState.value = selectedFurnituresList.map{map(index, it)}
+        // Anonyme Funktion -> ruft mapIndexed(numbPickerIndex, it) auf und springt da rein
+        // selectedFurnitureListViewState.value = selectedFurnituresList.map{map(numbPickerIndex, it)}
         // Methoden Referenz
         // for-Schleife beider ein Element der Liste in ein anderes Element der Liste gemappt wird
-        // index = Listen Position
+        // numbPickerIndex = Listen Position
         selectedFurnitureListViewState.value = shuffledSelectedFurnitureList.mapIndexed(::map)
+    }
+
+    private fun randomizeWithSettings(list: List<Furniture>): List<Furniture> {
+
+        var newRandomizedList = emptyList<Furniture>().toMutableList()
+
+        val choosenMaxTricks = SettingsService.getMaxTricks(getApplication())
+        val choosenDifficulty = SettingsService.getDifficulty(getApplication())
+
+        val arrayItems = choosenDifficulty.weight
+
+        val difficultyArray: Array<FurnitureDifficulty> = enumValues()
+
+        val difficultyPercentageArray = FloatArray(arrayItems)
+        val numberOfTricksArray = IntArray(arrayItems)
+        // Berechnung des Nenners im Bruch -> x/fraction
+        val fraction = (2.0f.pow(arrayItems - 1) - 1) * 2
+
+        for (index in 0 until arrayItems) {
+
+
+            // forelast element -> make the last the sum of the percentageArray
+            if (index == arrayItems - 1)
+                difficultyPercentageArray[difficultyPercentageArray.lastIndex] = difficultyPercentageArray.sum()
+            // calculate the percentage for each difficulty ((2^index)/fraction)
+            else
+                difficultyPercentageArray[index] = ((2.0f.pow(index) / fraction))
+
+            // calculate the number of tricks for each difficulty (maxTricks * percentage)
+            numberOfTricksArray[index] = (choosenMaxTricks * difficultyPercentageArray[index]).roundToInt()
+
+
+            // get filteredList for each difficulty
+            // shuffle filteredList, to select random set
+            var filteredList = list
+                .filter { it.furnitureDifficulty == difficultyArray[index] }
+                .shuffled()
+
+            // if difficulty exists
+            if (filteredList.isNotEmpty()) {
+                // existed elements < calculated, requested elements -> add all existed elements
+                // requested 5 - existed 3 -> add all 3
+                if (numberOfTricksArray[index] > filteredList.size)
+                    newRandomizedList.addAll(filteredList.subList(0, filteredList.size))
+                // existed elements > calculated, requested elements -> add the calculated number of elements
+                else
+                    newRandomizedList.addAll(filteredList.subList(0, numberOfTricksArray[index]))
+            }
+
+
+        }
+
+
+        // BUGGY
+        // remove elements while the randomizedList > choosenMaxTricks
+        // always remove the first element (the easiest difficulty)
+//        if(newRandomizedList.size > choosenMaxTricks) {
+//            val removedItemList = newRandomizedList
+//            while (newRandomizedList.size > choosenMaxTricks) {
+//                removedItemList.minus(removedItemList.first())
+//            }
+//            newRandomizedList = removedItemList
+//        }
+//
+        // temporäre Lösung
+//        if(newRandomizedList.size < choosenMaxTricks) {
+//            val addItemList = newRandomizedList
+//            while (newRandomizedList.size < choosenMaxTricks) {
+//                addItemList.plus(list.random())
+//            }
+//        }
+
+
+        return newRandomizedList.shuffled()
+
+        // region oldcode
+//        when (choosenDifficulty) {
+//
+//            newRandomizedList.addAll(list
+//                .filter { it.furnitureDifficulty == choosenDifficulty }
+//                .subList(0, numberOfTricksArray[choosenDifficulty.weight])
+//
+//            FurnitureDifficulty.JOKE -> {
+//                newRandomizedList.addAll(list
+//                    .filter { it.furnitureDifficulty == FurnitureDifficulty.JOKE }
+//                    .ifEmpty { return emptyList() }
+//                    .subList(0, numberOfTricksArray[0])
+//                )
+//            }
+//
+//            FurnitureDifficulty.EASY -> {
+//                newRandomizedList.addAll(list
+//                    .filter { it.furnitureDifficulty == FurnitureDifficulty.JOKE }
+//                    .ifEmpty { emptyList() }
+//                    .subList(0, numberOfTricksArray[0])
+//                )
+//                newRandomizedList.addAll(list
+//                    .filter { it.furnitureDifficulty == FurnitureDifficulty.EASY }
+//                    .ifEmpty { emptyList() }
+//                    .subList(0, numberOfTricksArray[1])
+//                )
+//            }
+//
+//            FurnitureDifficulty.MIDDLE -> {
+//                val remainingNumOfJokeItems = list.size * 0.165
+//                val remainingNumOfEasyItems = list.size * 0.335
+//                val remainingNumOfMiddleItems = list.size * 0.5
+//                newRandomizedList.addAll(list
+//                    .filter { it.furnitureDifficulty == FurnitureDifficulty.JOKE }
+//                    .dropWhile { list.size > remainingNumOfJokeItems }
+//                )
+//                newRandomizedList.addAll(list
+//                    .filter { it.furnitureDifficulty == FurnitureDifficulty.EASY }
+//                    .dropWhile { list.size > remainingNumOfEasyItems }
+//                )
+//                newRandomizedList.addAll(list
+//                    .filter { it.furnitureDifficulty == FurnitureDifficulty.MIDDLE }
+//                    .dropWhile { list.size > remainingNumOfMiddleItems }
+//                )
+//            }
+//
+//            FurnitureDifficulty.HARD -> newRandomizedList = list.toMutableList() //.dropWhile { maximumListValue < list.size }.toMutableList()
+//            FurnitureDifficulty.CRAZY -> newRandomizedList = list.toMutableList()
+//        }
+//        return newRandomizedList.shuffled()
+        // endregion
     }
 
     override fun getSelectedItemsViewState(): LiveData<List<FurnitureViewState>> = selectedFurnitureListViewState
@@ -63,11 +190,11 @@ class ListTrickViewModel(application: Application) : AndroidViewModel(applicatio
         // Am Anfang ist gemappte Liste leer
         // Befindet sich das Item in der gesuchten Position, kopiere dieses mit neuer Position
         // Falls nicht, übertrage das Item eins zu eins in die gemappte Liste
-        // Die Position, darf aber nicht direkt verändert werden (VAR position -> furniture.position = index + 1)
+        // Die Position, darf aber nicht direkt verändert werden (VAR position -> furniture.position = numbPickerIndex + 1)
         // Das würde zu einer Veränderung in allen Instancen führen (auch im Adapter)
         // Daten Properties sollen immer VAL (final sein) & so nur durch mapping "veränderbar"
         newSwapUnitList = newSwapUnitList.mapIndexed { index, furnitureViewState ->
-            // Wenn der index größer gleich fromPosition ist && der index kleiner toPosition ist
+            // Wenn der numbPickerIndex größer gleich fromPosition ist && der numbPickerIndex kleiner toPosition ist
             // Von - Bis sollen alle Items aktualisiert werden
             if (index in startPosition..endPosition) {
                 furnitureViewState.copy(position = index + 1)
@@ -98,6 +225,7 @@ class ListTrickViewModel(application: Application) : AndroidViewModel(applicatio
             position = index + 1,
             furnitureType = furniture.furnitureType,
             furnitureCategory = furniture.furnitureCategory,
+            furnitureDifficulty = furniture.furnitureDifficulty,
             name = FurnitureTypeHelper.getString(furniture.furnitureType),
             userCreatedName = furniture.userCreateName,
             drawableResId = FurnitureTypeHelper.getDrawable(furniture.furnitureType),

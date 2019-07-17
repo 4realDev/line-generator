@@ -2,19 +2,16 @@ package com.example.furnitures.bottombar.create
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
-import androidx.lifecycle.MutableLiveData
-import com.example.furnitures.trick.RepositoryFactory
+import com.example.furnitures.bottombar.settings.SettingsService
+import com.example.furnitures.trick.FurnitureDifficulty
 
 class SettingsViewModel(application: Application) : AndroidViewModel(application), SettingsContract.ViewModel {
 
-    override fun setDifficulty(difficulty: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun setMaxTricks(maxTricks: Int) {
+        SettingsService.saveMaxTricks(getApplication(), maxTricks)
     }
 
-    override fun setMaxNumbOfTricks(maxNumbOfTricks: Int) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun setDifficulty(difficulty: FurnitureDifficulty) {
+        SettingsService.saveDifficulty(getApplication(), difficulty)
     }
-
-    private lateinit var getInputEvent: MutableLiveData<Boolean>
-    private val repository = RepositoryFactory.getFurnitureRepository()
 }
