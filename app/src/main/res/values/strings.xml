@@ -6,14 +6,34 @@
     <string name="furniture_create_fragment_create_buttom">Create Trick</string>
 
     <!-- SECTION: FurnitureType -->
-    <string name="furniture_title">Add Furniture</string>
-    <string name="furniture_bed">Bed</string>
-    <string name="furniture_sofa">Sofa</string>
-    <string name="furniture_armchair">Armchair</string>
-    <string name="furniture_rename">Rename furniture</string>
+    <string name="trick_tail_stall">Tail Stall</string>
+    <string name="trick_nose_stall">Nose Stall</string>
+    <string name="trick_axle_stall">Axle Stall</string>
+    <string name="trick_rock_to_fakie">Rock to Fakie</string>
+    <string name="trick_rock_n_roll">Rock &amp; Roll</string>
+    <string name="trick_half_cab_rock">Half Cab Rock</string>
+    <string name="trick_full_cab_rock">Full Cab Rock</string>
+    <string name="trick_pivot">Pivot</string>
+    <string name="trick_five_o">Five-O Grind</string>
+    <string name="trick_nose_grind">Nose Grind</string>
+    <string name="trick_feeble">Feeble Grind</string>
+    <string name="trick_smith">Smith Grind</string>
+    <string name="trick_crooked">Crooked Grind</string>
+    <string name="trick_boneless">Boneless</string>
+    <string name="trick_ollie_air">Ollie Air</string>
+    <string name="trick_no_comply">No Comply</string>
+    <string name="trick_distaster">Distaster</string>
+
+    <!-- SECTION: FurnitureDirectionOut -->
+    <string name="furniture_out_coming_to_fakie">To Fakie</string>
+    <string name="furniture_out_coming_to_regular">To Regular</string>
+
+    <!-- SECTION: FurnitureDirectionIn -->
+    <string name="furniture_direction_in_fakie">Fakie</string>
+    <string name="furniture_direction_in_regular">Regular</string>
 
     <!-- SECTION: FurnitureDifficulty -->
-    <string name="furniture_difficulty_joke">Joke</string>
+    <string name="furniture_difficulty_save">Save</string>
     <string name="furniture_difficulty_easy">Easy</string>
     <string name="furniture_difficulty_middle">Middle</string>
     <string name="furniture_difficulty_hard">Hard</string>

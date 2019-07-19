@@ -9,8 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.example.furnitures.bottombar.create.CreateActivity">
-        </activity>
         <!-- android:windowSoftInputMode="adjustPan" notwendig für EditText -->
         <!-- controll input method (such as on-screen keyboard) on changing focus of editable textviews -->
         <!-- stateVisible - visible by default -->

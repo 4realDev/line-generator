@@ -4,7 +4,7 @@ object FurnitureDifficultyHelper {
 
     fun getFurnitureDifficulty(difficultyString: String): FurnitureDifficulty {
         return when (difficultyString) {
-            FurnitureDifficulty.JOKE.name.toLowerCase().capitalize() -> FurnitureDifficulty.JOKE
+            FurnitureDifficulty.SAVE.name.toLowerCase().capitalize() -> FurnitureDifficulty.SAVE
             FurnitureDifficulty.EASY.name.toLowerCase().capitalize() -> FurnitureDifficulty.EASY
             FurnitureDifficulty.MIDDLE.name.toLowerCase().capitalize() -> FurnitureDifficulty.MIDDLE
             FurnitureDifficulty.HARD.name.toLowerCase().capitalize() -> FurnitureDifficulty.HARD

@@ -20,6 +20,8 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.example.furnitures.R
+import com.example.furnitures.trick.DirectionIn
+import com.example.furnitures.trick.DirectionOut
 import com.example.furnitures.trick.FurnitureCategory
 import com.example.furnitures.trick.FurnitureDifficulty
 import com.google.android.material.snackbar.Snackbar
@@ -45,6 +47,12 @@ class CreateFragment : Fragment() {
     private lateinit var difficultyGroup: SegmentedGroup
     private lateinit var difficulty: FurnitureDifficulty
 
+    private lateinit var directionInGroup: SegmentedGroup
+    private lateinit var directionIn: DirectionIn
+
+    private lateinit var directionOutGroup: SegmentedGroup
+    private lateinit var directionOut: DirectionOut
+
     private lateinit var snackBar: Snackbar
     private lateinit var snackBarView: View
     private lateinit var snackBarTextView: TextView
@@ -59,7 +67,7 @@ class CreateFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_create_trick, container, false)
-        trickName = view!!.run { findViewById(R.id.fragment_create__trick_name_input) }
+        trickName = view!!.run { findViewById(R.id.fragment_create_trick__trick_name_input) }
         createBtn = view.findViewById(R.id.fragment_create_trick__create_button)
         createBtnText = view.findViewById(R.id.fragment_create_trick__create_button_text)
         createBtnProgressBar = view.findViewById(R.id.fragment_create_trick__create_button_progress_bar)
@@ -67,6 +75,8 @@ class CreateFragment : Fragment() {
         categoryImage = view.findViewById(R.id.fragment_create_trick__image)
         categoryGroup = view.findViewById(R.id.fragment_create_trick__category_group)
         difficultyGroup = view.findViewById(R.id.fragment_create_trick__difficulty_group)
+        directionInGroup = view.findViewById(R.id.fragment_create_trick__direction_in_group)
+        directionOutGroup = view.findViewById(R.id.fragment_create_trick__direction_out_group)
 
         snackBar = Snackbar.make(view.findViewById(R.id.fragment_create_trick__coordinatorLayout), "", Snackbar.LENGTH_SHORT)
         snackBarView = snackBar.view
@@ -84,9 +94,15 @@ class CreateFragment : Fragment() {
     }
 
     private fun setupDefaultValues() {
-        categoryImage.setImageResource(R.drawable.ic_letter_g)
+        trickName.requestFocus()
+        directionIn = DirectionIn.REGULAR
+        fragment_create_trick__direction_in_regular.isChecked = true
+        directionOut = DirectionOut.TO_FAKIE
+        fragment_create_trick__direction_out_to_regular.isChecked = true
         category = FurnitureCategory.GRIND
-        difficulty = FurnitureDifficulty.JOKE
+        fragment_create_trick__category_grinds.isChecked = true
+        difficulty = FurnitureDifficulty.SAVE
+        fragment_create_trick__difficulty_save.isChecked = true
         createBtnCollapsedWidth = resources.getDimension(R.dimen.fragment_create_trick__collapsed_create_button).toInt()
     }
 
@@ -94,6 +110,8 @@ class CreateFragment : Fragment() {
 
         trickName.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
+                fragment_create_trick__text_input_layout.isHintEnabled = true
+                fragment_create_trick__text_input_layout.isErrorEnabled = true
                 name = s.toString()
             }
 
@@ -106,30 +124,49 @@ class CreateFragment : Fragment() {
             true
         }
 
+        directionInGroup.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.fragment_create_trick__direction_in_fakie -> {
+                    directionIn = DirectionIn.FAKIE
+                }
+                R.id.fragment_create_trick__direction_in_regular -> {
+                    directionIn = DirectionIn.REGULAR
+                }
+            }
+        }
+
+        directionOutGroup.setOnCheckedChangeListener { _, checkedId ->
+            when (checkedId) {
+                R.id.fragment_create_trick__direction_out_to_fakie -> {
+                    directionOut = DirectionOut.TO_FAKIE
+                }
+                R.id.fragment_create_trick__direction_out_to_regular -> {
+                    directionOut = DirectionOut.TO_REGULAR
+                }
+            }
+        }
+
         categoryGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
                 R.id.fragment_create_trick__category_grinds -> {
                     category = FurnitureCategory.GRIND
                     loadCategoryAnimation()
-                    categoryImage.setImageResource(R.drawable.ic_letter_g)
                 }
                 R.id.fragment_create_trick__category_slides -> {
                     category = FurnitureCategory.SLIDE
                     loadCategoryAnimation()
-                    categoryImage.setImageResource(R.drawable.ic_letter_s)
                 }
                 R.id.fragment_create_trick__category_others -> {
                     category = FurnitureCategory.OTHER
                     loadCategoryAnimation()
-                    categoryImage.setImageResource(R.drawable.ic_letter_o)
                 }
             }
         }
 
         difficultyGroup.setOnCheckedChangeListener { _, checkedId ->
             when (checkedId) {
-                R.id.fragment_create_trick__difficulty_joke -> {
-                    difficulty = FurnitureDifficulty.JOKE
+                R.id.fragment_create_trick__difficulty_save -> {
+                    difficulty = FurnitureDifficulty.SAVE
                 }
                 R.id.fragment_create_trick__difficulty_easy -> {
                     difficulty = FurnitureDifficulty.EASY
@@ -154,7 +191,7 @@ class CreateFragment : Fragment() {
         } else {
             createBtn.isEnabled = false
             trickName.error = null
-            viewModel.createTrick(name!!, category, difficulty)
+            viewModel.createTrick(name!!, directionIn, directionOut, category, difficulty)
             snackBar.setText("$name successfully added")
             loadButtonToggle()
             true
@@ -235,14 +272,11 @@ class CreateFragment : Fragment() {
     private fun loadLayoutAnimation() {
         val animFadeInFragment = AnimationUtils.loadAnimation(requireContext(), R.anim.item_animation_fade_in)
         val animFadeInImage = AnimationUtils.loadAnimation(requireContext(), R.anim.item_animation_scale)
-        val animFadeInCreateBtn = AnimationUtils.loadAnimation(requireContext(), R.anim.item_animation_fade_in)
         animFadeInFragment.startOffset = 0
-        animFadeInFragment.duration = 1000
-        animFadeInCreateBtn.startOffset = 600
-        animFadeInImage.startOffset = 1000
+        animFadeInFragment.duration = 600
+        animFadeInImage.startOffset = 400
         fragment_create_trick.startAnimation(animFadeInFragment)
         fragment_create_trick__image.startAnimation(animFadeInImage)
-        fragment_create_trick__create_button.startAnimation(animFadeInCreateBtn)
     }
 
     companion object {

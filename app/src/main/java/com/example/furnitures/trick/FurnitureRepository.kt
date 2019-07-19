@@ -5,11 +5,11 @@ import androidx.lifecycle.LiveData
 interface FurnitureRepository {
 
     /* region data */
-    fun getSortedFurnitures(): LiveData<List<Furniture>>
+    fun getSortedFurnitures(): LiveData<List<Trick>>
 
-    fun getSelectedFurnituresList(): List<Furniture>
+    fun getSelectedFurnituresList(): List<Trick>
 
-    fun getFurnitureById(id: String): Furniture?
+    fun getFurnitureById(id: String): Trick?
 
     fun createFurniture(furnitureViewState: FurnitureViewState)
 
@@ -17,7 +17,7 @@ interface FurnitureRepository {
 
     fun updateFurnitureOnClick(clickedFurniture: FurnitureViewState)
 
-    fun createInitialFurnitures(): List<Furniture>
+    fun createInitialFurnitures(): List<Trick>
     /* endregion */
 
     // warum getter im Repository/ Contract Interface, anstatt LiveData zu übergeben und diese mit Property zu überschreiben?

@@ -4,6 +4,8 @@ data class FurnitureViewState(
     override val id: String,
     val position: Int,
     val furnitureType: FurnitureType,
+    val directionIn: DirectionIn,
+    val directionOut: DirectionOut,
     override val furnitureCategory: FurnitureCategory,
     val furnitureDifficulty: FurnitureDifficulty,
     // nullable, da null, falls userCreatedName existiert

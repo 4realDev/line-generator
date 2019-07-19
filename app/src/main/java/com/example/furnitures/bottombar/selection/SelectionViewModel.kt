@@ -28,22 +28,24 @@ class SelectionViewModel(application: Application) : AndroidViewModel(applicatio
 
     override fun getFurnitureViewStateWithHeader(): LiveData<List<RowViewState>> = furnituresWithHeader
 
-    private fun mapList(furnitureList: List<Furniture>): List<RowViewState> {
-        return furnitureList
+    private fun mapList(trickList: List<Trick>): List<RowViewState> {
+        return trickList
             .map { mapToViewState(it) }
     }
 
-    private fun mapToViewState(furniture: Furniture): FurnitureViewState {
+    private fun mapToViewState(trick: Trick): FurnitureViewState {
         return FurnitureViewState(
-            id = furniture.id,
-            position = furniture.position,
-            furnitureType = furniture.furnitureType,
-            furnitureCategory = furniture.furnitureCategory,
-            furnitureDifficulty = furniture.furnitureDifficulty,
-            name = FurnitureTypeHelper.getString(furniture.furnitureType),
-            userCreatedName = furniture.userCreateName,
-            drawableResId = FurnitureTypeHelper.getDrawable(furniture.furnitureType),
-            isSelected = furniture.isSelected
+            id = trick.id,
+            position = trick.position,
+            furnitureType = trick.furnitureType,
+            directionIn = trick.directionIn,
+            directionOut = trick.directionOut,
+            furnitureCategory = trick.furnitureCategory,
+            furnitureDifficulty = trick.furnitureDifficulty,
+            name = FurnitureTypeHelper.getString(trick.furnitureType),
+            userCreatedName = trick.userCreateName,
+            drawableResId = FurnitureTypeHelper.getDrawable(trick.furnitureType),
+            isSelected = trick.isSelected
         )
     }
 
