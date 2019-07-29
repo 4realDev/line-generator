@@ -17,7 +17,7 @@ class FurnitureRepositoryImp : FurnitureRepository {
     }
 
     // sortierung vorher behebt fehler beim header einfügen
-    override fun getSortedFurnitures(): LiveData<List<Trick>>{
+    override fun getSortedFurnitures(): LiveData<List<Trick>> {
         sortFurnitures()
         return furnitures
     }
@@ -120,7 +120,7 @@ class FurnitureRepositoryImp : FurnitureRepository {
         )
     }
 
-    private fun sortFurnitures(){
-        furnitures.value = furnitures.value!!.sortedBy { it.furnitureCategory.sortWeight}
+    private fun sortFurnitures() {
+        furnitures.value = furnitures.value!!.sortedBy { it.furnitureCategory.sortWeight }
     }
 }
