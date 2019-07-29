@@ -42,6 +42,7 @@ class TrickSequenceGenerator(application: Application) {
             difficultyPercentageArray[index] = calculateDifficultyPercentage(index)
             // calculate the number of tricks for each difficulty (maxTricks * percentage)
             numberOfTricksArray[index] = (chosenMaxTricks * difficultyPercentageArray[index]).roundToInt()
+
             // region old code (Übertragen in Notizen)
             // get filteredList for each difficulty
             // shuffle filteredList, to select random set
@@ -65,7 +66,7 @@ class TrickSequenceGenerator(application: Application) {
             // endregion
         }
 
-        fixRoundingMisstakes()
+        fixRoundingMistakes()
 
 
         val filteredList = getTrickListSortedByOutComingSortedByDifficulty(list)
@@ -76,7 +77,7 @@ class TrickSequenceGenerator(application: Application) {
         return newRandomizedList
     }
 
-    private fun fixRoundingMisstakes() {
+    private fun fixRoundingMistakes() {
         loop@ for (index in indexOfChosenDifficulty downTo 0) {
             if (numberOfTricksArray.sum() > chosenMaxTricks && numberOfTricksArray[index] != 0) {
                 numberOfTricksArray[index] -= 1

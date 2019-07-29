@@ -18,31 +18,30 @@
             android:gravity="center"
             android:orientation="vertical"
             android:paddingStart="20dp"
-            android:paddingTop="36dp"
             android:paddingEnd="20dp"
             android:paddingBottom="60dp">
 
-            <ImageView
-                android:id="@+id/fragment_create_trick__image"
-                android:layout_width="100dp"
-                android:layout_height="100dp"
-                android:backgroundTint="@color/colorAccent"
-                android:elevation="11dp"
-                android:gravity="center"
-                android:padding="20dp"
-                android:src="@drawable/ic_create"
-                android:tint="@color/colorAccent" />
+            <!--<ImageView-->
+                <!--android:id="@+id/fragment_create_trick__image"-->
+                <!--android:layout_width="100dp"-->
+                <!--android:layout_height="100dp"-->
+                <!--android:backgroundTint="@color/colorAccent"-->
+                <!--android:elevation="11dp"-->
+                <!--android:gravity="center"-->
+                <!--android:padding="20dp"-->
+                <!--android:src="@drawable/ic_create"-->
+                <!--android:tint="@color/colorAccent" />-->
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/gradient" />
+            <!--<ImageView-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:background="@drawable/gradient" />-->
 
             <TextView
                 android:id="@+id/fragment_create_trick__trick_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
+                android:layout_marginTop="40dp"
                 android:layout_marginBottom="20dp"
                 android:text="TRICK:"
                 android:textAlignment="center"
@@ -113,7 +112,7 @@
                 android:id="@+id/fragment_create_trick__direction_out_group"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="40dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground"
@@ -286,7 +285,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_gravity="bottom|center_horizontal"
-                android:layout_marginTop="40dp"
+                android:layout_marginTop="45dp"
                 android:background="@drawable/background_create_button_shape2"
                 android:clickable="true"
                 android:elevation="4dp"

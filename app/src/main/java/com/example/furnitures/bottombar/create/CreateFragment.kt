@@ -72,7 +72,7 @@ class CreateFragment : Fragment() {
         createBtnText = view.findViewById(R.id.fragment_create_trick__create_button_text)
         createBtnProgressBar = view.findViewById(R.id.fragment_create_trick__create_button_progress_bar)
         createBtnCheck = view.findViewById(R.id.fragment_create_trick__create_button_check)
-        categoryImage = view.findViewById(R.id.fragment_create_trick__image)
+        //categoryImage = view.findViewById(R.id.fragment_create_trick__image)
         categoryGroup = view.findViewById(R.id.fragment_create_trick__category_group)
         difficultyGroup = view.findViewById(R.id.fragment_create_trick__difficulty_group)
         directionInGroup = view.findViewById(R.id.fragment_create_trick__direction_in_group)
@@ -208,8 +208,8 @@ class CreateFragment : Fragment() {
     private fun animateButtonWidth(width: Int) {
         val anim: ValueAnimator = ValueAnimator.ofInt(createBtn.measuredWidth, width)
         anim.addUpdateListener {
-            var value = it.animatedValue as Int
-            var layoutParams: ViewGroup.LayoutParams = createBtn.layoutParams
+            val value = it.animatedValue as Int
+            val layoutParams: ViewGroup.LayoutParams = createBtn.layoutParams
             layoutParams.width = value
             createBtn.requestLayout()
         }
@@ -266,7 +266,7 @@ class CreateFragment : Fragment() {
 
     fun loadCategoryAnimation() {
         val animTtb = AnimationUtils.loadAnimation(requireContext(), R.anim.item_animation_scale)
-        fragment_create_trick__image.startAnimation(animTtb)
+        //fragment_create_trick__image.startAnimation(animTtb)
     }
 
     private fun loadLayoutAnimation() {
@@ -276,7 +276,7 @@ class CreateFragment : Fragment() {
         animFadeInFragment.duration = 600
         animFadeInImage.startOffset = 400
         fragment_create_trick.startAnimation(animFadeInFragment)
-        fragment_create_trick__image.startAnimation(animFadeInImage)
+        //fragment_create_trick__image.startAnimation(animFadeInImage)
     }
 
     companion object {

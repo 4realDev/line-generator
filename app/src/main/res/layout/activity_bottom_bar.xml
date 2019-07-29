@@ -37,8 +37,8 @@
         android:layout_gravity="bottom"
         android:background="@color/colorPrimary"
         app:itemIconSize="20dp"
-        app:itemIconTint="@color/white"
-        app:itemTextColor="@color/white"
+        app:itemIconTint="@drawable/bottom_view_selector"
+        app:itemTextColor="@drawable/bottom_view_selector"
         app:menu="@menu/menu_tricks_first_bottom_bar" />
     <!-- app:menu über schreib onCreateOptionsMenu automatisch (infalted das Menu automatisch) -->
 
