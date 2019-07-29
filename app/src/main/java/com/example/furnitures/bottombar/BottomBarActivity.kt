@@ -65,7 +65,7 @@ class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
         bottomAppBar.startAnimation(animBtt)
     }
 
-    private fun openExitDialog(){
+    private fun openExitDialog() {
         navigator.onBackPressed()
     }
 
