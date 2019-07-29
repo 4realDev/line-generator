@@ -2,7 +2,6 @@ package com.example.furnitures.bottombar.selection
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -38,7 +37,6 @@ class SelectionAdapter(private val furnitureClickListener: FurnitureClickListene
         }
     }
 
-    // viewType bereits gegeben?
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val view = inflater.inflate(viewType, parent, false)
@@ -63,34 +61,6 @@ class SelectionAdapter(private val furnitureClickListener: FurnitureClickListene
             is ViewHolder.Header -> {
                 val item = getItem(position)
                 holder.bind(item as HeaderViewState)
-            }
-        }
-    }
-
-    // suppress warning - warning cause no optimation for blind people
-    @SuppressLint("ClickableViewAccessibility")
-    override fun onBindViewHolder(holder: ViewHolder, position: Int, payloads: List<Any>) {
-        when (holder) {
-            is ViewHolder.Trick -> {
-                onBindViewHolder(holder, position)
-            }
-
-            is ViewHolder.Header -> {
-                if (payloads.isEmpty()) {
-                    onBindViewHolder(holder, position)
-                }
-                // Wenn im payload was drinne ist
-                // bind nur den payload neu
-                else {
-                    val o = payloads[0] as Bundle
-                    for (key in o.keySet()) {
-                        if (key == KEY_SELECTED) {
-                            if(o.getBoolean(KEY_SELECTED)){
-                                holder.headerTitle?.setTextColor(getColor(holder.headerTitle.context, R.color.white))
-                            } else holder.headerTitle?.setTextColor(getColor(holder.headerTitle.context, R.color.colorSecondary))
-                        }
-                    }
-                }
             }
         }
     }
@@ -176,25 +146,5 @@ class SelectionAdapter(private val furnitureClickListener: FurnitureClickListene
                 oldItem == newItem
             else false
         }
-
-        // getChangePayload wird aufgerufen wenn: areItemsTheSame = true | areContentsTheSame = false
-        // getChangedPayload vergleich properties der ViewHolder und binded nur diese neu
-        // Übergeben wird Any? / Irgendeine Property -> Diese wird an onBindViewHolder (Payload) weitergereicht
-        override fun getChangePayload(oldItem: RowViewState, newItem: RowViewState): Any? {
-            // Bundle -> container of key/value pairs
-            // mapping from String values to various Parcelable types
-            // implements an interface called Parcelable
-            if (newItem is FurnitureViewState && oldItem is FurnitureViewState) return null
-            if (newItem is HeaderViewState && oldItem is HeaderViewState) {
-                var diffBundle = Bundle()
-                if (oldItem.selected != newItem.selected) diffBundle.putBoolean(KEY_SELECTED, newItem.selected)
-                if (diffBundle.size() == 0) return null
-                return diffBundle
-            } else return null
-        }
-    }
-
-    companion object {
-        const val KEY_SELECTED = "KEY_SELECTED"
     }
 }

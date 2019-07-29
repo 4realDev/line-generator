@@ -55,10 +55,6 @@ class SelectionViewModel(application: Application) : AndroidViewModel(applicatio
         var headerIndexSlide: Int? = null
         var headerIndexOther: Int? = null
 
-        var grindBoolean = false
-        var slideBoolean = false
-        var otherBoolean = false
-
         fun getHeaderIndexGrind(): Int? {
             headerIndexGrind = START_HEADER_POSITION
             return headerIndexGrind
@@ -86,17 +82,9 @@ class SelectionViewModel(application: Application) : AndroidViewModel(applicatio
             return headerIndexOther
         }
 
-        completeRowViewStateList.forEach {
-            if (it is FurnitureViewState) {
-                if(it.isSelected && it.furnitureCategory == FurnitureCategory.GRIND) grindBoolean = true
-                if(it.isSelected && it.furnitureCategory == FurnitureCategory.SLIDE) slideBoolean = true
-                if(it.isSelected && it.furnitureCategory == FurnitureCategory.OTHER) otherBoolean = true
-            }
-        }
-
-        completeRowViewStateList.add(getHeaderIndexGrind()!!, HeaderViewState(FIRST_HEADER_ID, getHeaderIndexGrind()!!, FurnitureCategory.GRIND, grindBoolean))
-        completeRowViewStateList.add(getHeaderIndexSlide()!!, HeaderViewState(SLIDE_HEADER_ID, getHeaderIndexSlide()!!, FurnitureCategory.SLIDE, slideBoolean))
-        completeRowViewStateList.add(getHeaderIndexOther()!!, HeaderViewState(OTHER_HEADER_ID, getHeaderIndexOther()!!, FurnitureCategory.OTHER, otherBoolean))
+        completeRowViewStateList.add(getHeaderIndexGrind()!!, HeaderViewState(FIRST_HEADER_ID, getHeaderIndexGrind()!!, FurnitureCategory.GRIND))
+        completeRowViewStateList.add(getHeaderIndexSlide()!!, HeaderViewState(SLIDE_HEADER_ID, getHeaderIndexSlide()!!, FurnitureCategory.SLIDE))
+        completeRowViewStateList.add(getHeaderIndexOther()!!, HeaderViewState(OTHER_HEADER_ID, getHeaderIndexOther()!!, FurnitureCategory.OTHER))
 
         return completeRowViewStateList
     }
