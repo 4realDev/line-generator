@@ -67,7 +67,7 @@ class CreateFragment : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_create_trick, container, false)
-        trickName = view!!.run { findViewById(R.id.fragment_create_trick__trick_name_input) }
+        trickName = view.findViewById(R.id.fragment_create_trick__trick_name_input)
         createBtn = view.findViewById(R.id.fragment_create_trick__create_button)
         createBtnText = view.findViewById(R.id.fragment_create_trick__create_button_text)
         createBtnProgressBar = view.findViewById(R.id.fragment_create_trick__create_button_progress_bar)
@@ -97,7 +97,7 @@ class CreateFragment : Fragment() {
         trickName.requestFocus()
         directionIn = DirectionIn.REGULAR
         fragment_create_trick__direction_in_regular.isChecked = true
-        directionOut = DirectionOut.TO_FAKIE
+        directionOut = DirectionOut.TO_REGULAR
         fragment_create_trick__direction_out_to_regular.isChecked = true
         category = FurnitureCategory.GRIND
         fragment_create_trick__category_grinds.isChecked = true
@@ -213,7 +213,7 @@ class CreateFragment : Fragment() {
             layoutParams.width = value
             createBtn.requestLayout()
         }
-        createBtn.setBackgroundResource(R.drawable.background_create_button_shape)
+        createBtn.setBackgroundResource(R.drawable.background_create_button_shape_round)
         anim.duration = 250
         anim.start()
 
@@ -253,7 +253,7 @@ class CreateFragment : Fragment() {
                 override fun onAnimationEnd(animation: Animator?) {
                     super.onAnimationEnd(animation)
                     createBtnText.animate().alpha(1f).setDuration(250).start()
-                    createBtn.setBackgroundResource(R.drawable.background_create_button_shape2)
+                    createBtn.setBackgroundResource(R.drawable.background_create_button_shape_round_square)
                     createBtnCheck.animate().setListener(null)
                 }
             }).start()
