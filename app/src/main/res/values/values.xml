@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="green">#1aab00</color>
+    <declare-styleable name="CheckView"><attr format="dimension" name="checkView_strokeWidth"/><attr format="color" name="checkView_strokeColor"/></declare-styleable>
+</resources>
