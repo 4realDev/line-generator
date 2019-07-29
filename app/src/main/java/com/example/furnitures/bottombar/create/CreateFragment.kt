@@ -109,10 +109,10 @@ class CreateFragment : Fragment() {
     private fun setupListeners() {
 
         trickName.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
+            override fun afterTextChanged(trickName: Editable?) {
                 fragment_create_trick__text_input_layout.isHintEnabled = true
                 fragment_create_trick__text_input_layout.isErrorEnabled = true
-                name = s.toString()
+                name = trickName.toString()
             }
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}

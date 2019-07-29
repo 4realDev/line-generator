@@ -61,16 +61,20 @@ enum class FurnitureType {
 }
 
 // sealed class vorteil funktionen
-sealed class DirectionOut {
-    object TO_FAKIE : DirectionOut() {
-        override fun invert() = TO_REGULAR
-    }
+//sealed class DirectionOut {
+//    object TO_FAKIE : DirectionOut() {
+//        override fun invert() = TO_REGULAR
+//    }
+//
+//    object TO_REGULAR : DirectionOut() {
+//        override fun invert() = TO_FAKIE
+//    }
+//
+//    abstract fun invert(): DirectionOut
+//}
 
-    object TO_REGULAR : DirectionOut() {
-        override fun invert() = TO_FAKIE
-    }
-
-    abstract fun invert(): DirectionOut
+enum class DirectionOut{
+    TO_FAKIE, TO_REGULAR
 }
 
 enum class DirectionIn {

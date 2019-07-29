@@ -16,20 +16,19 @@ class TrickSequenceGenerator(application: Application) {
     private var newRandomizedList = emptyList<Trick>().toMutableList()
 
     private val initialDirectionIn: DirectionIn = DirectionIn.REGULAR
-    private var dependingDirectionIn: DirectionIn = initialDirectionIn
+    private var searchedDirectionIn: DirectionIn = initialDirectionIn
 
-    private val choosenMaxTricks = SettingsService.getMaxTricks(application)
-    private val choosenDifficulty = SettingsService.getDifficulty(application)
+    private val chosenMaxTricks = SettingsService.getMaxTricks(application)
+    private val chosenDifficulty = SettingsService.getDifficulty(application)
 
-    private val arrayItems = choosenDifficulty.weight
+    private val maxArrayIndex: Int = FurnitureDifficulty.values().size
+    private val numberOfChosenDifficulty: Int = chosenDifficulty.weight
+    private val indexOfChosenDifficulty: Int = numberOfChosenDifficulty - 1
 
-    private val difficultyArray: Array<FurnitureDifficulty> = enumValues()
-
-    private val difficultyPercentageArray = FloatArray(arrayItems)
-    private val numberOfTricksArray = IntArray(arrayItems)
+    private val difficultyPercentageArray = FloatArray(maxArrayIndex)
+    private val numberOfTricksArray = IntArray(maxArrayIndex)
     // Berechnung des Nenners im Bruch -> x/fraction
-    private val fraction = (2.0f.pow(arrayItems - 1) - 1) * 2
-
+    private val fraction = (2.0f.pow(indexOfChosenDifficulty) - 1) * 2
 
 
     // Functionen ordnen nach Aufruf Hirachie
@@ -39,16 +38,11 @@ class TrickSequenceGenerator(application: Application) {
     // Wenn Function zuviele Aufgaben erfüllt, Class erstellen
 
     fun randomizeWithSettings(list: List<Trick>): List<Trick> {
-
-        for (index in 0 until arrayItems) {
-
+        for (index in 0 until numberOfChosenDifficulty) {
             difficultyPercentageArray[index] = calculateDifficultyPercentage(index)
-
-
             // calculate the number of tricks for each difficulty (maxTricks * percentage)
-            numberOfTricksArray[index] = (choosenMaxTricks * difficultyPercentageArray[index]).roundToInt()
-
-
+            numberOfTricksArray[index] = (chosenMaxTricks * difficultyPercentageArray[index]).roundToInt()
+            // region old code (Übertragen in Notizen)
             // get filteredList for each difficulty
             // shuffle filteredList, to select random set
             // if its null (first time), then set it to the default value "TO_FAKIE"
@@ -56,11 +50,6 @@ class TrickSequenceGenerator(application: Application) {
 //            val nextDirectionIn = newRandomizedList.lastOrNull()?.directionOut?.invert() ?: DirectionOut.TO_FAKIE
 //            var previousDirectionOut = newRandomizedList.lastOrNull()?.directionOut/*?.invert()*/ ?: DirectionOut.TO_FAKIE
 //            var filteredList = getTrickListSortedByOutComingSortedByDifficulty(list, difficultyArray[index], nextComing)
-            val filteredList = getTrickListSortedByOutComingSortedByDifficulty(
-                list,
-                index,
-                difficultyArray[index]
-            )
 
 
             // if difficulty exists
@@ -73,20 +62,36 @@ class TrickSequenceGenerator(application: Application) {
 //                else
 //                    newRandomizedList.addAll(filteredList.subList(0, numberOfTricksArray[index]))
 //            }
+            // endregion
+        }
 
-            if (filteredList.isNotEmpty()) {
-                newRandomizedList.addAll(filteredList)
-            }
+        fixRoundingMisstakes()
+
+
+        val filteredList = getTrickListSortedByOutComingSortedByDifficulty(list)
+        if (filteredList.isNotEmpty()) {
+            newRandomizedList.addAll(filteredList)
         }
 
         return newRandomizedList
     }
 
-    private fun calculateDifficultyPercentage(index: Int): Float {
-        val difficultyEqualsSave: Boolean = choosenDifficulty == FurnitureDifficulty.SAVE
-        val difficultyIsLast: Boolean = index == difficultyPercentageArray.lastIndex
+    private fun fixRoundingMisstakes() {
+        loop@ for (index in indexOfChosenDifficulty downTo 0) {
+            if (numberOfTricksArray.sum() > chosenMaxTricks && numberOfTricksArray[index] != 0) {
+                numberOfTricksArray[index] -= 1
+            }
+            else if(numberOfTricksArray.sum() < chosenMaxTricks){
+                numberOfTricksArray[index] += 1
+            } else break@loop
+        }
+    }
 
-        // if choosenDifficulty is the easiest -> return all items (100%) of this difficulty
+    private fun calculateDifficultyPercentage(index: Int): Float {
+        val difficultyEqualsSave: Boolean = chosenDifficulty == FurnitureDifficulty.SAVE
+        val difficultyIsLast: Boolean = index == indexOfChosenDifficulty
+
+        // if chosenDifficulty is the easiest -> return all items (100%) of this difficulty
         // Assignment of when, with else case: makes sure that there is a value set
         return when {
             difficultyEqualsSave -> HUNDRET_PERCENT
@@ -97,25 +102,20 @@ class TrickSequenceGenerator(application: Application) {
         }
     }
 
-    private fun getTrickListSortedByOutComingSortedByDifficulty(
-        allTrick: List<Trick>,
-        currentIndex: Int,
-        difficulty: FurnitureDifficulty
-    ): List<Trick> {
+    private fun getTrickListSortedByOutComingSortedByDifficulty(allTrick: List<Trick>): List<Trick> {
 
         val filteredTricks = mutableListOf<Trick>()
         for (trick in allTrick.shuffled()) {
-            if (trick.furnitureDifficulty == difficulty && trick.directionIn == dependingDirectionIn) {
+            val difficultyIndex = trick.furnitureDifficulty.weight - 1
+            if (numberOfTricksArray[difficultyIndex] > 0 && trick.directionIn == searchedDirectionIn) {
                 filteredTricks.add(trick)
 
-                dependingDirectionIn = when(trick.directionOut){
+                searchedDirectionIn = when (trick.directionOut) {
                     DirectionOut.TO_REGULAR -> DirectionIn.REGULAR
                     DirectionOut.TO_FAKIE -> DirectionIn.FAKIE
                 }
 
-                // !!! FEHLER !!!
-                // Crash, falls -1
-                numberOfTricksArray[currentIndex] = numberOfTricksArray[currentIndex] - 1
+                numberOfTricksArray[difficultyIndex] = numberOfTricksArray[difficultyIndex] - 1
             }
         }
         return filteredTricks
