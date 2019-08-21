@@ -22,6 +22,8 @@
     <color name="trick_dark_golden">#986200</color>
     <color name="trick_golden">#cd8f31</color>
     <color name="trick_light_golden">#ffbf60</color>
+    <!-- "transparent white, first to values matter -->
+    <color name="transparent">#00FFFFFF</color>
 
     <color name="trick_dark_black">#040202</color>
     <color name="trick_light_black">#2e2d2d</color>
@@ -33,6 +35,12 @@
     <color name="spotify_light_black">#212121</color>
     <color name="spotify_medium_black">#242323</color>
     <color name="spotify_grey">#535353</color>
+
+    <color name="save">#23D35F</color>
+    <color name="easy">#1EBA55</color>
+    <color name="middle">#1AA149</color>
+    <color name="hard">#178D43</color>
+    <color name="crazy">#157537</color>
 
     <color name="spotify_dark_green">#008827</color>
     <color name="spotify_grey2">#828282</color>

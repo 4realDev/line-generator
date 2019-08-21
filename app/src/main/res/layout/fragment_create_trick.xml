@@ -18,7 +18,8 @@
             android:orientation="vertical"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:paddingBottom="60dp">
+            android:paddingTop="20dp"
+            android:paddingBottom="20dp">
 
             <!--<ImageView-->
                 <!--android:id="@+id/fragment_create_trick__image"-->
@@ -40,9 +41,8 @@
                 android:id="@+id/fragment_create_trick__trick_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
                 android:layout_marginBottom="20dp"
-                android:text="TRICK:"
+                android:text="TRICK | CATEGORY | DIFFICULTY:"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="21sp"
@@ -111,7 +111,7 @@
                 android:id="@+id/fragment_create_trick__direction_out_group"
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
-                android:layout_marginBottom="40dp"
+                android:layout_marginBottom="20dp"
                 android:clickable="true"
                 android:focusable="true"
                 android:foreground="?attr/selectableItemBackground"
@@ -142,17 +142,6 @@
                     android:textSize="14sp" />
 
             </info.hoang8f.android.segmented.SegmentedGroup>
-
-            <TextView
-                android:id="@+id/fragment_create_trick__category_difficulty_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:text="CATEGORY | DIFFICULTY:"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="21sp"
-                android:textStyle="bold" />
 
             <info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
                 android:id="@+id/fragment_create_trick__category_group"
@@ -283,7 +272,7 @@
                 android:id="@+id/fragment_create_trick__create_button"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
-                android:layout_gravity="bottom|center_horizontal"
+                android:layout_gravity="center_horizontal|bottom"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/background_create_button_shape_round_square"
                 android:clickable="true"

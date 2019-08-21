@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.furnitures">
+    package="com.example.line_generator">
 
     <application
         android:allowBackup="true"
@@ -14,7 +14,7 @@
         <!-- stateVisible - visible by default -->
         <!-- adjustResize by default - try to show whole content -->
         <!-- überschreiben mit adjustPan - zeige alles über dem ediable TextView -->
-        <activity android:name="com.example.furnitures.bottombar.BottomBarActivity" android:windowSoftInputMode="adjustPan">
+        <activity android:name="com.example.line_generator.bottombar.BottomBarActivity" android:windowSoftInputMode="adjustPan" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

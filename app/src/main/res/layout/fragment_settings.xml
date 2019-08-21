@@ -1,53 +1,34 @@
 <androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/fragment_create_trick__coordinatorLayout"
+    android:id="@+id/fragment_settings_trick__coordinatorLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorPrimaryDark">
 
-    <LinearLayout
-        android:id="@+id/fragment_settings_trick"
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:paddingStart="16dp"
-        android:paddingTop="36dp"
-        android:paddingEnd="16dp"
-        android:paddingBottom="46dp">
+        android:fillViewport="true">
 
-        <ImageView
-            android:id="@+id/fragment_settings_trick__image"
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_marginBottom="-60dp"
-            android:elevation="11dp"
-            android:gravity="center"
-            android:padding="20dp"
-            android:src="@drawable/ic_settings"
-            android:tint="@color/colorAccent" />
-
-        <androidx.cardview.widget.CardView
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:elevation="8dp"
+            android:layout_height="wrap_content"
             android:orientation="vertical"
-            app:cardCornerRadius="8dp"
-            app:cardElevation="10dp"
-            app:cardPreventCornerOverlap="true"
-            app:cardUseCompatPadding="true">
+            android:padding="20dp">
 
-            <ImageView
+            <TextView
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@drawable/gradient" />
+                android:layout_height="wrap_content"
+                android:text="CHOOSE:"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="21sp"
+                android:textStyle="bold" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
-                android:paddingBottom="16dp">
+                android:layout_height="wrap_content"
+                android:padding="20dp">
 
                 <TextView
                     android:id="@+id/fragment_settings_trick__number_picker_max_tricks_title"
@@ -59,18 +40,18 @@
                     android:textAllCaps="true"
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@id/fragment_settings_trick__number_picker_max_tricks"
-                    app:layout_constraintEnd_toStartOf="@id/fragment_settings_trick__number_picker_difficulty_title"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintEnd_toEndOf="@id/fragment_settings_trick__number_picker_max_tricks"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <NumberPicker
                     android:id="@+id/fragment_settings_trick__number_picker_max_tricks"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:descendantFocusability="blocksDescendants"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_height="75dp"
+                    android:layout_marginEnd="8dp"
                     app:layout_constraintEnd_toStartOf="@id/fragment_settings_trick__number_picker_difficulty"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_settings_trick__number_picker_max_tricks_title" />
 
                 <TextView
                     android:id="@+id/fragment_settings_trick__number_picker_difficulty_title"
@@ -83,22 +64,225 @@
                     android:textStyle="bold"
                     app:layout_constraintBottom_toTopOf="@id/fragment_settings_trick__number_picker_difficulty"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/fragment_settings_trick__number_picker_max_tricks" />
+                    app:layout_constraintStart_toStartOf="@id/fragment_settings_trick__number_picker_difficulty"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <NumberPicker
                     android:id="@+id/fragment_settings_trick__number_picker_difficulty"
                     android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:descendantFocusability="blocksDescendants"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="8dp"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@id/fragment_settings_trick__number_picker_max_tricks" />
+                    app:layout_constraintStart_toEndOf="@id/fragment_settings_trick__number_picker_max_tricks"
+                    app:layout_constraintTop_toBottomOf="@id/fragment_settings_trick__number_picker_difficulty_title" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-        </androidx.cardview.widget.CardView>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:text="DIFFICULTY IN PERCENT:"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="21sp"
+                android:textStyle="bold" />
 
-    </LinearLayout>
+            <com.github.mikephil.charting.charts.PieChart
+                android:id="@+id/fragment_settings_trick_pie_chart"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:layout_marginBottom="40dp" />
+
+            <!-- region ArcProgress -->
+            <!--<FrameLayout-->
+            <!--android:id="@+id/fragment_settings_trick"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center_vertical" >-->
+
+            <!--<devlight.io.library.ArcProgressStackView-->
+            <!--android:id="@+id/arc_progress"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--app:apsv_animated="true"-->
+            <!--app:apsv_animation_duration="1000"-->
+            <!--app:apsv_dragged="true"-->
+            <!--app:apsv_draw_width="75%"-->
+            <!--app:apsv_indicator_orientation="vertical"-->
+            <!--app:apsv_interpolator="@android:anim/bounce_interpolator"-->
+            <!--app:apsv_leveled="true"-->
+            <!--app:apsv_model_bg_enabled="true"-->
+            <!--app:apsv_model_offset="0dp"-->
+            <!--app:apsv_preview_bg="#34ffa70b"-->
+            <!--app:apsv_preview_colors="@array/devlight"-->
+            <!--app:apsv_rounded="false"-->
+            <!--app:apsv_shadowed="true"-->
+            <!--app:apsv_start_angle="270"-->
+            <!--app:apsv_sweep_angle="270"-->
+            <!--app:apsv_text_color="@color/transparent" />-->
+
+            <!--<androidx.constraintlayout.widget.ConstraintLayout-->
+            <!--android:id="@+id/arc_progress_text_constraint_layout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent">-->
+
+            <!--<androidx.constraintlayout.widget.Guideline-->
+            <!--android:id="@+id/arc_progress_text_guideline_vertical"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/white"-->
+            <!--android:orientation="vertical"-->
+            <!--app:layout_constraintGuide_percent="0.5" />-->
+
+            <!--<androidx.constraintlayout.widget.Guideline-->
+            <!--android:id="@+id/arc_progress_text_guideline_horizontal"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@color/white"-->
+            <!--android:orientation="horizontal"-->
+            <!--app:layout_constraintGuide_percent="0.5" />-->
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="0dp"-->
+            <!--android:clickable="true"-->
+            <!--android:focusable="true"-->
+            <!--android:gravity="end|center_vertical"-->
+            <!--android:orientation="vertical"-->
+            <!--android:paddingBottom="12dp"-->
+            <!--app:layout_constraintBottom_toBottomOf="@id/arc_progress_text_guideline_horizontal"-->
+            <!--app:layout_constraintEnd_toEndOf="@id/arc_progress_text_guideline_vertical"-->
+            <!--app:layout_constraintHorizontal_weight="1"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="@id/arc_progress_text_constraint_layout"-->
+            <!--app:layout_constraintVertical_weight="1">-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/arc_progress_text_save"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginEnd="16dp"-->
+            <!--android:padding="3dp"-->
+            <!--android:text="SAVE"-->
+            <!--android:textSize="14sp" />-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/arc_progress_text_easy"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginEnd="16dp"-->
+            <!--android:padding="3dp"-->
+            <!--android:text="EASY"-->
+            <!--android:textSize="14sp" />-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/arc_progress_text_middle"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginEnd="16dp"-->
+            <!--android:padding="3dp"-->
+            <!--android:text="MIDDLE"-->
+            <!--android:textSize="14sp" />-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/arc_progress_text_hard"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginEnd="16dp"-->
+            <!--android:padding="3dp"-->
+            <!--android:text="HARD"-->
+            <!--android:textSize="14sp" />-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/arc_progress_text_crazy"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginEnd="16dp"-->
+            <!--android:padding="3dp"-->
+            <!--android:text="CRAZY"-->
+            <!--android:textSize="14sp" />-->
+
+            <!--</LinearLayout>-->
+            <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+            <!--</FrameLayout>-->
+
+            <!--<androidx.constraintlayout.widget.ConstraintLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginTop="32dp"-->
+            <!--android:layout_marginBottom="16dp"-->
+            <!--android:paddingStart="16dp"-->
+            <!--android:paddingEnd="16dp" >-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/fragment_settings_trick__number_picker_max_tricks_title"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="4dp"-->
+            <!--android:text="How many?"-->
+            <!--android:textAlignment="center"-->
+            <!--android:textAllCaps="true"-->
+            <!--android:textStyle="bold"-->
+            <!--app:layout_constraintBottom_toTopOf="@id/fragment_settings_trick__number_picker_max_tricks"-->
+            <!--app:layout_constraintEnd_toStartOf="@id/fragment_settings_trick__number_picker_difficulty_title"-->
+            <!--app:layout_constraintStart_toStartOf="parent" />-->
+
+            <!--<NumberPicker-->
+            <!--android:id="@+id/fragment_settings_trick__number_picker_max_tricks"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="75dp"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:descendantFocusability="blocksDescendants"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintEnd_toStartOf="@id/fragment_settings_trick__number_picker_difficulty"-->
+            <!--app:layout_constraintStart_toStartOf="parent" />-->
+
+            <!--<TextView-->
+            <!--android:id="@+id/fragment_settings_trick__number_picker_difficulty_title"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginBottom="4dp"-->
+            <!--android:text="How hard?"-->
+            <!--android:textAlignment="center"-->
+            <!--android:textAllCaps="true"-->
+            <!--android:textStyle="bold"-->
+            <!--app:layout_constraintBottom_toTopOf="@id/fragment_settings_trick__number_picker_difficulty"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toEndOf="@id/fragment_settings_trick__number_picker_max_tricks" />-->
+
+            <!--<NumberPicker-->
+            <!--android:id="@+id/fragment_settings_trick__number_picker_difficulty"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="75dp"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:descendantFocusability="blocksDescendants"-->
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toEndOf="@id/fragment_settings_trick__number_picker_max_tricks" />-->
+
+            <!--</androidx.constraintlayout.widget.ConstraintLayout>-->
+
+            <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_gravity="center"-->
+            <!--android:layout_marginBottom="8dp"-->
+            <!--android:text="NUMBER OF TRICKS"-->
+            <!--android:textColor="#fff"-->
+            <!--android:textSize="18sp" />-->
+
+            <!--<NumberPicker-->
+            <!--android:id="@+id/fragment_settings_trick__number_picker_max_tricks"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent" />-->
+
+            <!-- endregion ArcProgress -->
+
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

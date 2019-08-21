@@ -5,7 +5,7 @@
     <string name="furniture_create_fragment_text_input_field">Trick</string>
     <string name="furniture_create_fragment_create_buttom">Create Trick</string>
 
-    <!-- SECTION: FurnitureType -->
+    <!-- SECTION: TrickType -->
     <string name="trick_tail_stall">Tail Stall</string>
     <string name="trick_nose_stall">Nose Stall</string>
     <string name="trick_axle_stall">Axle Stall</string>
@@ -39,7 +39,7 @@
     <string name="furniture_difficulty_hard">Hard</string>
     <string name="furniture_difficulty_crazy">Crazy</string>
 
-    <!-- SECTION: FurnitureCategory -->
+    <!-- SECTION: TrickCategory -->
     <string name="furniture_category_grinds">Grinds</string>
     <string name="furniture_category_slides">Slides</string>
     <string name="furniture_category_others">Others</string>
