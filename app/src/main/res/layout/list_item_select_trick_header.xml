@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/list_item_furniture__header"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/list_item_trick__header"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:backgroundTint="@color/colorPrimaryDark"
-    android:elevation="3dp" >
+    android:elevation="3dp">
 
     <TextView
-        android:id="@+id/list_item_furniture__header_title"
+        android:id="@+id/list_item_trick__header_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/spotify_medium_black"
+        android:background="@color/colorPrimary"
         android:letterSpacing="0.15"
-        android:text="SLIDES"
+        tools:text="SLIDES"
         android:textAlignment="center"
-        android:textColor="@color/spotify_grey"
+        android:textColor="@color/colorSecondary"
         android:textSize="32sp"
         android:textStyle="bold" />
 </androidx.cardview.widget.CardView>

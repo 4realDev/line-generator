@@ -1,9 +1,43 @@
 <resources>
-    <string name="app_name">Furnitures</string>
+    <string name="app_name">M.R.C</string>
+
+    <!-- SECTION: BottomBarMenu -->
+    <string name="menu_title_settings">Settings</string>
+    <string name="menu_title_selection">Select</string>
+    <string name="menu_title_list">List</string>
+    <string name="menu_title_create">New</string>
+
+    <!-- SECTION: Title -->
+    <string name="toolbar_title_settings">Setup your Line</string>
+    <string name="toolbar_title_selection">Select your Tricks</string>
+    <string name="toolbar_title_list">Your Trick List</string>
+    <string name="toolbar_title_create">Create your Trick</string>
+
+    <!-- SECTION: ExitMenu -->
+    <string name="action_cancel">CANCEL</string>
+    <string name="action_exit">EXIT</string>
 
     <!-- SECTION: CreateFragment -->
-    <string name="furniture_create_fragment_text_input_field">Trick</string>
-    <string name="furniture_create_fragment_create_buttom">Create Trick</string>
+    <string name="trick_create_fragment_title">TRICK | CATEGORY | DIFFICULTY:</string>
+    <string name="trick_create_fragment_text_input_field">Trick</string>
+    <string name="trick_create_fragment_create_buttom">Create Trick</string>
+
+    <!-- SECTION: SettingsFragment -->
+    <string name="trick_settings_fragment_selection_title">CHOOSE:</string>
+    <string name="trick_settings_fragment_selection_max_tricks">How many?</string>
+    <string name="trick_settings_fragment_selection_difficulty">How hard?</string>
+    <string name="trick_settings_fragment_difficulty_chart_title">DIFFICULTY IN PERCENT:</string>
+
+    <!-- SECTION: TrickSettingsBottomSheet -->
+    <string name="trick_settings_bottomsheet_title">EDIT OR DELETE YOUR TRICK:</string>
+
+    <!-- SECTION: NoTrickLayout -->
+    <string name="no_trick_selected_layout_title">Please select some Tricks.</string>
+
+    <!-- SECTION: GENERAL -->
+    <string name="general_delete">DELETE</string>
+
+    <!-- region Trick Attributes -->
 
     <!-- SECTION: TrickType -->
     <string name="trick_tail_stall">Tail Stall</string>
@@ -24,39 +58,26 @@
     <string name="trick_no_comply">No Comply</string>
     <string name="trick_distaster">Distaster</string>
 
-    <!-- SECTION: FurnitureDirectionOut -->
-    <string name="furniture_out_coming_to_fakie">To Fakie</string>
-    <string name="furniture_out_coming_to_regular">To Regular</string>
+    <!-- SECTION: TrickDirectionOut -->
+    <string name="trick_out_coming_to_fakie">To Fakie</string>
+    <string name="trick_out_coming_to_regular">To Regular</string>
 
-    <!-- SECTION: FurnitureDirectionIn -->
-    <string name="furniture_direction_in_fakie">Fakie</string>
-    <string name="furniture_direction_in_regular">Regular</string>
+    <!-- SECTION: TrickDirectionIn -->
+    <string name="trick_direction_in_fakie">Fakie</string>
+    <string name="trick_direction_in_regular">Regular</string>
 
-    <!-- SECTION: FurnitureDifficulty -->
-    <string name="furniture_difficulty_save">Save</string>
-    <string name="furniture_difficulty_easy">Easy</string>
-    <string name="furniture_difficulty_middle">Middle</string>
-    <string name="furniture_difficulty_hard">Hard</string>
-    <string name="furniture_difficulty_crazy">Crazy</string>
+    <!-- SECTION: Difficulty -->
+    <string name="trick_difficulty_save">Save</string>
+    <string name="trick_difficulty_easy">Easy</string>
+    <string name="trick_difficulty_middle">Middle</string>
+    <string name="trick_difficulty_hard">Hard</string>
+    <string name="trick_difficulty_crazy">Crazy</string>
 
-    <!-- SECTION: TrickCategory -->
-    <string name="furniture_category_grinds">Grinds</string>
-    <string name="furniture_category_slides">Slides</string>
-    <string name="furniture_category_others">Others</string>
+    <!-- SECTION: Category -->
+    <string name="trick_category_grinds">Grinds</string>
+    <string name="trick_category_slides">Slides</string>
+    <string name="trick_category_others">Others</string>
 
-    <!-- SECTION: BottomBarMenu -->
-    <string name="menu_title_settings">Settings</string>
-    <string name="menu_title_selection">Select</string>
-    <string name="menu_title_list">List</string>
-    <string name="menu_title_create">New</string>
+    <!-- endregion -->
 
-    <!-- SECTION: Title -->
-    <string name="toolbar_title_settings">Setup your Line</string>
-    <string name="toolbar_title_selection">Select your Tricks</string>
-    <string name="toolbar_title_list">Your Trick List</string>
-    <string name="toolbar_title_create">Create your Trick</string>
-
-    <!-- SECTION: ExitMenu -->
-    <string name="action_cancel">CANCEL</string>
-    <string name="action_exit">EXIT</string>
 </resources>

@@ -1,27 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- ToolBar -->
+
     <color name="colorPrimary">@color/spotify_light_black</color>
-    <!-- Top Bar -->
     <color name="colorPrimaryDark">@color/spotify_black</color>
     <color name="colorSecondary">@color/spotify_grey</color>
     <color name="colorSecondaryDark">@color/trick_light_black</color>
-    <!-- FAB -->
     <color name="colorAccent">@color/spotify_green</color>
 
-    <!-- https://wpamelia.com/website-color-schemes/ -->
-    <!--
-    <color name="ruby_dark_red">#ba411f</color>
-    <color name="ruby_black">#071425</color>
-    <color name="ruby_dark_blue">#444f5e</color>
-    -->
-
-    <!-- Source: https://dribbble.com/shots/5472674-Wool-Knitted-Caps -->
-
-    <color name="trick_dark_golden">#986200</color>
-    <color name="trick_golden">#cd8f31</color>
-    <color name="trick_light_golden">#ffbf60</color>
     <!-- "transparent white, first to values matter -->
     <color name="transparent">#00FFFFFF</color>
 
@@ -42,35 +28,7 @@
     <color name="hard">#178D43</color>
     <color name="crazy">#157537</color>
 
-    <color name="spotify_dark_green">#008827</color>
-    <color name="spotify_grey2">#828282</color>
-    <color name="spotify_grey3">#b3b3b3</color>
-    <color name="spotify_grey4">#ecebe8</color>
-
     <color name="mtrl_textinput_default_box_stroke_color" tools:override="true">@color/colorSecondary</color>
-
-    <color name="ruby_white">#fbfcfc</color>
-    <color name="ruby_yellow_accent_dark">#f1cb1c</color>
-    <color name="ruby_yellow_accent_light">#fcef95</color>
-    <color name="ruby_light_blue">#9197a1</color>
-    <color name="ruby_light_red">#EC282E</color>
-
-
-    <color name="grey00">#f9f9f9</color>
-    <color name="grey01">#E5E5E5</color>
-    <color name="grey02">#CCCCCC</color>
-    <color name="grey03">#B2B2B2</color>
-    <color name="grey04">#999999</color>
-    <color name="grey05">#7F7F7F</color>
-    <color name="grey06">#666666</color>
-    <color name="grey07">#4C4C4C</color>
-    <color name="grey08">#333333</color>
-    <color name="grey09">#191919</color>
-    <color name="grey10">#0D0D0D</color>
-
-    <color name="colorThumbActive">@color/colorAccent</color>
-    <color name="colorThumbInactive">@color/grey04</color>
-    <color name="colorTrack">@color/grey01</color>
 
     <!-- DEFAULT -->
     <color name="black">#000000</color>

@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/list_item_furniture__image"
+        android:id="@+id/list_item_trick__image"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_gravity="center_horizontal"
@@ -15,7 +15,7 @@
         tools:src="@drawable/background_trick_stroked_cicle" />
 
     <TextView
-        android:id="@+id/list_item_furniture__title"
+        android:id="@+id/list_item_trick__title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"

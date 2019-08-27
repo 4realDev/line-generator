@@ -20,8 +20,9 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:text="EDIT OR DELETE YOUR TRICK:"
+            android:text="@string/trick_settings_bottomsheet_title"
             android:textAlignment="center"
+            android:textAllCaps="true"
             android:textColor="@color/white"
             android:textSize="21sp"
             android:textStyle="bold" />
@@ -43,9 +44,9 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
 
+            android:background="?attr/selectableItemBackground"
             android:clickable="true"
             android:focusable="true"
-            android:background="?attr/selectableItemBackground"
             android:orientation="horizontal"
             segmentedgroup:sc_border_width="1dp"
             segmentedgroup:sc_checked_text_color="@color/white"
@@ -59,7 +60,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="?attr/selectableItemBackground"
-                android:text="@string/furniture_direction_in_regular"
+                android:text="@string/trick_direction_in_regular"
                 android:textSize="14sp" />
 
             <RadioButton
@@ -69,7 +70,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:background="?attr/selectableItemBackground"
-                android:text="@string/furniture_direction_in_fakie"
+                android:text="@string/trick_direction_in_fakie"
                 android:textSize="14sp" />
 
         </info.hoang8f.android.segmented.SegmentedGroup>
@@ -91,7 +92,7 @@
                 android:id="@+id/bottomsheet_trick_edit__trick_name_input"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/furniture_create_fragment_text_input_field"
+                android:hint="@string/trick_create_fragment_text_input_field"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
                 android:textColor="@color/white" />
@@ -118,7 +119,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="@string/furniture_out_coming_to_regular"
+                android:text="@string/trick_out_coming_to_regular"
                 android:textSize="14sp" />
 
             <RadioButton
@@ -128,7 +129,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="@string/furniture_out_coming_to_fakie"
+                android:text="@string/trick_out_coming_to_fakie"
                 android:textSize="14sp" />
 
         </info.hoang8f.android.segmented.SegmentedGroup>
@@ -155,7 +156,7 @@
                 android:layout_weight="1"
                 android:checked="true"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="@string/furniture_difficulty_save"
+                android:text="@string/trick_difficulty_save"
                 android:textSize="14sp" />
 
             <RadioButton
@@ -165,7 +166,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="@string/furniture_difficulty_easy"
+                android:text="@string/trick_difficulty_easy"
                 android:textSize="14sp" />
 
             <RadioButton
@@ -175,7 +176,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="@string/furniture_difficulty_middle"
+                android:text="@string/trick_difficulty_middle"
                 android:textSize="14sp" />
 
             <RadioButton
@@ -185,7 +186,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="@string/furniture_difficulty_hard"
+                android:text="@string/trick_difficulty_hard"
                 android:textSize="14sp" />
 
             <RadioButton
@@ -195,7 +196,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:foreground="?attr/selectableItemBackground"
-                android:text="@string/furniture_difficulty_crazy"
+                android:text="@string/trick_difficulty_crazy"
                 android:textSize="14sp" />
 
         </info.hoang8f.android.segmented.SegmentedGroup>
@@ -228,7 +229,6 @@
         android:paddingTop="32dp">
 
         <ImageView
-            android:foreground="?android:attr/selectableItemBackground"
             android:id="@+id/bottomsheet_trick_edit_cancel"
             android:layout_width="match_parent"
             android:layout_height="40dp"
@@ -236,6 +236,7 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:background="@color/colorSecondaryDark"
+            android:foreground="?android:attr/selectableItemBackground"
             android:padding="12dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_cancel"
@@ -243,7 +244,6 @@
 
         <ImageView
             android:id="@+id/bottomsheet_trick_edit_delete"
-            android:foreground="?android:attr/selectableItemBackground"
             android:layout_width="match_parent"
             android:layout_height="40dp"
             android:layout_marginStart="1dp"
@@ -251,19 +251,20 @@
             android:layout_weight="1"
             android:adjustViewBounds="true"
             android:background="@color/colorSecondaryDark"
+            android:foreground="?android:attr/selectableItemBackground"
             android:padding="5dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_delete_forever_white_24dp" />
 
         <ImageView
             android:id="@+id/bottomsheet_trick_edit_save"
-            android:foreground="?android:attr/selectableItemBackground"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_weight="1"
             android:layout_marginStart="1dp"
+            android:layout_weight="1"
             android:adjustViewBounds="true"
             android:background="@color/colorSecondaryDark"
+            android:foreground="?android:attr/selectableItemBackground"
             android:padding="10dp"
             android:scaleType="fitCenter"
             android:src="@drawable/ic_check"

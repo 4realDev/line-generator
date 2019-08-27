@@ -54,9 +54,8 @@ dependencies {
     kapt "androidx.room:room-compiler:$room_version" // For Kotlin use kapt instead of annotationProcessor
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"
 
-
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0-alpha'
-    implementation 'devlight.io:arcprogressstackview:1.0.4'
 
-
+    // timber
+    implementation 'com.jakewharton.timber:timber:4.7.1'
 }
