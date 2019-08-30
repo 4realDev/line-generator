@@ -9,7 +9,7 @@ apply plugin: 'kotlin-kapt'
 android {
     compileSdkVersion rootProject.compileSdkVersion
     defaultConfig {
-        applicationId "com.example.furnitures"
+        applicationId "line.generator"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
@@ -49,6 +49,8 @@ dependencies {
     implementation "com.github.PhilJay:MPAndroidChart:$androidChartVersion" // AndroidChart (in Settings)
     implementation "androidx.room:room-runtime:$roomVersion" // Room
     kapt "androidx.room:room-compiler:$roomVersion" // For Kotlin use kapt instead of annotationProcessor
+
+    implementation 'com.github.ceryle:SegmentedButton:v2.0.2'
 
     implementation "com.jakewharton.timber:timber:$timberVersion" // Timber
 

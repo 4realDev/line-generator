@@ -21,6 +21,8 @@
     <color name="spotify_light_black">#212121</color>
     <color name="spotify_medium_black">#242323</color>
     <color name="spotify_grey">#535353</color>
+    <color name="spotify_light_grey">#b3b3b3</color>
+    <color name="spotify_sand_white">#ecebe8</color>
 
     <color name="save">#23D35F</color>
     <color name="easy">#1EBA55</color>

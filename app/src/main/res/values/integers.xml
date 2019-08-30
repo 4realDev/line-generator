@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <integer name="fragment_selection__recycler_span_count">3</integer>
+    <integer name="segmented_controls_animation_duration">500</integer>
 </resources>

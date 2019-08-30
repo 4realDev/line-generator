@@ -49,40 +49,77 @@
                 android:textSize="21sp"
                 android:textStyle="bold" />
 
-            <info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+            <!--<info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"-->
+                <!--android:id="@+id/fragment_create_trick__direction_in_group"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="35dp"-->
+                <!--android:clickable="true"-->
+                <!--android:focusable="true"-->
+                <!--android:foreground="?attr/selectableItemBackground"-->
+                <!--android:orientation="horizontal"-->
+                <!--segmentedgroup:sc_border_width="1dp"-->
+                <!--segmentedgroup:sc_checked_text_color="@color/white"-->
+                <!--segmentedgroup:sc_corner_radius="5dp"-->
+                <!--segmentedgroup:sc_tint_color="@color/colorSecondaryDark">-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/fragment_create_trick__direction_in_regular"-->
+                    <!--style="@style/RadioButton"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:foreground="?attr/selectableItemBackground"-->
+                    <!--android:text="@string/trick_direction_in_regular"-->
+                    <!--android:textSize="14sp" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/fragment_create_trick__direction_in_fakie"-->
+                    <!--style="@style/RadioButton"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:foreground="?attr/selectableItemBackground"-->
+                    <!--android:text="@string/trick_direction_in_fakie"-->
+                    <!--android:textSize="14sp" />-->
+
+            <!--</info.hoang8f.android.segmented.SegmentedGroup>-->
+
+            <co.ceryle.segmentedbutton.SegmentedButtonGroup
                 android:id="@+id/fragment_create_trick__direction_in_group"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:orientation="horizontal"
-                segmentedgroup:sc_border_width="1dp"
-                segmentedgroup:sc_checked_text_color="@color/white"
-                segmentedgroup:sc_corner_radius="5dp"
-                segmentedgroup:sc_tint_color="@color/colorSecondaryDark">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:elevation="3dp"
+                app:sbg_animateSelector="fastOutSlowIn"
+                app:sbg_animateSelectorDuration="@integer/segmented_controls_animation_duration"
+                app:sbg_dividerColor="@color/colorAccent"
+                app:sbg_dividerSize="0dp"
+                app:sbg_position="0"
+                app:sbg_radius="5dp"
+                app:sbg_ripple="false"
+                app:sbg_selectorColor="@color/colorSecondary">
 
-                <RadioButton
+                <co.ceryle.segmentedbutton.SegmentedButton
                     android:id="@+id/fragment_create_trick__direction_in_regular"
-                    style="@style/RadioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/segmented_controls_height"
+                    android:layout_marginStart="@dimen/segmented_controls_button_margin"
                     android:layout_weight="1"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:text="@string/trick_direction_in_regular"
-                    android:textSize="14sp" />
+                    android:background="@color/colorSecondaryDark"
+                    app:sb_text="@string/trick_direction_in_regular"
+                    app:sb_textColor="@color/white" />
 
-                <RadioButton
+                <co.ceryle.segmentedbutton.SegmentedButton
                     android:id="@+id/fragment_create_trick__direction_in_fakie"
-                    style="@style/RadioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/segmented_controls_height"
+                    android:layout_marginStart="@dimen/segmented_controls_button_margin"
+                    android:layout_marginEnd="@dimen/segmented_controls_button_margin"
                     android:layout_weight="1"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:text="@string/trick_direction_in_fakie"
-                    android:textSize="14sp" />
-
-            </info.hoang8f.android.segmented.SegmentedGroup>
+                    android:background="@color/colorSecondaryDark"
+                    app:sb_text="@string/trick_direction_in_fakie"
+                    app:sb_textColor="@color/white" />
+            </co.ceryle.segmentedbutton.SegmentedButtonGroup>
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/fragment_create_trick__text_input_layout"
@@ -108,154 +145,239 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+            <!--<info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"-->
+                <!--android:id="@+id/fragment_create_trick__direction_out_group"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="35dp"-->
+                <!--android:clickable="true"-->
+                <!--android:focusable="true"-->
+                <!--android:foreground="?attr/selectableItemBackground"-->
+                <!--android:orientation="horizontal"-->
+                <!--segmentedgroup:sc_border_width="1dp"-->
+                <!--segmentedgroup:sc_checked_text_color="@color/white"-->
+                <!--segmentedgroup:sc_corner_radius="5dp"-->
+                <!--segmentedgroup:sc_tint_color="@color/colorSecondaryDark">-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/fragment_create_trick__direction_out_to_regular"-->
+                    <!--style="@style/RadioButton"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:foreground="?attr/selectableItemBackground"-->
+                    <!--android:text="@string/trick_out_coming_to_regular"-->
+                    <!--android:textSize="14sp" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/fragment_create_trick__direction_out_to_fakie"-->
+                    <!--style="@style/RadioButton"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:foreground="?attr/selectableItemBackground"-->
+                    <!--android:text="@string/trick_out_coming_to_fakie"-->
+                    <!--android:textSize="14sp" />-->
+
+            <!--</info.hoang8f.android.segmented.SegmentedGroup>-->
+
+            <co.ceryle.segmentedbutton.SegmentedButtonGroup
                 android:id="@+id/fragment_create_trick__direction_out_group"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:layout_marginBottom="20dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:orientation="horizontal"
-                segmentedgroup:sc_border_width="1dp"
-                segmentedgroup:sc_checked_text_color="@color/white"
-                segmentedgroup:sc_corner_radius="5dp"
-                segmentedgroup:sc_tint_color="@color/colorSecondaryDark">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:elevation="3dp"
+                app:sbg_animateSelector="fastOutSlowIn"
+                app:sbg_animateSelectorDuration="@integer/segmented_controls_animation_duration"
+                app:sbg_dividerColor="@color/colorAccent"
+                app:sbg_dividerSize="0dp"
+                app:sbg_position="0"
+                app:sbg_radius="5dp"
+                app:sbg_ripple="false"
+                app:sbg_selectorColor="@color/colorSecondary">
 
-                <RadioButton
+                <co.ceryle.segmentedbutton.SegmentedButton
                     android:id="@+id/fragment_create_trick__direction_out_to_regular"
-                    style="@style/RadioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/segmented_controls_height"
+                    android:layout_marginStart="@dimen/segmented_controls_button_margin"
                     android:layout_weight="1"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:text="@string/trick_out_coming_to_regular"
-                    android:textSize="14sp" />
+                    android:background="@color/colorSecondaryDark"
+                    app:sb_text="@string/trick_direction_out_to_regular"
+                    app:sb_textColor="@color/white" />
 
-                <RadioButton
+                <co.ceryle.segmentedbutton.SegmentedButton
                     android:id="@+id/fragment_create_trick__direction_out_to_fakie"
-                    style="@style/RadioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/segmented_controls_height"
+                    android:layout_marginStart="@dimen/segmented_controls_button_margin"
+                    android:layout_marginEnd="@dimen/segmented_controls_button_margin"
                     android:layout_weight="1"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:text="@string/trick_out_coming_to_fakie"
-                    android:textSize="14sp" />
+                    android:background="@color/colorSecondaryDark"
+                    app:sb_text="@string/trick_direction_out_to_fakie"
+                    app:sb_textColor="@color/white" />
+            </co.ceryle.segmentedbutton.SegmentedButtonGroup>
 
-            </info.hoang8f.android.segmented.SegmentedGroup>
+            <!--<info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"-->
+                <!--android:id="@+id/fragment_create_trick__category_group"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="35dp"-->
+                <!--android:clickable="true"-->
+                <!--android:focusable="true"-->
+                <!--android:foreground="?attr/selectableItemBackground"-->
+                <!--android:orientation="horizontal"-->
+                <!--segmentedgroup:sc_border_width="1dp"-->
+                <!--segmentedgroup:sc_checked_text_color="@color/white"-->
+                <!--segmentedgroup:sc_corner_radius="5dp"-->
+                <!--segmentedgroup:sc_tint_color="@color/colorSecondaryDark">-->
 
-            <info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
+                <!--<RadioButton-->
+                    <!--android:id="@+id/fragment_create_trick__category_grinds"-->
+                    <!--style="@style/RadioButton"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:checked="true"-->
+                    <!--android:foreground="?attr/selectableItemBackground"-->
+                    <!--android:text="@string/trick_category_grinds"-->
+                    <!--android:textSize="14sp" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/fragment_create_trick__category_slides"-->
+                    <!--style="@style/RadioButton"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:foreground="?attr/selectableItemBackground"-->
+                    <!--android:text="@string/trick_category_slides"-->
+                    <!--android:textSize="14sp" />-->
+
+                <!--<RadioButton-->
+                    <!--android:id="@+id/fragment_create_trick__category_others"-->
+                    <!--style="@style/RadioButton"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_weight="1"-->
+                    <!--android:foreground="?attr/selectableItemBackground"-->
+                    <!--android:text="@string/trick_category_others"-->
+                    <!--android:textSize="14sp" />-->
+
+            <!--</info.hoang8f.android.segmented.SegmentedGroup>-->
+
+            <co.ceryle.segmentedbutton.SegmentedButtonGroup
                 android:id="@+id/fragment_create_trick__category_group"
                 android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:orientation="horizontal"
-                segmentedgroup:sc_border_width="1dp"
-                segmentedgroup:sc_checked_text_color="@color/white"
-                segmentedgroup:sc_corner_radius="5dp"
-                segmentedgroup:sc_tint_color="@color/colorSecondaryDark">
-
-                <RadioButton
-                    android:id="@+id/fragment_create_trick__category_grinds"
-                    style="@style/RadioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:checked="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:text="@string/trick_category_grinds"
-                    android:textSize="14sp" />
-
-                <RadioButton
-                    android:id="@+id/fragment_create_trick__category_slides"
-                    style="@style/RadioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:text="@string/trick_category_slides"
-                    android:textSize="14sp" />
-
-                <RadioButton
-                    android:id="@+id/fragment_create_trick__category_others"
-                    style="@style/RadioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:text="@string/trick_category_others"
-                    android:textSize="14sp" />
-
-            </info.hoang8f.android.segmented.SegmentedGroup>
-
-            <info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"
-                android:id="@+id/fragment_create_trick__difficulty_group"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
-                android:clickable="true"
-                android:focusable="true"
-                android:foreground="?attr/selectableItemBackground"
-                android:orientation="horizontal"
-                segmentedgroup:sc_border_width="1dp"
-                segmentedgroup:sc_checked_text_color="@color/white"
-                segmentedgroup:sc_corner_radius="5dp"
-                segmentedgroup:sc_tint_color="@color/colorSecondaryDark">
+                android:elevation="3dp"
+                app:sbg_animateSelector="fastOutSlowIn"
+                app:sbg_animateSelectorDuration="@integer/segmented_controls_animation_duration"
+                app:sbg_dividerColor="@color/colorAccent"
+                app:sbg_dividerSize="0dp"
+                app:sbg_position="0"
+                app:sbg_radius="5dp"
+                app:sbg_ripple="false"
+                app:sbg_selectorColor="@color/colorSecondary">
 
-                <RadioButton
-                    android:id="@+id/fragment_create_trick__difficulty_save"
-                    style="@style/RadioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                <co.ceryle.segmentedbutton.SegmentedButton
+                    android:id="@+id/fragment_create_trick__category_grinds"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/segmented_controls_height"
+                    android:layout_marginStart="@dimen/segmented_controls_button_margin"
                     android:layout_weight="1"
-                    android:checked="true"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:text="@string/trick_difficulty_save"
-                    android:textSize="14sp" />
+                    android:background="@color/colorSecondaryDark"
+                    app:sb_text="@string/trick_category_grinds"
+                    app:sb_textColor="@color/white" />
 
-                <RadioButton
-                    android:id="@+id/fragment_create_trick__difficulty_easy"
-                    style="@style/RadioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                <co.ceryle.segmentedbutton.SegmentedButton
+                    android:id="@+id/fragment_create_trick__category_slides"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/segmented_controls_height"
+                    android:layout_marginStart="@dimen/segmented_controls_button_margin"
+                    android:layout_marginEnd="@dimen/segmented_controls_button_margin"
                     android:layout_weight="1"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:text="@string/trick_difficulty_easy"
-                    android:textSize="14sp" />
+                    android:background="@color/colorSecondaryDark"
+                    app:sb_text="@string/trick_category_slides"
+                    app:sb_textColor="@color/white" />
 
-                <RadioButton
-                    android:id="@+id/fragment_create_trick__difficulty_middle"
-                    style="@style/RadioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                <co.ceryle.segmentedbutton.SegmentedButton
+                    android:id="@+id/fragment_create_trick__category_others"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/segmented_controls_height"
+                    android:layout_marginEnd="@dimen/segmented_controls_button_margin"
                     android:layout_weight="1"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:text="@string/trick_difficulty_middle"
-                    android:textSize="14sp" />
+                    android:background="@color/colorSecondaryDark"
+                    app:sb_text="@string/trick_category_others"
+                    app:sb_textColor="@color/white" />
+            </co.ceryle.segmentedbutton.SegmentedButtonGroup>
 
-                <RadioButton
-                    android:id="@+id/fragment_create_trick__difficulty_hard"
-                    style="@style/RadioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:text="@string/trick_difficulty_hard"
-                    android:textSize="14sp" />
+            <!--<info.hoang8f.android.segmented.SegmentedGroup xmlns:segmentedgroup="http://schemas.android.com/apk/res-auto"-->
+            <!--android:id="@+id/fragment_create_trick__difficulty_group"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="35dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--android:clickable="true"-->
+            <!--android:focusable="true"-->
+            <!--android:background="@drawable/background_segmented_controls"-->
+            <!--android:foreground="?attr/selectableItemBackground"-->
+            <!--android:orientation="horizontal"-->
+            <!--segmentedgroup:sc_border_width="1dp"-->
+            <!--segmentedgroup:sc_checked_text_color="@color/white"-->
+            <!--segmentedgroup:sc_corner_radius="5dp"-->
+            <!--segmentedgroup:sc_tint_color="@color/colorSecondaryDark">-->
 
-                <RadioButton
-                    android:id="@+id/fragment_create_trick__difficulty_crazy"
-                    style="@style/RadioButton"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:foreground="?attr/selectableItemBackground"
-                    android:text="@string/trick_difficulty_crazy"
-                    android:textSize="14sp" />
+            <!--<RadioButton-->
+            <!--android:id="@+id/fragment_create_trick__difficulty_save"-->
+            <!--style="@style/RadioButton"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:checked="true"-->
+            <!--android:foreground="?attr/selectableItemBackground"-->
+            <!--android:text="@string/trick_difficulty_save"-->
+            <!--android:textSize="14sp" />-->
 
-            </info.hoang8f.android.segmented.SegmentedGroup>
+            <!--<RadioButton-->
+            <!--android:id="@+id/fragment_create_trick__difficulty_easy"-->
+            <!--style="@style/RadioButton"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:foreground="?attr/selectableItemBackground"-->
+            <!--android:text="@string/trick_difficulty_easy"-->
+            <!--android:textSize="14sp" />-->
+
+            <!--<RadioButton-->
+            <!--android:id="@+id/fragment_create_trick__difficulty_middle"-->
+            <!--style="@style/RadioButton"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:foreground="?attr/selectableItemBackground"-->
+            <!--android:text="@string/trick_difficulty_middle"-->
+            <!--android:textSize="14sp" />-->
+
+            <!--<RadioButton-->
+            <!--android:id="@+id/fragment_create_trick__difficulty_hard"-->
+            <!--style="@style/RadioButton"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:foreground="?attr/selectableItemBackground"-->
+            <!--android:text="@string/trick_difficulty_hard"-->
+            <!--android:textSize="14sp" />-->
+
+            <!--<RadioButton-->
+            <!--android:id="@+id/fragment_create_trick__difficulty_crazy"-->
+            <!--style="@style/RadioButton"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:layout_weight="1"-->
+            <!--android:foreground="?attr/selectableItemBackground"-->
+            <!--android:text="@string/trick_difficulty_crazy"-->
+            <!--android:textSize="14sp" />-->
+
+            <!--</info.hoang8f.android.segmented.SegmentedGroup>-->
 
             <!--<RatingBar-->
             <!--android:id="@+id/fragment_create_trick__rating_bar"-->
@@ -268,6 +390,74 @@
             <!--android:rating="3"-->
             <!--android:stepSize="1"-->
             <!--android:theme="@style/Widget.AppCompat.RatingBar" />-->
+
+            <co.ceryle.segmentedbutton.SegmentedButtonGroup
+                android:id="@+id/fragment_create_trick__difficulty_group"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:elevation="3dp"
+                app:sbg_animateSelector="fastOutSlowIn"
+                app:sbg_animateSelectorDuration="@integer/segmented_controls_animation_duration"
+                app:sbg_dividerColor="@color/colorAccent"
+                app:sbg_dividerSize="0dp"
+                app:sbg_position="0"
+                app:sbg_radius="3dp"
+                app:sbg_ripple="false"
+                app:sbg_selectorColor="@color/colorSecondary">
+
+                <co.ceryle.segmentedbutton.SegmentedButton
+                    android:id="@+id/fragment_create_trick__difficulty_save"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/segmented_controls_height"
+                    android:layout_marginStart="@dimen/segmented_controls_button_margin"
+                    android:layout_weight="1"
+                    android:background="@color/colorSecondaryDark"
+                    app:sb_text="@string/trick_difficulty_save"
+                    app:sb_textColor="@color/white" />
+
+                <co.ceryle.segmentedbutton.SegmentedButton
+                    android:id="@+id/fragment_create_trick__difficulty_easy"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/segmented_controls_height"
+                    android:layout_marginStart="@dimen/segmented_controls_button_margin"
+                    android:layout_marginEnd="@dimen/segmented_controls_button_margin"
+                    android:layout_weight="1"
+                    android:background="@color/colorSecondaryDark"
+                    app:sb_text="@string/trick_difficulty_easy"
+                    app:sb_textColor="@color/white" />
+
+                <co.ceryle.segmentedbutton.SegmentedButton
+                    android:id="@+id/fragment_create_trick__difficulty_middle"
+                    android:layout_width="0dp"
+                    android:layout_height="@dimen/segmented_controls_height"
+                    android:layout_marginEnd="@dimen/segmented_controls_button_margin"
+                    android:layout_weight="1"
+                    android:background="@color/colorSecondaryDark"
+                    app:sb_text="@string/trick_difficulty_middle"
+                    app:sb_textColor="@color/white" />
+
+                <co.ceryle.segmentedbutton.SegmentedButton
+                    android:id="@+id/fragment_create_trick__difficulty_hard"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_marginEnd="@dimen/segmented_controls_button_margin"
+                    android:layout_weight="1"
+                    android:background="@color/colorSecondaryDark"
+                    app:sb_text="@string/trick_difficulty_hard"
+                    app:sb_textColor="@color/white" />
+
+                <co.ceryle.segmentedbutton.SegmentedButton
+                    android:id="@+id/fragment_create_trick__difficulty_crazy"
+                    android:layout_width="0dp"
+                    android:layout_height="35dp"
+                    android:layout_marginEnd="@dimen/segmented_controls_button_margin"
+                    android:layout_weight="1"
+                    android:background="@color/colorSecondaryDark"
+                    app:sb_text="@string/trick_difficulty_crazy"
+                    app:sb_textColor="@color/white" />
+            </co.ceryle.segmentedbutton.SegmentedButtonGroup>
 
             <FrameLayout
                 android:id="@+id/fragment_create_trick__create_button"

@@ -59,8 +59,8 @@
     <string name="trick_distaster">Distaster</string>
 
     <!-- SECTION: TrickDirectionOut -->
-    <string name="trick_out_coming_to_fakie">To Fakie</string>
-    <string name="trick_out_coming_to_regular">To Regular</string>
+    <string name="trick_direction_out_to_fakie">To Fakie</string>
+    <string name="trick_direction_out_to_regular">To Regular</string>
 
     <!-- SECTION: TrickDirectionIn -->
     <string name="trick_direction_in_fakie">Fakie</string>
