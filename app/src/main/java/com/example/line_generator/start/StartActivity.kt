@@ -23,7 +23,7 @@ class StartActivity : AppCompatActivity() {
         viewModel = ViewModelProviders.of(this).get(StartViewModel::class.java)
 
         if(!viewModel.isStartAnimationDone) {
-            viewModel.startNavigationEventTimer()
+//            viewModel.startNavigationEventTimer()
             viewModel.isStartAnimationDone = true
         }
 
