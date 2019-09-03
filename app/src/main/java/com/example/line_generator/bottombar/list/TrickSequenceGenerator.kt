@@ -2,15 +2,15 @@ package com.example.line_generator.bottombar.list
 
 import android.app.Application
 import com.example.line_generator.bottombar.settings.SettingsService
-import com.example.line_generator.trick.Difficulty
-import com.example.line_generator.trick.Difficulty.*
-import com.example.line_generator.trick.DirectionIn
-import com.example.line_generator.trick.DirectionIn.FAKIE
-import com.example.line_generator.trick.DirectionIn.REGULAR
-import com.example.line_generator.trick.DirectionOut
-import com.example.line_generator.trick.DirectionOut.TO_FAKIE
-import com.example.line_generator.trick.DirectionOut.TO_REGULAR
-import com.example.line_generator.trick.Trick
+import com.example.line_generator.data.trick.Difficulty
+import com.example.line_generator.data.trick.Difficulty.*
+import com.example.line_generator.data.trick.DirectionIn
+import com.example.line_generator.data.trick.DirectionIn.FAKIE
+import com.example.line_generator.data.trick.DirectionIn.REGULAR
+import com.example.line_generator.data.trick.DirectionOut
+import com.example.line_generator.data.trick.DirectionOut.TO_FAKIE
+import com.example.line_generator.data.trick.DirectionOut.TO_REGULAR
+import com.example.line_generator.data.trick.Trick
 import kotlin.math.roundToInt
 
 class TrickSequenceGenerator(application: Application) {

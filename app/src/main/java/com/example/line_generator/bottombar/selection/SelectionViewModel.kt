@@ -5,7 +5,8 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations
 import androidx.lifecycle.viewModelScope
-import com.example.line_generator.trick.*
+import com.example.line_generator.data.trick.*
+import com.example.line_generator.userSelection.UserService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
@@ -36,14 +37,17 @@ private const val OTHER_HEADER_ID: String = "OTHER_HEADER_ID"
 class SelectionViewModel(application: Application) : AndroidViewModel(application), TrickContract.ViewModel {
 
     private val repository: TricksRepositoryImp
+
     private val sortedTricks: LiveData<List<Trick>>
     private val trickViewState: LiveData<List<RowViewState>>
     private val itemsWithHeader: LiveData<List<RowViewState>?>
+
     private var clickedItem: TrickViewState? = null
+    private val userId = UserService(application).getUserId()
 
     init {
-        val trickDao = TrickRoomDatabase.getDatabase(application, viewModelScope).trickDao()
-        repository = TricksRepositoryImp(trickDao)
+        val trickDao = LineGeneratorDatabase.getDatabase(application).trickDao()
+        repository = TricksRepositoryImp(trickDao, userId)
         sortedTricks = repository.getSortedTricks()
         trickViewState = Transformations.map(sortedTricks, ::mapListToViewState)
         itemsWithHeader = Transformations.map(trickViewState, ::addHeaders)
@@ -57,6 +61,7 @@ class SelectionViewModel(application: Application) : AndroidViewModel(applicatio
     private fun mapItemToViewState(trick: Trick): TrickViewState {
         return TrickViewState(
             id = trick.id,
+            userId = trick.userId,
             position = trick.position,
             trickType = trick.trickType,
             directionIn = trick.directionIn,
@@ -109,33 +114,33 @@ class SelectionViewModel(application: Application) : AndroidViewModel(applicatio
 
     override fun getTrickViewStateWithHeader(): LiveData<List<RowViewState>?> = itemsWithHeader
 
-    override fun onTrickClicked(trickViewStateate: TrickViewState) {
-        clickedItem = trickViewStateate
-        update(trickViewStateate)
+    override fun onTrickClicked(trickViewState: TrickViewState) {
+        clickedItem = trickViewState
+        update(trickViewState)
     }
 
-    override fun update(trickViewStateate: TrickViewState): Job {
-        return viewModelScope.launch(Dispatchers.IO) { repository.updateTrickOnClick(trickViewStateate) }
+    override fun update(trickViewState: TrickViewState): Job {
+        return viewModelScope.launch(Dispatchers.IO) { repository.updateTrickOnClick(trickViewState) }
     }
 
     override fun updateAfterEdit(id: String, changedName: String, changedDirectionIn: DirectionIn, changedDirectionOut: DirectionOut, changedDifficulty: Difficulty): Job {
         return viewModelScope.launch(Dispatchers.IO) { repository.updateAfterEdit(id, changedName, changedDirectionIn, changedDirectionOut, changedDifficulty) }
     }
 
-    override fun delete(trickViewStateate: TrickViewState) {
+    override fun delete(trickViewState: TrickViewState) {
 //        val tricksListMinusPredeleted = itemsWithHeader.value
 //        val predeletedPosition = tricksListMinusPredeleted.indexOf(trickViewStateate)
 //        tricksListMinusPredeleted?.minusElement(trickViewStateate)
 //        itemsWithHeader.value = tricksListMinusPredeleted
         viewModelScope.launch(Dispatchers.IO) {
-            repository.deleteTrickById(trickViewStateate.id)
+            repository.deleteTrickById(trickViewState.id)
         }
     }
 
     // Getter for a "Job" to insert the data in coroutine in a non-blocking way
-    override fun insert(trickViewStateate: TrickViewState): Job {
+    override fun insert(trickViewState: TrickViewState): Job {
         return viewModelScope.launch(Dispatchers.IO) {
-            repository.insert(trickViewStateate)
+            repository.insert(trickViewState)
         }
     }
 

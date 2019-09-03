@@ -15,8 +15,8 @@ import com.example.line_generator.R
 import com.example.line_generator.bottombar.BottomBarContract
 import com.example.line_generator.bottombar.BottomBarViewModel
 import com.example.line_generator.bottombar.selection.trick_settings.TrickSettingsBottomSheetDialog
+import com.example.line_generator.data.trick.*
 import com.example.line_generator.extensions.pxFromDp
-import com.example.line_generator.trick.*
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_bottom_bar.*
 import timber.log.Timber

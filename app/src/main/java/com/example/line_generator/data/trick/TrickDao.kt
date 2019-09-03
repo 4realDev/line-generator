@@ -1,4 +1,4 @@
-package com.example.line_generator.trick
+package com.example.line_generator.data.trick
 
 import androidx.lifecycle.LiveData
 import androidx.room.Dao
@@ -16,8 +16,8 @@ import androidx.room.Query
 @Dao
 interface TrickDao {
 
-    @Query ("SELECT * from trick_data")
-    fun getAll(): LiveData<List<Trick>>
+    @Query ("SELECT * from trick_data WHERE user_id = :userId")
+    fun getAll(userId: String): LiveData<List<Trick>>
 
     @Query ("UPDATE trick_data SET selected = :selected WHERE id = :id")
     fun update(selected: Boolean, id: String)

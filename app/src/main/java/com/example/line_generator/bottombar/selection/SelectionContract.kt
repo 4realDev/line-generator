@@ -1,7 +1,7 @@
 package com.example.line_generator.bottombar.selection
 
 import androidx.lifecycle.LiveData
-import com.example.line_generator.trick.*
+import com.example.line_generator.data.trick.*
 import kotlinx.coroutines.Job
 
 interface TrickContract {

@@ -1,9 +1,10 @@
-package com.example.line_generator.trick
+package com.example.line_generator.data.trick
 
 import java.io.Serializable
 
 data class TrickViewState(
     override val id: String,
+    val userId: String,
     val position: Int,
     val trickType: TrickType,
     val directionIn: DirectionIn,

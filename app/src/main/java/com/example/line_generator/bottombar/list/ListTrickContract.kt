@@ -1,7 +1,7 @@
 package com.example.line_generator.bottombar.list
 
 import androidx.lifecycle.LiveData
-import com.example.line_generator.trick.TrickViewState
+import com.example.line_generator.data.trick.TrickViewState
 
 class ListTrickContract {
     interface ViewModel {

@@ -3,8 +3,9 @@ package com.example.line_generator.bottombar.create
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.line_generator.data.trick.*
 import com.example.line_generator.extensions.randomUUID
-import com.example.line_generator.trick.*
+import com.example.line_generator.userSelection.UserService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.cancel
@@ -13,10 +14,11 @@ import kotlinx.coroutines.launch
 class CreateViewModel(application: Application) : AndroidViewModel(application), CreateContract.ViewModel {
 
     private val repository: TricksRepositoryImp
+    private val userId = UserService(application).getUserId()
 
     init {
-        val trickDao = TrickRoomDatabase.getDatabase(application, viewModelScope).trickDao()
-        repository = TricksRepositoryImp(trickDao)
+        val trickDao = LineGeneratorDatabase.getDatabase(application).trickDao()
+        repository = TricksRepositoryImp(trickDao, userId)
     }
 
     override fun createTrick(name: String, directionIn: DirectionIn, directionOut: DirectionOut, category: Category, difficulty: Difficulty) {
@@ -29,6 +31,7 @@ class CreateViewModel(application: Application) : AndroidViewModel(application),
 
         val newTrick = TrickViewState(
             id = randomUUID(),
+            userId = userId,
             position = 0,
             trickType = categoryDependentType,
             directionIn = directionIn,

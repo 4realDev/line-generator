@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.Transformations
 import com.example.line_generator.bottombar.create.SettingsContract
-import com.example.line_generator.trick.Difficulty
+import com.example.line_generator.data.trick.Difficulty
 
 class SettingsViewModel(application: Application) : AndroidViewModel(application), SettingsContract.ViewModel {
 

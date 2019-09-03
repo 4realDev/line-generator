@@ -1,17 +1,21 @@
-package com.example.line_generator.bottombar
+package com.example.line_generator
 
-import android.util.Log
 import androidx.fragment.app.FragmentActivity
-import com.example.line_generator.R
+import com.example.line_generator.bottombar.BottomBarActivity
+import com.example.line_generator.bottombar.BottomBarContract
+import com.example.line_generator.bottombar.BottomBarItem
+import com.example.line_generator.bottombar.ConfirmExitDialogFragment
 import com.example.line_generator.bottombar.create.CreateFragment
 import com.example.line_generator.bottombar.list.ListTrickFragment
 import com.example.line_generator.bottombar.selection.SelectionFragment
 import com.example.line_generator.bottombar.settings.SettingsFragment
+import com.example.line_generator.start.StartActivity
 import com.example.line_generator.start.StartContract
+import com.example.line_generator.userSelection.UserContract
 import timber.log.Timber
 
 
-class Navigator(activity: FragmentActivity) : BottomBarContract.Navigator, StartContract.Navigator {
+class Navigator(activity: FragmentActivity) : BottomBarContract.Navigator, StartContract.Navigator, UserContract.Navigator {
 
     private val activity = activity
 
@@ -34,11 +38,16 @@ class Navigator(activity: FragmentActivity) : BottomBarContract.Navigator, Start
         activity.finish()
     }
 
+    override fun openStartActivity() {
+        activity.startActivity(StartActivity.newIntent(activity))
+        activity.finish()
+        Timber.e("finish() StartActivity")
+    }
+
     override fun openBottomBarActivity() {
         activity.startActivity(BottomBarActivity.newIntent(activity))
         activity.finish()
         Timber.e("finish() StartActivity")
-        Log.d("DEBUGG", "finish() StartActivity")
     }
 
     fun openSelection() {

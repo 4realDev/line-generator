@@ -2,8 +2,12 @@ package com.example.line_generator.bottombar.list
 
 import android.app.Application
 import android.util.Log
-import androidx.lifecycle.*
-import com.example.line_generator.trick.*
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MediatorLiveData
+import androidx.lifecycle.Transformations
+import com.example.line_generator.data.trick.*
+import com.example.line_generator.userSelection.UserService
 
 // numbPickerIndex = 0 -> position = 1
 // ListTrickViewModel greift nur auf Repository zu, schreibt aber nie was rein
@@ -15,6 +19,7 @@ class ListTrickViewModel(application: Application) : AndroidViewModel(applicatio
     // In unserem Fall soll jedes Mal neue Liste generiert werden (somit alte verworfen werden)
     // -> Scoping liegt auf Fragment (nicht auf Activity ("this" statt "activity"))
     // -> viewModel = ViewModelProviders.of(this).get(ListTrickViewModel::class.java)
+    private val userId = UserService(application).getUserId()
     private val repository: TricksRepositoryImp
     private val trickSequenceGenerator = TrickSequenceGenerator(application)
     private val selectedTricks: LiveData<List<Trick>>
@@ -23,8 +28,8 @@ class ListTrickViewModel(application: Application) : AndroidViewModel(applicatio
     private val selectedTricksAccessData = MediatorLiveData<List<TrickViewState>>()
 
     init {
-        val trickDao = TrickRoomDatabase.getDatabase(application, viewModelScope).trickDao()
-        repository = TricksRepositoryImp(trickDao)
+        val trickDao = LineGeneratorDatabase.getDatabase(application).trickDao()
+        repository = TricksRepositoryImp(trickDao, userId)
         selectedTricks = repository.getSelectedTricks()
         shuffledSelectedTricks = Transformations.map(selectedTricks, ::mapSelectedToShuffledList)
         selectedTricksViewState = Transformations.map(shuffledSelectedTricks, ::mapShuffledToViewState)
@@ -37,6 +42,7 @@ class ListTrickViewModel(application: Application) : AndroidViewModel(applicatio
     private fun mapItemToViewState(index: Int, trick: Trick): TrickViewState {
         return TrickViewState(
             id = trick.id,
+            userId = trick.userId,
             position = index + 1,
             trickType = trick.trickType,
             directionIn = trick.directionIn,

@@ -1,9 +1,9 @@
-package com.example.line_generator.trick
+package com.example.line_generator.data.trick
 
 import androidx.annotation.DrawableRes
 import androidx.annotation.StringRes
 import com.example.line_generator.R
-import com.example.line_generator.trick.TrickType.*
+import com.example.line_generator.data.trick.TrickType.*
 
 object TrickTypeHelper {
 

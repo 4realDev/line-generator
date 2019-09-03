@@ -1,6 +1,6 @@
 package com.example.line_generator.helper
 
-import com.example.line_generator.trick.Difficulty
+import com.example.line_generator.data.trick.Difficulty
 
 object TrickDifficultyHelper {
 

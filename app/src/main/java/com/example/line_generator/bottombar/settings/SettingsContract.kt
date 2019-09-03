@@ -1,7 +1,7 @@
 package com.example.line_generator.bottombar.create
 
 import androidx.lifecycle.LiveData
-import com.example.line_generator.trick.Difficulty
+import com.example.line_generator.data.trick.Difficulty
 
 class SettingsContract {
     interface ViewModel {

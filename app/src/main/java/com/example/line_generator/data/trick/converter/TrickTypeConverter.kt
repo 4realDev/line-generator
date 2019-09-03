@@ -1,7 +1,7 @@
-package com.example.line_generator.trick.converter
+package com.example.line_generator.data.trick.converter
 
 import androidx.room.TypeConverter
-import com.example.line_generator.trick.TrickType
+import com.example.line_generator.data.trick.TrickType
 
 class TrickTypeConverter {
     companion object {

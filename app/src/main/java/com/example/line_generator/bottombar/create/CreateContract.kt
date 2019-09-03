@@ -1,6 +1,6 @@
 package com.example.line_generator.bottombar.create
 
-import com.example.line_generator.trick.*
+import com.example.line_generator.data.trick.*
 import kotlinx.coroutines.Job
 
 class CreateContract {
@@ -13,6 +13,6 @@ class CreateContract {
             difficulty: Difficulty
         )
 
-        fun insert(TrickViewState: TrickViewState): Job
+        fun insert(trickViewState: TrickViewState): Job
     }
 }

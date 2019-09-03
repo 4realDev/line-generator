@@ -15,7 +15,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.line_generator.R
 import com.example.line_generator.helper.TrickDifficultyHelper
-import com.example.line_generator.trick.Difficulty
+import com.example.line_generator.data.trick.Difficulty
 import com.github.mikephil.charting.animation.Easing
 import com.github.mikephil.charting.charts.PieChart
 import com.github.mikephil.charting.components.Legend

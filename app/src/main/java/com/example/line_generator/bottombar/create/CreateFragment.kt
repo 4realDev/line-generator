@@ -21,10 +21,10 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import co.ceryle.segmentedbutton.SegmentedButtonGroup
 import com.example.line_generator.R
-import com.example.line_generator.trick.Category
-import com.example.line_generator.trick.Difficulty
-import com.example.line_generator.trick.DirectionIn
-import com.example.line_generator.trick.DirectionOut
+import com.example.line_generator.data.trick.Category
+import com.example.line_generator.data.trick.Difficulty
+import com.example.line_generator.data.trick.DirectionIn
+import com.example.line_generator.data.trick.DirectionOut
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.activity_bottom_bar.*

@@ -2,7 +2,7 @@ package com.example.line_generator.bottombar.settings
 
 import android.content.Context
 import android.content.SharedPreferences
-import com.example.line_generator.trick.Difficulty
+import com.example.line_generator.data.trick.Difficulty
 
 object SettingsService {
     private const val PREF_FILE_NAME = "settings_preferences"

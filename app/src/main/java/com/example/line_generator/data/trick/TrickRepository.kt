@@ -1,4 +1,4 @@
-package com.example.line_generator.trick
+package com.example.line_generator.data.trick
 
 import androidx.lifecycle.LiveData
 
@@ -8,7 +8,7 @@ interface TrickRepository {
 
     fun getSelectedTricks(): LiveData<List<Trick>>
 
-    suspend fun insert(trick: TrickViewState)
+    suspend fun insert(trickViewState: TrickViewState)
 
     suspend fun deleteTrickById(id: String)
 

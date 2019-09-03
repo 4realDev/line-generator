@@ -1,8 +1,11 @@
-package com.example.line_generator.trick
+package com.example.line_generator.data.trick
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.ForeignKey.CASCADE
 import androidx.room.PrimaryKey
+import com.example.line_generator.data.user.User
 
 
 /**
@@ -11,10 +14,17 @@ import androidx.room.PrimaryKey
 // id als auch selected, default und OutComing sind im View nie sichtbar
 // müssen somit nicht dem ViewState übergeben werden
 // dont use is_ KeyWord in Combination with Room
-@Entity (tableName = "trick_data")
+@Entity (
+    tableName = "trick_data",
+    foreignKeys = [ForeignKey(
+    entity = User::class,
+    parentColumns = ["id"],
+    childColumns = ["user_id"],
+    onDelete = CASCADE)])
 data class Trick(
     @PrimaryKey
     @ColumnInfo(name = "id")                    var id: String,
+    @ColumnInfo(name = "user_id")               var userId: String,
     @ColumnInfo(name = "position")              var position: Int,
     @ColumnInfo(name = "type")                  var trickType: TrickType,
     @ColumnInfo(name = "direction_in")          var directionIn: DirectionIn,
@@ -40,8 +50,10 @@ data class Trick(
         // Aufsteigende Sortierung
         return Integer.compare(this.category.sortWeight, other.category.sortWeight)
     }
+
     constructor(): this(
         id = "",
+        userId = "",
         position = 0,
         trickType = TrickType.UNDEFINED,
         directionIn = DirectionIn.REGULAR,
@@ -52,18 +64,6 @@ data class Trick(
         selected = true,
         default = false
     )
-//    constructor(item: Trick) : this(
-//        id = item.id,
-//        position = item.position,
-//        trickType = item.trickType,
-//        directionIn = item.directionIn,
-//        directionOut = item.directionOut,
-//        category = item.category,
-//        difficulty = item.difficulty,
-//        userCreateName = item.userCreateName,
-//        selected = item.selected,
-//        default = item.default
-//    )
 }
 
 enum class TrickType {

@@ -16,9 +16,9 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.example.line_generator.R
 import com.example.line_generator.extensions.pxFromDp
-import com.example.line_generator.trick.HeaderViewState
-import com.example.line_generator.trick.RowViewState
-import com.example.line_generator.trick.TrickViewState
+import com.example.line_generator.data.trick.HeaderViewState
+import com.example.line_generator.data.trick.RowViewState
+import com.example.line_generator.data.trick.TrickViewState
 
 class SelectionAdapter(private val trickClickListener: TrickClickListener) : ListAdapter<RowViewState, SelectionAdapter.ViewHolder>(DiffCallback()) {
 

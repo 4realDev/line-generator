@@ -10,7 +10,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import co.ceryle.segmentedbutton.SegmentedButtonGroup
 import com.example.line_generator.R
-import com.example.line_generator.trick.*
+import com.example.line_generator.data.trick.*
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.android.material.textfield.TextInputEditText
 import kotlinx.android.synthetic.main.layout_bottomsheet_delete.*

@@ -15,7 +15,7 @@ import com.example.line_generator.R
 import com.example.line_generator.bottombar.create.SettingsContract
 import com.example.line_generator.bottombar.settings.SettingsViewModel
 import com.example.line_generator.helper.ItemDecorationEqualSpacing
-import com.example.line_generator.trick.TrickViewState
+import com.example.line_generator.data.trick.TrickViewState
 import kotlinx.android.synthetic.main.activity_bottom_bar.*
 
 

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.line_generator.R.id
 import com.example.line_generator.R.layout
-import com.example.line_generator.trick.TrickViewState
+import com.example.line_generator.data.trick.TrickViewState
 
 
 class ListTrickAdapter(

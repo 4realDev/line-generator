@@ -5,9 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
 import android.view.animation.AnimationUtils
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
-import com.example.line_generator.R.*
+import com.example.line_generator.Navigator
+import com.example.line_generator.R
+import com.example.line_generator.userSelection.UserService
 import com.google.android.material.appbar.AppBarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
@@ -25,14 +28,19 @@ class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
     private lateinit var navigator: BottomBarContract.Navigator
     private lateinit var toolbar: androidx.appcompat.widget.Toolbar
     private lateinit var appBar: AppBarLayout
+    private lateinit var user: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(layout.activity_bottom_bar)
+        setContentView(R.layout.activity_bottom_bar)
 
-        bottomAppBar = findViewById(id.bottom_app_bar)
-        toolbar = findViewById(id.activity_bottom_bar_toolbar)
-        appBar = findViewById(id.activity_bottom_bar_appbar_layout)
+        bottomAppBar = findViewById(R.id.bottom_app_bar)
+        toolbar = findViewById(R.id.activity_bottom_bar_toolbar)
+        appBar = findViewById(R.id.activity_bottom_bar_appbar_layout)
+        user = findViewById(R.id.activity_bottom_bar_user)
+
+        val userName = UserService(this).getUserName()
+        user.text = userName
 
         bottomAppBar.setOnNavigationItemSelectedListener(this)
         setSupportActionBar(toolbar)
@@ -43,7 +51,7 @@ class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
         loadAnimation()
 
         // Item by default should be selection
-        bottomAppBar.selectedItemId = id.menu_bottombar_selection
+        bottomAppBar.selectedItemId = R.id.menu_bottombar_selection
     }
 
     override fun onBackPressed() {
@@ -52,10 +60,10 @@ class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            id.menu_bottombar_selection -> navigator.openBottomBarItem(BottomBarItem.SelectionTrick)
-            id.menu_bottombar_list -> navigator.openBottomBarItem(BottomBarItem.ListTrick)
-            id.menu_bottombar_create -> navigator.openBottomBarItem(BottomBarItem.CreateTrick)
-            id.menu_bottombar_settings -> navigator.openBottomBarItem(BottomBarItem.SettingsTrick)
+            R.id.menu_bottombar_selection -> navigator.openBottomBarItem(BottomBarItem.SelectionTrick)
+            R.id.menu_bottombar_list -> navigator.openBottomBarItem(BottomBarItem.ListTrick)
+            R.id.menu_bottombar_create -> navigator.openBottomBarItem(BottomBarItem.CreateTrick)
+            R.id.menu_bottombar_settings -> navigator.openBottomBarItem(BottomBarItem.SettingsTrick)
         }
         return true
     }
@@ -65,8 +73,8 @@ class BottomBarActivity : AppCompatActivity(), BottomNavigationView.OnNavigation
     }
 
     private fun loadAnimation() {
-        val animTtb = AnimationUtils.loadAnimation(this, anim.appbar_animation_top_to_bottom)
-        val animBtt = AnimationUtils.loadAnimation(this, anim.bottombar_animation_bottom_to_top)
+        val animTtb = AnimationUtils.loadAnimation(this, R.anim.appbar_animation_top_to_bottom)
+        val animBtt = AnimationUtils.loadAnimation(this, R.anim.bottombar_animation_bottom_to_top)
         appBar.startAnimation(animTtb)
         bottomAppBar.startAnimation(animBtt)
     }

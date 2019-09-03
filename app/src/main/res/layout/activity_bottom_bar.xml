@@ -33,6 +33,14 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <TextView
+        android:id="@+id/activity_bottom_bar_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="User: Vladimir"
+        android:textAlignment="viewEnd"
+        android:textSize="8sp" />
+
     <FrameLayout
         android:id="@+id/activity_trick_container__frame_layout"
         android:layout_width="match_parent"
