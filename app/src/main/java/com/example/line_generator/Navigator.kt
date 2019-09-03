@@ -11,6 +11,7 @@ import com.example.line_generator.bottombar.selection.SelectionFragment
 import com.example.line_generator.bottombar.settings.SettingsFragment
 import com.example.line_generator.start.StartActivity
 import com.example.line_generator.start.StartContract
+import com.example.line_generator.userSelection.UserActivity
 import com.example.line_generator.userSelection.UserContract
 import timber.log.Timber
 
@@ -34,8 +35,11 @@ class Navigator(activity: FragmentActivity) : BottomBarContract.Navigator, Start
     }
 
     override fun onExitClicked() {
-        android.os.Process.killProcess(android.os.Process.myPid())
+//        android.os.Process.killProcess(android.os.Process.myPid())
+//        activity.finish()
+        activity.startActivity(UserActivity.newIntent(activity))
         activity.finish()
+        Timber.e("finish() StartActivity")
     }
 
     override fun openStartActivity() {

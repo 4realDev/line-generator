@@ -8,34 +8,33 @@
     tools:context="com.example.line_generator.userSelection.UserActivity">
 
     <Spinner
-        android:background="@drawable/background_create_button_shape_round_square"
-        app:layout_constraintStart_toStartOf="parent"
-        android:padding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/activity_user_create_user_button"
-        app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/activity_user_spinner"
+        android:padding="12dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-    </Spinner>
+        android:layout_height="wrap_content"
+        android:background="@drawable/background_create_button_shape_round_square"
+        app:layout_constraintBottom_toTopOf="@id/activity_user_create_user_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:textColorHint="@color/colorSecondary"
+        android:descendantFocusability="beforeDescendants"
+        android:focusableInTouchMode="true"
+        android:textColorHint="@color/white"
         android:theme="@style/TextInputLayoutStyle"
         app:boxStrokeColor="@color/colorAccent"
         app:errorEnabled="true"
         app:hintAnimationEnabled="true"
         app:hintEnabled="true"
-        android:descendantFocusability="beforeDescendants"
-        android:focusableInTouchMode="true"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/activity_user_create_user_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activity_user_spinner"
-        app:layout_constraintBottom_toTopOf="@id/activity_user_create_user_button">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_user_spinner">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/activity_user_name_input_field"
@@ -49,14 +48,14 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <Button
-        android:text="Create new User"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/activity_user_spinner"
-        app:layout_constraintBottom_toBottomOf="parent"
         android:id="@+id/activity_user_create_user_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:text="Create new User"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/activity_user_spinner" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

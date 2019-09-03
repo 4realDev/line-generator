@@ -33,19 +33,19 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
+    <FrameLayout
+        android:id="@+id/activity_trick_container__frame_layout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
     <TextView
         android:id="@+id/activity_bottom_bar_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         tools:text="User: Vladimir"
         android:textAlignment="viewEnd"
-        android:textSize="8sp" />
-
-    <FrameLayout
-        android:id="@+id/activity_trick_container__frame_layout"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1" />
+        android:textSize="12sp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_app_bar"

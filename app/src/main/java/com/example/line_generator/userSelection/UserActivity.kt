@@ -1,5 +1,7 @@
 package com.example.line_generator.userSelection
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,9 +16,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.line_generator.Navigator
 import com.example.line_generator.R
+import com.example.line_generator.data.user.User
 import com.google.android.material.textfield.TextInputEditText
 
 class UserActivity : AppCompatActivity() {
+
+    companion object{
+        fun newIntent(context: Context) = Intent(context, UserActivity::class.java)
+    }
 
     private lateinit var userName: TextInputEditText
     private lateinit var name: String
@@ -24,6 +31,8 @@ class UserActivity : AppCompatActivity() {
 
     private lateinit var spinner: Spinner
     private lateinit var spinnerAdapter: ArrayAdapter<String>
+
+
     private var isSpinnerInitialized = false
 
     private lateinit var viewModel: UserContract.ViewModel
@@ -45,6 +54,8 @@ class UserActivity : AppCompatActivity() {
         createUserButton = findViewById(R.id.activity_user_create_user_button)
         spinner = findViewById(R.id.activity_user_spinner)
 
+
+
         initListener()
         initOberservers()
     }
@@ -52,10 +63,13 @@ class UserActivity : AppCompatActivity() {
     private fun initListener(){
 
         spinner.onItemSelectedListener = object: OnItemSelectedListener{
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
+            override fun onNothingSelected(parent: AdapterView<*>?) {
+
+            }
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 if(isSpinnerInitialized) {
-                    viewModel.onUserSelected(position)
+                    val clickedUser = parent?.selectedItem
+                    viewModel.onUserSelected(clickedUser as User)
                 }
                 isSpinnerInitialized = true
             }
@@ -77,20 +91,16 @@ class UserActivity : AppCompatActivity() {
     private fun initOberservers() {
         viewModel.getAllUsers().observe(this, Observer { newListOfUsers ->
 
-            var userNameList = ArrayList<String>(newListOfUsers.size)
-
-            if (newListOfUsers != null) {
-                for (index in 0 until newListOfUsers.size) {
-                    userNameList.add(newListOfUsers[index].name)
-                }
+            val listOfNames = mutableListOf<String>()
+            newListOfUsers.forEach {
+                listOfNames.add(it.name)
             }
-
-            spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, userNameList)
+            spinnerAdapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, listOfNames)
             spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = spinnerAdapter
         })
 
-        viewModel.getStartActivityNavigationEvent().observe(this, Observer{ it ->
+        viewModel.getStartActivityNavigationEvent().observe(this, Observer{
             navigator.openStartActivity()
         })
     }
